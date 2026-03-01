@@ -71,7 +71,7 @@ Total evaluation passes:
 ## Project Structure
 
 ```
-Harshit/
+fosse-iitb/
 │
 ├──Result_report/
 ├── requirements.txt
