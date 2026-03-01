@@ -1,0 +1,7 @@
+,exact_match,partial_overlap,agreement_percent
+chat_gpt,26.0,66.0,92.0
+deepseek,26.0,62.0,88.0
+gemini,33.0,56.0,89.0
+gpt_oss,31.0,61.0,92.0
+qwen,22.0,71.0,93.0
+sonnet,25.0,67.0,92.0

@@ -1,0 +1,6580 @@
+[
+  {
+    "question": 1,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "E",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "D",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 2,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "B",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F",
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "I"
+      ]
+    }
+  },
+  {
+    "question": 3,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "F",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "C",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "D",
+        "E",
+        "F",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 4,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "E",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "D"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 5,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "C",
+        "F",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E",
+        "F",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "G",
+        "I"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 6,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "E",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "E",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 7,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "E",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 8,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "G",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "H",
+        "I",
+        "J",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 9,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "A",
+        "B",
+        "E",
+        "F",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 10,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 11,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "I",
+        "J",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F",
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "J",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 12,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "B",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "D",
+        "E",
+        "F",
+        "G",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 13,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "F",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "E",
+        "F",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 14,
+    "iter1_single": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 15,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C",
+        "E"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 16,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "F",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "F",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "E",
+        "F",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 17,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "E",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "E",
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 18,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 19,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "A",
+        "B",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 20,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "E",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "E",
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "E",
+        "F",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 21,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 22,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "I"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 23,
+    "iter1_single": {
+      "majority": [
+        "A"
+      ],
+      "oracle": [
+        "A",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "A"
+      ],
+      "oracle": [
+        "A",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "G"
+      ],
+      "oracle": [
+        "D",
+        "G"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "G"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 24,
+    "iter1_single": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 25,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 26,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "E"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "C",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "E",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "C",
+        "D",
+        "G",
+        "H",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 27,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "F",
+        "G",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "C",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "F",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 28,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "E",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 29,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "E"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "C",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "E",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "C",
+        "D",
+        "I"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 30,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 31,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "G"
+      ],
+      "oracle": [
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "D",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "D",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 32,
+    "iter1_single": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "B",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "E",
+        "F",
+        "G"
+      ],
+      "oracle": [
+        "B",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 33,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "E",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "E",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "E",
+        "I"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 34,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "G",
+        "H",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 35,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C",
+        "E"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "H",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "A",
+        "C",
+        "D",
+        "H",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 36,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 37,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "G"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 38,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 39,
+    "iter1_single": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "E",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "B",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "B",
+        "E",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "E",
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "B",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "I",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 40,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "E",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "B",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "D",
+        "E",
+        "H",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G",
+        "H",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 41,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "D",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 42,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "C",
+        "D",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "C",
+        "G",
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 43,
+    "iter1_single": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "B",
+        "I",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 44,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "D"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 45,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E",
+        "G",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "E",
+        "F",
+        "H",
+        "J"
+      ],
+      "oracle": [
+        "E",
+        "F",
+        "G",
+        "H",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 46,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "C",
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 47,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "E",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 48,
+    "iter1_single": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "E",
+        "F",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "E",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 49,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "D",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "D",
+        "E",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 50,
+    "iter1_single": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "F"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "E",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B",
+        "C",
+        "D",
+        "F",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "F",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 51,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B",
+        "C",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 52,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "J",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "A",
+        "B",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 53,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "G",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 54,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "D",
+        "G",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "G",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 55,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "E",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "C",
+        "D",
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 56,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "E",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "F",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 57,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "D",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 58,
+    "iter1_single": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "H",
+        "I",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [],
+      "oracle": [
+        "E",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "I",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 59,
+    "iter1_single": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 60,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "F"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "C",
+        "E",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 61,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "E",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "E"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "E",
+        "I"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 62,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "C"
+      ]
+    }
+  },
+  {
+    "question": 63,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E",
+        "H",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E",
+        "F",
+        "H",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 64,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 65,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "F",
+        "G"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 66,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "J",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F",
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "B",
+        "J",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 67,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "G"
+      ],
+      "oracle": [
+        "C",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 68,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "G"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "F",
+        "G",
+        "H",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 69,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "E",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "E",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "C",
+        "D",
+        "J"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 70,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "B",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 71,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "E",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "F",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 72,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "I",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "A",
+        "B",
+        "I"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 73,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "G",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "G",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 74,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "C",
+        "G",
+        "I",
+        "J"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 75,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "A"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "F",
+        "G",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "D",
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "G",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 76,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "D",
+        "F",
+        "I",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "I"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "I",
+        "J",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "F",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 77,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "C",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "C",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "C",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 78,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 79,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "G",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "D"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "A",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 80,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "F",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 81,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B",
+        "C",
+        "D",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 82,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F",
+        "G",
+        "H"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "C",
+        "D"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "C"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "F",
+        "H"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 83,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "E",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 84,
+    "iter1_single": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E",
+        "H"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "E",
+        "G",
+        "H",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "G",
+        "H",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 85,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "I"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "G"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "D"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 86,
+    "iter1_single": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "E",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 87,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "G",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "H"
+      ],
+      "oracle": [
+        "A",
+        "D",
+        "H",
+        "J",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 88,
+    "iter1_single": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 89,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "C",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "D",
+        "I",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "F",
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "I",
+        "J",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 90,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "I"
+      ]
+    }
+  },
+  {
+    "question": 91,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "I"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 92,
+    "iter1_single": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 93,
+    "iter1_single": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "G"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "B",
+        "J"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "G",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 94,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "D",
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "E",
+        "F",
+        "J"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 95,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "E",
+        "G",
+        "H"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "B",
+        "D",
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "oracle": [
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 96,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "E",
+        "F",
+        "NONE"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "NONE"
+      ],
+      "oracle": [
+        "B",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "H",
+        "J",
+        "NONE"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "A",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "E"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "H",
+        "I",
+        "J",
+        "NONE"
+      ]
+    }
+  },
+  {
+    "question": 97,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "A",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "A"
+      ],
+      "oracle": [
+        "A",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "G",
+        "H"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "G",
+        "H",
+        "J"
+      ],
+      "oracle": [
+        "C",
+        "D",
+        "G",
+        "H",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 98,
+    "iter1_single": {
+      "majority": [
+        "D"
+      ],
+      "oracle": [
+        "C",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "D",
+        "H",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "C",
+        "D",
+        "E",
+        "G",
+        "H",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 99,
+    "iter1_single": {
+      "majority": [
+        "A"
+      ],
+      "oracle": [
+        "A",
+        "D"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "G",
+        "NONE"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [],
+      "oracle": [
+        "A",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "A"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "D",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "A"
+      ],
+      "oracle": [
+        "A",
+        "E",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "G",
+        "H"
+      ],
+      "oracle": [
+        "D",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    }
+  },
+  {
+    "question": 100,
+    "iter1_single": {
+      "majority": [],
+      "oracle": [
+        "B",
+        "F"
+      ]
+    },
+    "iter1_single_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "B",
+        "C"
+      ]
+    },
+    "iter1_single_yuv": {
+      "majority": [
+        "E"
+      ],
+      "oracle": [
+        "D",
+        "E"
+      ]
+    },
+    "iter2_multi": {
+      "majority": [
+        "B",
+        "D",
+        "F"
+      ],
+      "oracle": [
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "iter2_multi_tan": {
+      "majority": [
+        "B"
+      ],
+      "oracle": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "iter2_multi_yuv": {
+      "majority": [
+        "D",
+        "E",
+        "I",
+        "J"
+      ],
+      "oracle": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "I",
+        "J"
+      ]
+    }
+  }
+]

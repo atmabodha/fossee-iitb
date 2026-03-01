@@ -1,0 +1,158 @@
+{
+  "iter1_single": {
+    "chat_gpt": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "deepseek": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gemini": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gpt_oss": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "qwen": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "sonnet": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    }
+  },
+  "iter1_single_tan": {
+    "chat_gpt": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "deepseek": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gemini": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gpt_oss": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "qwen": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "sonnet": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    }
+  },
+  "iter1_single_yuv": {
+    "chat_gpt": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "deepseek": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gemini": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gpt_oss": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "qwen": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "sonnet": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    }
+  },
+  "iter2_multi": {
+    "chat_gpt": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "deepseek": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gemini": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gpt_oss": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "qwen": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "sonnet": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    }
+  },
+  "iter2_multi_tan": {
+    "chat_gpt": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "deepseek": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gemini": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gpt_oss": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "qwen": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "sonnet": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    }
+  },
+  "iter2_multi_yuv": {
+    "chat_gpt": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "deepseek": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gemini": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "gpt_oss": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "qwen": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    },
+    "sonnet": {
+      "answered": 100,
+      "coverage_percent": 1.0
+    }
+  }
+}

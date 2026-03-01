@@ -1,0 +1,1192 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    hidelinks
+}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{enumitem}
+
+\title{\textbf{Benchmarking Large Language Models} \\ 
+       \large for Python Code Error Detection \\
+       \normalsize A Comparative Study of Six AI Models}
+\author{FOSSEE}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This report evaluates the performance of six Large Language Models (LLMs) in detecting logical errors in Python code. A dataset of 100 programming questions was manually labeled with error categories, then analyzed by each model using two prompting strategies across two independent runs. Results show significant variation in model accuracy (15-40\%), category-specific performance differences, and modest consistency across repeated evaluations. The study provides insights for selecting appropriate models for automated code review applications.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\subsection{Research Objectives}
+
+This benchmarking study systematically evaluates six Large Language Models to answer the following research questions:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Overall Performance:} Which LLM achieves the highest accuracy in error classification?
+    
+    \item \textbf{Prompting Strategy:} Does prompting strategy (single-label vs multi-label) affect accuracy?
+    
+    \item \textbf{Consistency:} How consistent are model predictions across independent runs?
+    
+    \item \textbf{Model Agreement:} How much do different models agree with each other in their predictions?
+    
+    \item \textbf{Closed-Source vs Open-Source:} How do proprietary models compare to open-source alternatives in terms of cost-performance trade-offs?
+    
+    \item \textbf{Ensemble Effectiveness:} Can majority voting across multiple models improve upon individual model performance?
+    
+    \item \textbf{Multi-Label Partial Overlap:} How do models perform when evaluated using partial credit metrics instead of strict exact match?
+    
+    \item \textbf{Label Verification:} Can model consensus identify potential errors in manual annotations?
+    
+    \item \textbf{Category-Specific Performance:} Are models performing better for particular error categorization schemes? If yes, can we identify the reasons?
+\end{enumerate}
+
+Each question is addressed through dedicated analysis sections presented in this report.
+\subsection{Models Evaluated}
+
+Six leading LLMs were selected for evaluation:
+
+\textbf{Closed-Source Models:}
+\begin{itemize}[leftmargin=*]
+    \item {Anthropic Claude Sonnet 4.5} 
+    \item {Google Gemini 2.5 Flash} 
+    \item {OpenAI GPT-5.2} 
+\end{itemize}
+
+\textbf{Open-Source Models:}
+\begin{itemize}[leftmargin=*]
+    \item {DeepSeek v3.2} 
+    \item {Qwen3 Coder}
+    \item {OpenAI GPT-OSS-120B} 
+\end{itemize}
+
+\subsection{Experimental Methodology}
+
+\textbf{Dataset:} 100 Python programming questions from the Yaksh platform
+
+\textbf{Manual Annotation:} Each question was independently reviewed and labeled with applicable error categories
+
+\textbf{Testing Protocol:}
+\begin{itemize}[leftmargin=*]
+    \item Two independent runs per model (Run 1 and Run 2)
+    \item Two prompting strategies: Single-label and Multi-label classification
+    \item Total test configurations: 24 (6 models × 2 runs × 2 strategies)
+\end{itemize}
+
+\subsection{Error Category Definitions}
+
+Questions were classified according to the following error taxonomy:
+
+\begin{description}[leftmargin=*]
+    \item[A - Loop Condition] Incorrect loops in for/while condition statements
+    \item[B - Condition Branch] Incorrect expression in the if condition
+    \item[C - Statement Integrity] Statement lacks a part of logical structure
+    \item[D - Output/Input Format] Incorrect cin/cout or input/output statement
+    \item[E - Variable Initialization] Incorrect declaration of variables
+    \item[F - Data Type] Incorrect data type usage
+    \item[G - Computation] Incorrect basic math symbols or operators
+    \item[NONE] No error present (code is correct)
+\end{description}
+
+Note that questions may contain multiple error types simultaneously.
+
+\newpage
+
+\section{Dataset Characteristics}
+
+\subsection{Manual Annotation Results}
+
+Prior to model evaluation, all 100 questions underwent manual review to establish ground truth labels. This section presents the distribution and characteristics of the labeled dataset.
+
+\subsection{Error Category Distribution}
+
+Table 1 shows the frequency distribution of error categories across the dataset:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Category} & \textbf{Count} & \textbf{Percentage} \\
+\midrule
+C & 51 & 51.0\% \\
+D & 49 & 49.0\% \\
+G & 31 & 31.0\% \\
+NONE & 20 & 20.0\% \\
+F & 10 & 10.0\% \\
+B & 8 & 8.0\% \\
+A & 5 & 5.0\% \\
+E & 5 & 5.0\% \\
+\bottomrule
+\end{tabular}
+\caption{Error Category Distribution in Manual Labels}
+\end{table}
+
+\textbf{Dataset Characteristics:}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Total category assignments: 179} - This exceeds 100 due to multi-label questions containing multiple error types
+    
+    \item \textbf{Most frequent: C} - Appears in 51 questions (51.0\%)
+    
+    \item \textbf{Least frequent: E} - Appears in 5 questions (5.0\%)
+    
+    \item \textbf{Average labels per question: 1.79} - Indicates moderate label complexity
+\end{itemize}
+
+The dataset has a good variety of different error types, but some errors appear more often than others.
+
+\newpage
+
+\section{Model Performance Analysis}
+
+\subsection{Overall Accuracy Rankings}
+
+Table 2 presents the aggregate performance of each model, averaged across all runs and prompting strategies:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Model} & \textbf{Accuracy (\%)} & \textbf{Rank} \\
+\midrule
+openai-gpt-5.2 & 40.5 & 1 \\
+openai-gpt-oss-120b & 40.0 & 2 \\
+anthropic-claude-sonnet-4.5 & 35.0 & 3 \\
+google-gemini-2.5-flash & 33.25 & 4 \\
+qwen-qwen3-coder & 23.5 & 5 \\
+deepseek-deepseek-v3.2 & 16.75 & 6 \\
+\bottomrule
+\end{tabular}
+\caption{Overall Model Performance Rankings}
+\end{table}
+
+\textbf{Performance Summary:}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Best performer: openai-gpt-5.2} achieved 40.5\% accuracy, correctly classifying approximately 40 out of 100 questions
+    
+    \item \textbf{Lowest performer: deepseek-deepseek-v3.2} achieved 16.75\% accuracy
+    
+    \item \textbf{Mean accuracy: 31.5\%} - Average performance across all models
+    
+    \item \textbf{Performance range: 23.8\%} - Indicates substantial variation in model capabilities
+\end{itemize}
+
+\newpage
+
+\section{Prompting Strategy Comparison}
+
+\subsection{Single-Label vs Multi-Label Classification}
+
+Two prompting strategies were evaluated:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Single-label:} Models select one primary error category
+    \item \textbf{Multi-label:} Models select all applicable error categories
+\end{itemize}
+
+Table 3 compares performance across these strategies:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{Single (\%)} & \textbf{Multi (\%)} & \textbf{Difference (\%)} \\
+\midrule
+deepseek-deepseek-v3 & 29.5 & 4.0 & -25.5 \\
+google-gemini-2.5-flash & 53.5 & 13.0 & -40.5 \\
+qwen-qwen3-coder & 45.5 & 1.5 & -44.0 \\
+anthropic-claude-son & 57.5 & 12.5 & -45.0 \\
+openai-gpt-oss-120b & 65.5 & 14.5 & -51.0 \\
+openai-gpt-5.2 & 69.5 & 11.5 & -58.0 \\
+\bottomrule
+\end{tabular}
+\caption{Single vs Multi-Label Prompting Performance}
+\end{table}
+
+\newpage
+
+\section{Consistency and Reliability}
+
+\subsection{Run-to-Run Agreement Analysis}
+
+Model consistency was evaluated by comparing predictions across two independent runs on identical inputs. This measures how reliable and predictable each model is when processing the same questions multiple times. 
+
+Predictions from both runs were compared against manual ground truth labels to determine whether agreements were correct or incorrect.
+
+\subsection{Overall Agreement Rates}
+
+Table 4 presents inter-run agreement rates averaged across both prompting strategies:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Model} & \textbf{Agreement Rate (\%)} \\
+\midrule
+openai-gpt-5.2 & 75.5 \\
+openai-gpt-oss-120b & 64.5 \\
+qwen-qwen3-coder & 63.5 \\
+anthropic-claude-sonnet-4.5 & 55.0 \\
+google-gemini-2.5-flash & 55.0 \\
+deepseek-deepseek-v3.2 & 44.5 \\
+\bottomrule
+\end{tabular}
+\caption{Inter-Run Agreement Rates (Average Across Modes)}
+\end{table}
+
+\subsection{Consistency by Prompting Mode}
+
+Agreement rates vary significantly between single-label and multi-label modes:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{Single (\%)} & \textbf{Multi (\%)} & \textbf{Difference (\%)} \\
+\midrule
+openai-gpt-5.2 & 85 & 66 & -19 \\
+openai-gpt-oss-120b & 75 & 54 & -21 \\
+qwen-qwen3-coder & 78 & 49 & -29 \\
+anthropic-claude-sonnet-4.5 & 66 & 44 & -22 \\
+google-gemini-2.5-flash & 67 & 43 & -24 \\
+deepseek-deepseek-v3.2 & 56 & 33 & -23 \\
+\bottomrule
+\end{tabular}
+\caption{Agreement Rates by Prompting Strategy}
+\end{table}
+
+\subsection{Agreement Quality Analysis}
+
+To understand whether consistency indicates reliability, we analyzed agreement patterns by comparing both runs against manual ground truth labels. Table 6 breaks down what happened in single-label mode:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model} & \textbf{Gave Same} & \textbf{Changed} & \textbf{Same and} & \textbf{Same but} \\
+ & \textbf{Answer} & \textbf{Answer} & \textbf{Correct} & \textbf{Wrong} \\
+\midrule
+openai-gpt-5.2 & 85 & 15 & 70 & 15 \\
+openai-gpt-oss-120b & 75 & 25 & 63 & 12 \\
+qwen-qwen3-coder & 78 & 22 & 46 & 32 \\
+claude-sonnet-4.5 & 66 & 34 & 59 & 7 \\
+gemini-2.5-flash & 67 & 33 & 54 & 13 \\
+deepseek-v3.2 & 56 & 44 & 28 & 28 \\
+\bottomrule
+\end{tabular}
+\caption{Agreement Quality Breakdown (Single-Label Mode)}
+\end{table}
+
+\textbf{Reading the Table:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Gave Same Answer:} Run 1 and Run 2 predicted the same error category (consistency)
+    \item \textbf{Changed Answer:} Run 1 and Run 2 predicted different categories (inconsistency)
+    \item \textbf{Same and Correct:} Both runs matched AND matched the manual label (reliable agreement)
+    \item \textbf{Same but Wrong:} Both runs matched BUT differed from manual label (consistent error)
+\end{itemize}
+
+\textbf{Note:} Correctness determined by comparing predictions to manual ground truth labels.
+
+\newpage
+
+\section{Model Agreement Analysis}
+
+\subsection{Pairwise Agreement Between Models}
+
+To understand which models make similar predictions, pairwise agreement rates were calculated. This analysis shows how often two models give the same answer for the same question, regardless of whether that answer is correct.
+
+\textbf{Why This Matters:}
+\begin{itemize}[leftmargin=*]
+    \item High agreement suggests models use similar reasoning patterns
+    \item Low agreement indicates diverse approaches to error detection
+    \item Useful for selecting complementary models for ensemble methods
+    \item Helps identify redundant vs unique model capabilities
+\end{itemize}
+
+\subsection{Agreement Matrix - Single-Label Mode}
+
+Table 7 shows pairwise agreement rates for all model combinations in single-label prompting:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+ & \textbf{Claude} & \textbf{DeepSeek} & \textbf{Gemini} & \textbf{GPT-5.2} & \textbf{GPT-OSS} & \textbf{Qwen} \\
+\midrule
+Claude & 100 & 32 & 51 & 53 & 57 & 51 \\
+DeepSeek & 32 & 100 & 31 & 26 & 29 & 42 \\
+Gemini & 51 & 31 & 100 & 47 & 52 & 50 \\
+GPT-5.2 & 53 & 26 & 47 & 100 & 66 & 42 \\
+GPT-OSS & 57 & 29 & 52 & 66 & 100 & 51 \\
+Qwen & 51 & 42 & 50 & 42 & 51 & 100 \\
+\bottomrule
+\end{tabular}
+\caption{Pairwise Agreement Matrix - Single-Label Mode (\%)}
+\end{table}
+
+\textit{Note: Diagonal values are 100\% (model always agrees with itself). Matrix is symmetric. Higher percentages indicate more similar prediction patterns.}
+
+\subsection{Agreement Matrix - Multi-Label Mode}
+
+Table 8 shows pairwise agreement rates for multi-label prompting:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+ & \textbf{Claude} & \textbf{DeepSeek} & \textbf{Gemini} & \textbf{GPT-5.2} & \textbf{GPT-OSS} & \textbf{Qwen} \\
+\midrule
+Claude & 100 & 20 & 25 & 34 & 38 & 20 \\
+DeepSeek & 20 & 100 & 26 & 18 & 22 & 29 \\
+Gemini & 25 & 26 & 100 & 20 & 27 & 30 \\
+GPT-5.2 & 34 & 18 & 20 & 100 & 50 & 18 \\
+GPT-OSS & 38 & 22 & 27 & 50 & 100 & 21 \\
+Qwen & 20 & 29 & 30 & 18 & 21 & 100 \\
+\bottomrule
+\end{tabular}
+\caption{Pairwise Agreement Matrix - Multi-Label Mode (\%)}
+\end{table}
+
+\newpage
+
+\section{Closed-Source vs Open-Source Comparison}
+
+\subsection{Cost-Performance Analysis}
+
+Table 9 compares aggregate accuracy, while Table 10 identifies the top performers in each category:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Mode} & \textbf{closed-source (\%)} & \textbf{Open-Source (\%)} & \textbf{Gap (\%)} \\
+\midrule
+Single-label & 61.0 & 45.7 & +15.3 \\
+Multi-label & 11.0 & 6.3 & +4.7 \\
+\midrule
+\textbf{Average} & \textbf{36.0} & \textbf{26.0} & \textbf{+10.0} \\
+\bottomrule
+\end{tabular}
+\caption{Average Accuracy: closed-source vs Open-Source}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Mode} & \textbf{Best closed-source} & \textbf{Best Open-Source} \\
+\midrule
+Single-label & OpenAI GPT-5.2 & OpenAI GPT-OSS-120B \\
+Multi-label & Google Gemini 2.5 Flash & OpenAI GPT-OSS-120B \\
+\bottomrule
+\end{tabular}
+\caption{Best Performing Models by Category}
+\end{table}
+
+\newpage
+
+\section{Ensemble Methods}
+
+\subsection{Majority Voting Analysis}
+
+Instead of relying on a single model, an ensemble approach combines predictions from all six models using majority voting. For each question, the answer chosen by the most models becomes the final prediction.
+
+Table 11 compares ensemble performance to individual model averages:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Mode} & \textbf{Avg Individual (\%)} & \textbf{Ensemble (\%)} & \textbf{Improvement (\%)} \\
+\midrule
+Single-label & 53.3 & 57.0 & +3.7 \\
+Multi-label & 8.7 & 11.0 & +2.3 \\
+\bottomrule
+\end{tabular}
+\caption{Ensemble Performance vs Individual Models}
+\end{table}
+
+\subsection{Consensus Breakdown}
+
+Table 12 shows how often models agreed and the quality of those agreements:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Mode} & \textbf{All Agreed} & \textbf{Majority} & \textbf{No Clear} & \textbf{All Agreed} \\
+ & \textbf{\& Right} & \textbf{Right} & \textbf{Winner} & \textbf{but Wrong} \\
+\midrule
+Single-label & 11 & 29 & 58 & 2 \\
+Multi-label & 0 & 1 & 87 & 12 \\
+\bottomrule
+\end{tabular}
+\caption{Model Agreement Patterns in Ensemble Voting}
+\end{table}
+
+\textbf{Reading the Table:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{All Agreed \& Right:} All 6 models predicted the same answer AND it matched the manual label
+    \item \textbf{Majority Right:} 4-5 models agreed on the correct answer
+    \item \textbf{No Clear Winner:} Models split evenly (3-3 tie), making majority voting ineffective
+    \item \textbf{All Agreed but Wrong:} All 6 models predicted the same incorrect answer
+\end{itemize}
+
+\newpage
+
+\section{Multi-Label Partial Overlap Analysis}
+
+\subsection{Overview and Motivation}
+
+Previous sections evaluated multi-label predictions using exact match criteria (all predicted labels must match all manual labels). However, this approach penalizes predictions that are partially correct. This section introduces four nuanced metrics to better assess multi-label performance when predictions partially overlap with ground truth.
+
+\subsection{Evaluation Metrics}
+
+Four complementary metrics were developed to measure partial overlap accuracy:
+
+\begin{description}[leftmargin=*]
+    \item[Case A: Precision-Based] All predicted labels are present in manual labels. Measures false positive control (no extra incorrect labels added).
+    
+    \item[Case B: Recall-Based] All manual labels are present in predictions. Measures false negative control (no required labels missed).
+    
+    \item[Case C: Any Overlap] At least one label overlaps between prediction and manual. Measures minimum correctness.
+    
+    \item[Case D: Jaccard Score] Intersection over union ratio: $\frac{|Predicted \cap Manual|}{|Predicted \cup Manual|}$. Provides balanced overlap measure ranging from 0 (no overlap) to 1 (perfect match).
+\end{description}
+
+\subsection{Multi-Label Partial Overlap Results}
+
+Table 13 presents model performance across all four partial overlap metrics averaged across both runs:
+
+\begin{table}[H]
+\centering
+\label{tab:partial_overlap}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model} & \textbf{Case A} & \textbf{Case B} & \textbf{Case C} & \textbf{Case D} \\
+& \textbf{(\%)} & \textbf{(\%)} & \textbf{(\%)} & \textbf{(Jaccard)} \\
+\midrule
+openai-gpt-5.2 & 31.7 & 45.2 & 96.2 & 0.556 \\
+openai-gpt-oss-120b & 35.6 & 28.8 & 90.4 & 0.475 \\
+anthropic-claude-sonnet-4.5 & 32.7 & 38.5 & 93.3 & 0.511 \\
+google-gemini-2.5-flash & 28.8 & 10.6 & 73.1 & 0.325 \\
+deepseek-deepseek-v3.2 & 13.5 & 26.9 & 70.2 & 0.304 \\
+qwen-qwen3-coder & 7.7 & 24.0 & 76.0 & 0.291 \\
+\midrule
+\textbf{Average} & \textbf{25.0} & \textbf{29.0} & \textbf{83.2} & \textbf{0.410} \\
+\bottomrule
+\end{tabular}
+\caption{Multi-Label Partial Overlap Performance by Metric (Averaged Across Runs)}
+\end{table}
+
+\subsection{Comparison to Exact Match}
+
+Table 14 contrasts partial overlap metrics with exact match accuracy:
+
+\begin{table}[H]
+\centering
+\label{tab:overlap_vs_exact}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Metric} & \textbf{Average Score} & \textbf{vs Exact Match} \\
+\midrule
+Exact Match & 7.2\% & Baseline \\
+Case A (Precision) & 25.0\% & +17.8 pp \\
+Case B (Recall) & 29.0\% & +21.8 pp \\
+Case C (Any Overlap) & 83.2\% & +76.0 pp \\
+Case D (Jaccard) & 41.0\% & +33.8 pp \\
+\bottomrule
+\end{tabular}
+\caption{Partial Overlap vs Exact Match Comparison}
+\end{table}
+
+\textit{Note: "pp" denotes percentage points. Exact match requires both Case A = 1.0 (no false positives) AND Case B = 1.0 (no false negatives), indicating perfect prediction.}
+
+\newpage
+
+\section{Manual Label Verification and Correction}
+
+\subsection{Verification Methodology}
+
+During analysis, systematic discrepancies emerged between model consensus predictions and manual labels. A verification process was established to identify potential manual labeling errors through three approaches:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Low Consensus Cases} - Questions where all 6 models agreed on a prediction that differed from manual labels (highest priority)
+    
+    \item \textbf{Partial Match Analysis} - Cases with Jaccard scores below 0.30 indicating substantial disagreement
+    
+    \item \textbf{Complete Mismatches} - Predictions with zero overlap with manual labels
+\end{enumerate}
+
+\subsection{Verification Results}
+
+Analysis identified 12 samples requiring manual verification where all models showed consensus disagreement with original labels. Table 15 presents the distribution:
+
+\begin{table}[H]
+\centering
+\label{tab:verification_summary}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Category} & \textbf{Samples Identified} & \textbf{Average Jaccard} \\
+\midrule
+Low Consensus (all models agree) & 12 & 0.234 \\
+Partial Matches (Jaccard $<$ 0.30) & 477 instances & 0.180 \\
+Complete Mismatches (Jaccard = 0) & 14 instances & 0.000 \\
+\midrule
+\textbf{Total Flagged for Review} & \textbf{503} & \textbf{---} \\
+\bottomrule
+\end{tabular}
+\caption{Manual Label Verification Summary}
+\end{table}
+
+\textit{Note: "Partial Matches" counts individual model-sample pairs, not unique samples. "Complete Mismatches" are a subset of partial matches.}
+
+\subsection{Example Verification Cases}
+
+\textbf{Sample 34 - High Priority Review:}
+\begin{itemize}[leftmargin=*]
+    \item Manual Label: \texttt{C, D} (Statement Integrity + I/O Format)
+    \item All 6 Models Predicted: \texttt{A, C, G} (Loop Condition + Statement + Computation)
+    \item Jaccard Score: 0.100 (only 1 out of 5 total labels overlapped)
+    \item Status: Flagged - Models unanimously detect different errors than manual labels
+\end{itemize}
+
+\textbf{Sample 53 - Confirmed Manual Correct:}
+\begin{itemize}[leftmargin=*]
+    \item Manual Label: \texttt{C, D} (Statement Integrity + I/O Format)
+    \item All 6 Models Predicted: \texttt{E} (Variable Initialization)
+    \item Jaccard Score: 0.083 (no overlap)
+    \item After Review: Manual label confirmed correct - Models missed complex structural issues
+\end{itemize}
+
+\textbf{Sample 5 - Mixed Signals:}
+\begin{itemize}[leftmargin=*]
+    \item Manual Label: \texttt{D, G} (I/O Format + Computation)
+    \item All Models Predicted: \texttt{A, D, F, G} (added Loop + Data Type errors)
+    \item Jaccard Score: 0.256 (partial overlap on D and G)
+    \item Status: Requires expert review - Models detected additional potential issues
+\end{itemize}
+
+\subsection{Verification Files Generated}
+
+Three CSV files were produced to facilitate systematic review:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{llc}
+\toprule
+\textbf{Filename} & \textbf{Purpose} & \textbf{Priority} \\
+\midrule
+verification\_low\_consensus.csv & 12 unanimous disagreements & High \\
+verification\_partial\_matches.csv & 477 low-Jaccard predictions & Moderate \\
+verification\_complete\_mismatches.csv & 14 zero-overlap cases & High \\
+\bottomrule
+\end{tabular}
+\caption{Verification Output Files}
+
+\end{table}
+
+\newpage
+
+\section{Category-Specific Performance Analysis}
+
+\subsection{Research Question}
+
+\textbf{Are models performing better for particular error categorization schemes? If yes, can we identify the reasons?}
+
+\subsection{Methodology}
+
+To comprehensively address this question, category-wise performance was analyzed separately for single-label and multi-label prompting modes using Precision, Recall, and F1-Score metrics. The analysis excludes NONE category from multi-label results since it represents absence of errors.
+
+\subsection{Single-Label Category Performance}
+
+Table 17 shows single-label category rankings by F1-score (averaged across all 6 models):
+
+\begin{table}[H]
+\centering
+
+\label{tab:single_category_ranking}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Rank} & \textbf{Category} & \textbf{Description} & \textbf{F1} & \textbf{Recall} & \textbf{Precision} \\
+\midrule
+1 & NONE & No Error & 67.2\% & 69.2\% & 66.0\% \\
+2 & B & Condition Branch & 48.7\% & 64.8\% & 45.5\% \\
+3 & C & Statement Integrity & 48.1\% & 37.3\% & 69.7\% \\
+4 & F & Data Type & 26.7\% & 20.0\% & 40.8\% \\
+5 & D & I/O Format & 22.1\% & 13.9\% & 77.4\% \\
+6 & G & Computation & 21.8\% & 14.5\% & 66.6\% \\
+7 & E & Variable Init & 21.4\% & 23.3\% & 21.4\% \\
+8 & A & Loop Condition & 19.1\% & 30.0\% & 15.1\% \\
+\midrule
+ & \multicolumn{2}{l}{\textbf{Average (Excluding NONE)}} & \textbf{29.7\%} & \textbf{29.1\%} & \textbf{47.8\%} \\
+\bottomrule
+\end{tabular}
+\caption{Single-Label Category Performance Ranking (Average F1-Score Across All Models)}
+\end{table}
+
+\subsection{Multi-Label Category Performance}
+
+Table 18 shows multi-label category rankings (NONE excluded, as it's not applicable):
+
+\begin{table}[H]
+\centering
+\label{tab:multi_category_ranking}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Rank} & \textbf{Category} & \textbf{Description} & \textbf{F1} & \textbf{Recall} & \textbf{Precision} \\
+\midrule
+1 & C & Statement Integrity & 61.4\% & 56.3\% & 69.5\% \\
+2 & G & Computation & 55.8\% & 60.2\% & 53.0\% \\
+3 & D & I/O Format & 55.6\% & 46.3\% & 81.9\% \\
+4 & F & Data Type & 48.3\% & 61.7\% & 43.8\% \\
+5 & B & Condition Branch & 46.2\% & 90.7\% & 32.0\% \\
+6 & A & Loop Condition & 25.6\% & 76.7\% & 15.6\% \\
+7 & E & Variable Init & 12.9\% & 73.3\% & 7.1\% \\
+\midrule
+ & \multicolumn{2}{l}{\textbf{Average}} & \textbf{43.7\%} & \textbf{66.5\%} & \textbf{43.3\%} \\
+\bottomrule
+\end{tabular}
+\caption{Multi-Label Category Performance Ranking (Average F1-Score, NONE Excluded)}
+
+\end{table}
+
+\subsection{Single vs Multi-Label Comparison}
+
+Table 19 presents the performance gap between modes:
+
+\begin{table}[H]
+\centering
+\label{tab:single_vs_multi_diff}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Category} & \textbf{Description} & \textbf{Single} & \textbf{Multi} & \textbf{Difference} \\
+\midrule
+E & Variable Init & 21.4\% & 12.9\% & +8.5 pp \\
+B & Condition Branch & 48.7\% & 46.2\% & +2.5 pp \\
+A & Loop Condition & 19.1\% & 25.6\% & -6.5 pp \\
+C & Statement Integrity & 48.1\% & 61.4\% & -13.3 pp \\
+F & Data Type & 26.7\% & 48.3\% & -21.6 pp \\
+D & I/O Format & 22.1\% & 55.6\% & -33.6 pp \\
+G & Computation & 21.8\% & 55.8\% & -34.0 pp \\
+\midrule
+\multicolumn{2}{l}{\textbf{Overall Average}} & \textbf{29.7\%} & \textbf{43.7\%} & \textbf{-14.0 pp} \\
+\bottomrule
+\end{tabular}
+\caption{Single vs Multi-Label Performance Difference (F1-Score)}
+\end{table}
+
+\textit{Note: Positive difference indicates single-label is easier; negative indicates multi-label is easier.}
+
+\subsection{Visualization Reference}
+
+Figure \ref{fig:category_single_multi} provides comprehensive visual analysis including:
+\begin{itemize}[leftmargin=*]
+    \item Single-label and multi-label F1-score heatmaps by model and category
+    \item Category difficulty rankings showing best/worst performers
+    \item Side-by-side comparison bars revealing which categories benefit from multi-label
+    \item Performance degradation analysis showing E and B decline while C, D, F, G improve
+    \item Model performance overall comparison showing GPT-5.2 and Claude leadership
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+    \includegraphics[width=1\linewidth]{category_single_vs_multi_complete_analysis.png}
+    \caption{Comprehensive Category Performance Analysis - Single vs Multi-Label}
+    \label{fig:category_single_multi}
+\end{figure}
+
+\newpage
+
+\section{Error Taxonomy Diagram}
+
+\subsection{Hierarchical Classification Structure}
+
+The error taxonomy used in this study organizes programming errors into a hierarchical structure designed to capture different aspects of code correctness. Figure \ref{fig:error_taxonomy} presents the complete taxonomy diagram.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{error_taxonomy.png}
+\caption{Programming Error Taxonomy - Hierarchical Classification System}
+\label{fig:error_taxonomy}
+\end{figure}
+
+\subsection{Taxonomy Structure}
+
+The classification system consists of 8 categories organized into 4 high-level groups:
+
+\textbf{1. Control Flow Errors}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{A - Loop Condition:} Errors in for/while loop termination or iteration logic
+    \begin{itemize}
+        \item Example: \texttt{for i in range(n)} when should be \texttt{range(n+1)}
+        \item Example: \texttt{while x > 0} when should be \texttt{while x >= 0}
+        \item Performance: 19.1\% single-label, 25.6\% multi-label
+    \end{itemize}
+    
+    \item \textbf{B - Condition Branch:} Errors in if/else conditional expressions
+    \begin{itemize}
+        \item Example: \texttt{if x > 5} when should be \texttt{if x >= 5}
+        \item Example: Missing \texttt{elif} branch for edge case
+        \item Performance: 48.7\% single-label, 46.2\% multi-label
+    \end{itemize}
+\end{itemize}
+
+\textbf{2. Code Structure Errors}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{C - Statement Integrity:} Incomplete or malformed code statements
+    \begin{itemize}
+        \item Example: Missing \texttt{return} statement
+        \item Example: Incomplete function call (missing closing parenthesis)
+        \item Example: Incorrect indentation breaking logic
+        \item Performance: 48.1\% single-label, \textbf{61.4\% multi-label (best)}
+    \end{itemize}
+\end{itemize}
+
+\textbf{3. Data Handling Errors}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{D - I/O Format:} Incorrect input/output statement formatting
+    \begin{itemize}
+        \item Example: \texttt{print(x)} when output should be \texttt{print(x, end=' ')}
+        \item Example: Using \texttt{input()} when should be \texttt{int(input())}
+        \item Performance: 22.1\% single-label, 55.6\% multi-label (+33.6 pp)
+    \end{itemize}
+    
+    \item \textbf{E - Variable Initialization:} Incorrect variable declaration or initialization
+    \begin{itemize}
+        \item Example: Uninitialized accumulator variable
+        \item Example: Wrong initial value (sum = 1 instead of sum = 0)
+        \item Performance: 21.4\% single-label, 12.9\% multi-label (declines)
+    \end{itemize}
+    
+    \item \textbf{F - Data Type:} Incorrect data type usage
+    \begin{itemize}
+        \item Example: Using \texttt{int} when should be \texttt{float}
+        \item Example: String concatenation with integer without conversion
+        \item Performance: 26.7\% single-label, 48.3\% multi-label (+21.6 pp)
+    \end{itemize}
+\end{itemize}
+
+\textbf{4. Computation Errors}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{G - Computation:} Incorrect mathematical operators or expressions
+    \begin{itemize}
+        \item Example: Using \texttt{+} when should be \texttt{*}
+        \item Example: Division order error: \texttt{a/b} when should be \texttt{b/a}
+        \item Example: Missing parentheses changing operation order
+        \item Performance: 21.8\% single-label, 55.8\% multi-label (+34.0 pp - largest improvement)
+    \end{itemize}
+\end{itemize}
+
+\textbf{5. Special Category}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{NONE - No Error:} Code is correct and contains no logical errors
+    \begin{itemize}
+        \item Only applicable in single-label classification
+        \item Performance: 67.2\% single-label (highest), N/A multi-label
+    \end{itemize}
+\end{itemize}
+
+\subsection{Category Co-occurrence Patterns}
+
+\textbf{Commonly Co-occurring Errors:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{C + D} - Statement integrity errors often accompany I/O format issues
+    \item \textbf{C + G} - Structural problems frequently occur with computational mistakes
+    \item \textbf{D + G} - I/O format errors correlate with computation errors
+\end{itemize}
+
+\textbf{Rarely Combined Errors:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{A + E} - Loop condition errors seldom co-occur with initialization problems
+    \item \textbf{B + E} - Condition branch and variable initialization errors are usually independent
+\end{itemize}
+
+\newpage
+
+\section{Conclusions and Recommendations}
+
+This comprehensive evaluation of six Large Language Models for Python error detection reveals significant insights about current capabilities, limitations, and deployment considerations.
+
+\subsection{Overall Performance Insights}
+
+\textbf{Accuracy Levels and Implications:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Best performer: OpenAI GPT-5.2 (40.5\%)} - Correctly classifying approximately 40 out of 100 questions indicates models are suitable for assistive roles rather than autonomous decision-making in code review contexts
+    
+    \item \textbf{Mean accuracy: 31.5\%} - Average performance across all models shows substantial room for improvement
+    
+    \item \textbf{Performance range: 23.8\%} - Indicates substantial variation in model capabilities, making model selection critical for deployment success
+    
+    \item \textbf{Current limitations suggest human verification remains necessary} for production applications
+\end{itemize}
+
+\subsection{Prompting Strategy Effects}
+
+\textbf{Strategy Analysis:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Average difference: -44.0\%} - Multi-label prompting shows significant performance decline
+    
+    \item \textbf{Smallest decline: -25.5\%} (deepseek-deepseek-v3.2) - Though still a substantial drop
+    
+    \item \textbf{Largest decline: -58.0\%} (openai-gpt-5.2)
+\end{itemize}
+
+\textbf{Explanation:} The dramatic single-to-multi-label performance drop (44.6 pp average) stems from three factors: (1) \textbf{Combinatorial complexity} - predicting correct subset from 7 categories exponentially harder than selecting 1 of 8. (2) \textbf{Precision-recall tension} - multi-label forces models to balance avoiding false positives with catching false negatives. (3) \textbf{Label co-occurrence uncertainty} - models struggle to determine which errors genuinely co-exist.
+
+\textbf{Recommendation:} Single-label prompting (53.3\% average) more reliable for most deployments. Use multi-label (8.7\% exact match, 41.0\% Jaccard) only when partial credit acceptable (83.2\% get at least one label right).
+
+\subsection{Consistency and Reliability Insights}
+
+\textbf{Overall Consistency Patterns:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Most consistent: GPT-5.2 (75.5\%)} - Gives the same answer 3 out of 4 times across both runs
+    
+    \item \textbf{Least consistent: DeepSeek (44.5\%)} - Changes its answer more than half the time, indicating high unpredictability
+    
+    \item \textbf{Average consistency: 59.7\%} - Models agree with themselves only 60\% of the time on average, showing significant randomness in predictions
+\end{itemize}
+
+\textbf{Prompting Mode Impact:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Single-label mode:} Higher consistency (56-85\%) - Models are more stable when selecting one error type
+    
+    \item \textbf{Multi-label mode:} Dramatically lower (33-66\%) - Models struggle to consistently identify all applicable errors
+    
+    \item \textbf{Average consistency drop: 23 percentage points} - All models become less reliable in multi-label classification
+    
+    \item \textbf{Biggest drop: Qwen (29\%)} - Multi-label prompting severely destabilizes this model (78\% to 49\%)
+\end{itemize}
+
+\textbf{Agreement Quality Assessment:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Claude: Best quality (89\%)} - When it gives the same answer twice, it's correct 59 out of 66 times
+    
+    \item \textbf{GPT-5.2: High quality (82\%)} - Correct 70 out of 85 times when consistent
+    
+    \item \textbf{DeepSeek: Worst quality (50\%)} - When it agrees with itself (56 times), it's only right half the time (28 correct, 28 wrong)
+    
+    \item \textbf{Qwen: Concerning pattern} - Agrees 78 times but makes consistent errors 32 times (41\% of agreements are wrong)
+\end{itemize}
+
+\textbf{Behavioral Patterns:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Stable models (GPT-5.2, Claude):} Low "changed answer" rate (15-34 questions) with high accuracy when consistent
+    
+    \item \textbf{Unstable models (DeepSeek):} Changed predictions on 44 questions (nearly half the dataset), showing fundamental uncertainty
+    
+    \item \textbf{Systematic errors:} Some models (Qwen, DeepSeek) repeatedly make the same mistakes, indicating biased pattern recognition rather than random errors
+\end{itemize}
+
+
+\subsection{Model Agreement and Diversity}
+
+\textbf{Highest Agreement Pairs:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Single-label: GPT-5.2 and GPT-OSS (66\%)} - Share similar architecture (both OpenAI models), make highly similar predictions. Pairing these provides minimal diversity benefit
+    
+    % \item \textbf{Single-label: Claude and GPT-OSS (57\%)} - Moderate-high agreement indicating some overlap in error detection approaches
+    
+    \item \textbf{Multi-label: GPT-5.2 and GPT-OSS (50\%)} - Still most similar even in multi-label mode
+    
+    % \item \textbf{Multi-label: Claude and GPT-OSS (38\%)} - Next highest, but significantly lower than single-label
+\end{itemize}
+
+\textbf{Lowest Agreement Pairs:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Single-label: GPT-5.2 and DeepSeek (26\%)} - Most divergent prediction patterns, indicating fundamentally different error detection strategies
+    
+    % \item \textbf{Single-label: DeepSeek with others (26-42\%)} - DeepSeek consistently shows low agreement with all models, suggesting unique (but often incorrect) reasoning
+    
+    \item \textbf{Multi-label: GPT-5.2 and DeepSeek (18\%)} - Extremely low agreement, disagreeing on 82\% of questions
+    
+    % \item \textbf{Multi-label: GPT-5.2 and Qwen (18\%)} - Also very low, indicating diverse multi-label classification approaches
+\end{itemize}
+
+\textbf{Model Grouping Patterns (Single-Label):}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{High-agreement cluster:} GPT-5.2, GPT-OSS, Claude (52-66\% mutual agreement) - Similar error detection logic
+    \item \textbf{Moderate cluster:} Gemini, Qwen (47-52\% with high-agreement cluster)
+    \item \textbf{Outlier:} DeepSeek (26-42\% with all others) - Distinctly different approach
+\end{itemize}
+
+\textbf{Multi-Label Mode:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Low agreement across board:} Most pairs show under 30\% agreement
+    \item \textbf{No clear outlier:} All models diverge significantly in multi-label predictions
+\end{itemize}
+
+% \textbf{Ensemble Selection Strategy:}
+
+% For maximum diversity in ensemble methods:
+
+% \textit{Optimal Combinations (Single-Label):}
+% \begin{enumerate}[leftmargin=*]
+%     \item GPT-5.2 + Claude + Gemini - Recommended practical ensemble. Combines top accuracy with moderate diversity (47-53\% pairwise agreement)
+% \end{enumerate}
+
+% \textit{Avoid Pairing:}
+% \begin{itemize}[leftmargin=*]
+%     \item GPT-5.2 + GPT-OSS (66\% agreement) - Too similar, 66\% redundant predictions
+%     \item Claude + GPT-OSS (57\% agreement) - Also high overlap
+% \end{itemize}
+
+% \textit{Multi-Label Ensemble:}
+% \begin{itemize}[leftmargin=*]
+%     \item Any combination provides diversity (all under 50\% agreement)
+%     \item Focus on accuracy rather than diversity since disagreement already universal
+%     \item Recommended: GPT-5.2 + Claude + Gemini (top performers despite low agreement)
+% \end{itemize}
+
+% \textbf{Production Deployment Guidelines:}
+% \begin{itemize}[leftmargin=*]
+%     \item \textbf{High-confidence threshold} - When 3+ models agree in single-label (11 unanimous correct + 2 unanimous wrong = 84.6\% reliability when all agree)
+    
+%     \item \textbf{Flag for review} - When top two models (GPT-5.2, Claude) disagree (53\% agreement means 47\% of questions show divergent predictions)
+    
+%     \item \textbf{Low agreement indicator} - Pairs with under 30\% agreement (multi-label) suggest question complexity requires human judgment
+    
+%     \item \textbf{Architecture similarity} - Don't deploy multiple models from same family (GPT-5.2 and GPT-OSS) without adding diverse models
+% \end{itemize}
+
+\subsection{Closed-Source vs Open-Source Comparison}
+
+\textbf{Key Findings:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{10\% average advantage} for closed-source models (36\% vs 26\% accuracy)
+    
+    \item \textbf{Larger gap in single-label mode} (15.3\%) compared to multi-label (4.7\%)
+    
+    \item \textbf{OpenAI GPT-OSS-120B} consistently leads among open-source alternatives
+    
+    \item \textbf{Best closed-source model varies:} GPT-5.2 for single-label, Gemini 2.5 Flash for multi-label
+\end{itemize}
+
+% \textbf{Cost-Benefit Analysis:} Open-source models achieve approximately 72\% of closed-source performance (26.0\% / 36.0\%), making them viable for budget-conscious deployments.
+
+% \textbf{Decision Framework:}
+% \begin{itemize}[leftmargin=*]
+%     \item \textit{High accuracy required + budget available} → OpenAI GPT-5.2
+%     \item \textit{Budget constrained + reasonable accuracy acceptable} → GPT-OSS-120B
+%     \item \textit{Multi-label prompting + speed needed} → Google Gemini 2.5 Flash
+% \end{itemize}
+
+\subsection{Ensemble Performance Insights}
+
+\textbf{Single-Label Mode Performance:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{40\% clear consensus} - Models reached unanimous or majority agreement on 40 questions (11 + 29), enabling confident ensemble predictions
+    
+    \item \textbf{58\% split decisions} - On 58 questions, models divided evenly (3-3), providing no clear majority for voting
+    
+    \item \textbf{Minimal unanimous errors} - Only 2 questions where all models agreed on the wrong answer
+    
+    \item \textbf{Modest improvement: +3.7\%} - Ensemble outperformed average individual model by 3.7 percentage points (57\% vs 53.3\%)
+\end{itemize}
+
+\textbf{Multi-Label Mode Performance:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Zero perfect agreement} - Not a single question where all 6 models agreed on the correct multi-label answer
+    
+    \item \textbf{1\% majority consensus} - Only 1 out of 100 questions had a clear majority choosing the right answer
+    
+    \item \textbf{87\% no consensus} - Models split on 87 questions, making majority voting nearly impossible
+    
+    \item \textbf{12\% systematic errors} - On 12 questions, all models agreed but were all wrong
+    
+    \item \textbf{Minimal improvement: +2.3\%} - Ensemble provides slight benefit (11\% vs 8.7\%) but remains ineffective overall
+\end{itemize}
+
+% \textbf{Practical Implications:}
+% \begin{itemize}[leftmargin=*]
+%     \item \textbf{Limited ensemble benefit} - Combining models improves accuracy by only 2-4 percentage points, not enough to justify 6x computational cost for most applications
+    
+%     \item \textbf{Consensus as confidence indicator} - Questions with unanimous or strong majority agreement have higher reliability
+    
+%     \item \textbf{Tie-breaking challenges} - 58\% of single-label questions showing no consensus makes ensemble voting frequently fail
+    
+%     \item \textbf{Multi-label impractical} - 87\% split votes in multi-label mode makes ensemble methods ineffective
+% \end{itemize}
+
+% \textbf{When Ensemble Makes Sense:}
+% \begin{enumerate}[leftmargin=*]
+%     \item High-stakes applications where 3-4\% accuracy improvement justifies 6x computational expense
+    
+%     \item Scenarios where tie votes (3-3) can be flagged for human review
+    
+%     \item Quality assurance workflows where unanimous agreement provides high confidence
+    
+%     \item Applications that can filter for only the 40\% of questions with clear consensus
+% \end{enumerate}
+
+\subsection{Multi-Label Partial Overlap Insights}
+
+\textbf{Metric-Specific Insights:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Case A (Precision): 25.0\% average} - Models avoid false positives in only 1 out of 4 questions
+    
+    \item \textbf{Case B (Recall): 29.0\% average} - Models identify all applicable errors in less than 30\% of cases
+    
+    \item \textbf{Case C (Any Overlap): 83.2\% average} - Over 83\% of predictions contain at least one correct label
+    
+    \item \textbf{Case D (Jaccard): 0.410 average} - Predictions typically share about 2 out of 5 labels with ground truth
+\end{itemize}
+
+\textbf{Performance Patterns:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{GPT-5.2 dominance} - Leads across all four metrics, particularly excelling in Case B (recall) at 45.2\%
+    
+    \item \textbf{Precision-Recall trade-off visible} - Claude shows balanced performance (32.7\% precision, 38.5\% recall), while Gemini favors precision over recall (28.8\% vs 10.6\%)
+    
+    \item \textbf{Any-overlap reveals competence floor} - Even struggling models get at least one label correct 70-76\% of the time
+    
+    \item \textbf{Jaccard as balanced indicator} - Top-3 models all exceed 0.47 Jaccard, while bottom-3 remain below 0.33
+\end{itemize}
+
+\textbf{Interpretation:} The dramatic 76.0 percentage point gap between exact match (7.2\%) and any overlap (83.2\%) reveals that models typically identify at least one correct error even when predictions are incomplete or contain false positives. This suggests:
+
+\begin{itemize}[leftmargin=*]
+    \item Models demonstrate \textbf{partial competence} - They recognize genuine errors but struggle with completeness (only 7.2\% perfect predictions vs 83.2\% getting at least one label right)
+    
+    % \item \textbf{Strict exact match heavily penalizes} near-correct predictions that differ by a single label - a prediction with 2 out of 3 correct labels scores 0\% on exact match but 67\% on Jaccard
+    
+    % \item \textbf{Jaccard score (41.0\%) provides realistic assessment} - More informative than binary exact match while penalizing both false positives and false negatives
+    
+    \item \textbf{Model variance is significant} - GPT-5.2 achieves 15.4\% exact match (best) while Qwen manages only 1.0\% (worst), a 15× difference in perfect prediction rates
+\end{itemize}
+
+% \textbf{Practical Usage Recommendations:}
+% \begin{itemize}[leftmargin=*]
+%     \item \textbf{Use Jaccard for model evaluation} - 41.0\% average more informative than 7.2\% exact match
+    
+%     \item \textbf{Any-overlap for screening} - 83.2\% means models successfully flag 83\% of problematic code
+    
+%     \item \textbf{Don't trust exact predictions} - 7.2\% exact match means 92.8\% contain at least one error
+    
+%     \item \textbf{Partial credit workflows} - Award based on Jaccard scores in educational contexts
+% \end{itemize}
+
+\subsection{Manual Label Verification Insights}
+
+\textbf{Key Observations:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Model consensus as quality signal} - When all 6 models unanimously disagree with manual labels (12 cases), average Jaccard score is only 0.234
+    
+    \item \textbf{Low Jaccard threshold effective} - Samples with Jaccard < 0.30 (477 instances) showed highest likelihood of requiring review
+    
+    \item \textbf{Complete mismatches rare but critical} - Only 14 instances (2.7\%) showed zero overlap
+    
+    \item \textbf{Validation workflow established} - Automated flagging enables structured human review
+\end{itemize}
+
+\textbf{Practical Impact:} This verification process provides prioritized review lists. The 12 unanimous-disagreement samples merit immediate expert examination.
+
+\subsection{Category-Specific Performance Analysis}
+
+\textbf{Answer to Research Question:} \textbf{YES} - Significant performance variation exists across categories, with clear patterns and identifiable reasons.
+
+\subsubsection{Performance Variation Evidence}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Single-label range: 19.1\% to 67.2\%} - 48.1 percentage point gap between easiest (NONE) and hardest (A)
+    
+    \item \textbf{Multi-label range: 12.9\% to 61.4\%} - 48.5 percentage point gap between easiest (C) and hardest (E)
+    
+    \item \textbf{Surprising reversal: Multi-label sometimes easier} - 4 out of 7 categories (C, D, F, G) show \textbf{higher} F1-scores in multi-label mode
+    
+    \item \textbf{Category ranking changes} - Top performer switches from NONE (single) to C (multi)
+\end{itemize}
+
+% \subsubsection{Identified Reasons for Variation}
+
+% \textbf{1. Structural vs Semantic Divide}
+
+% \begin{itemize}[leftmargin=*]
+%     \item \textbf{High multi-label performers (C, D, G)} - Structural errors with visible code patterns: Statement Integrity (61.4\%), I/O Format (55.6\%), Computation (55.8\%)
+    
+%     \item \textbf{Low multi-label performers (E, A)} - Semantic errors requiring context understanding: Variable Init (12.9\%), Loop Condition (25.6\%)
+% \end{itemize}
+
+% \textbf{2. Precision vs Recall Trade-offs}
+
+% \begin{itemize}[leftmargin=*]
+%     \item \textbf{Single-label shows high precision, low recall} - Average 47.8\% precision vs 29.1\% recall. Models conservative when forced to choose ONE error
+    
+%     \item \textbf{Multi-label flips to high recall, moderate precision} - Average 66.5\% recall vs 43.3\% precision. Models liberal when allowed multiple errors
+% \end{itemize}
+
+% \textbf{3. Task Complexity Effects}
+
+% \begin{itemize}[leftmargin=*]
+%     \item \textbf{Surprising multi-label advantage} - 4 categories perform better: G (+34.0 pp), D (+33.6 pp), F (+21.6 pp), C (+13.3 pp)
+    
+%     \item \textbf{Explanation: Over-conservatism in single-label} - When forced to pick ONE error, models miss obvious secondary issues
+    
+%     \item \textbf{Only E and B decline in multi-label} - E drops 8.5 pp, B drops 2.5 pp
+% \end{itemize}
+
+% \textbf{Implication:} Some error combinations are more natural than others, reflecting common bug patterns in student code. This explains why C, D, G show dramatic performance improvements in multi-label mode (+13 to +34 pp) - they frequently appear together and models learn their co-occurrence patterns.
+
+% \textbf{Practical Recommendations:}
+
+% \begin{enumerate}[leftmargin=*]
+%     \item \textbf{Use multi-label for structural errors (C, D, G)} - These categories perform 13-34 pp better in multi-label mode
+    
+%     \item \textbf{Use single-label for semantic errors (E, B)} - Variable initialization and condition branches degrade in multi-label
+    
+%     \item \textbf{Model selection should be category-specific} - For I/O format (D), GPT-5.2 excels. For loop checks, Qwen shows specialized competence
+    
+%     \item \textbf{Ensemble by category} - Combine Qwen for loop checks, GPT-5.2 for comprehensive review
+    
+%     \item \textbf{Prioritize recall in multi-label} - Average 66.5\% recall means models detect 2 out of 3 errors. Use as screening tool
+% \end{enumerate}
+
+\subsection{ Final Recommendations}
+
+\textbf{Model Selection:}
+\begin{itemize}[leftmargin=*]
+    \item For highest accuracy: OpenAI GPT-5.2 (40.5\% accuracy, 75.5\% consistency)
+    \item For budget-conscious deployments: OpenAI GPT-OSS-120B (40.0\% accuracy, zero API costs)
+    \item For multi-label tasks: Google Gemini 2.5 Flash (13.0\% exact match, fastest inference)
+    \item Avoid: DeepSeek v3.2 for critical applications (16.8\% accuracy, 44.5\% consistency)
+\end{itemize}
+
+\textbf{Deployment Strategy:}
+\begin{itemize}[leftmargin=*]
+    \item Use single-label prompting by default (53.3\% vs 8.7\% multi-label exact match)
+    \item Apply multi-label only for structural error categories (C, D, G with 34 pp improvement)
+    \item Implement mandatory human verification for all predictions
+    \item Flag low-confidence predictions for expert review
+\end{itemize}
+
+\textbf{Ensemble Usage:}
+\begin{itemize}[leftmargin=*]
+    \item Single model sufficient for screening: GPT-5.2 provides 71\% of ensemble performance at 1/6th cost
+    \item Use ensemble for high-stakes decisions: 3.7 pp improvement justifies cost for certification/grading
+    \item Optimal combination: GPT-5.2 + Claude + Gemini
+    \item Avoid pairing: GPT-5.2 + GPT-OSS (66\% redundant predictions)
+\end{itemize}
+
+\subsection{ Concluding Remarks}
+
+This benchmarking study demonstrates that while Large Language Models show promise for programming error detection, they remain in early stages of development for this application. With average accuracy of 31.5\% and best performance at 40.5\%, current models are suitable as assistive tools requiring human oversight rather than autonomous classification systems.
+
+% The dramatic performance variation across categories (19.1-67.2\% single-label, 12.9-61.4\% multi-label) reveals that models excel at structural pattern recognition but struggle with semantic understanding. For practical deployment, we recommend using GPT-5.2 or GPT-OSS-120B as primary models, defaulting to single-label prompting, and implementing mandatory human verification workflows.
+
+\end{document}

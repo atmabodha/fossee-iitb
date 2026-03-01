@@ -1,0 +1,3 @@
+Mode,Avg_Unique_Predictions,Avg_Normalized_Entropy,High_Variance_Count,Low_Variance_Count
+single,2.68,0.434,26,48
+multi,3.99,0.665,67,24

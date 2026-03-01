@@ -1,0 +1,9 @@
+,case_a_precision,case_a_precision,case_b_recall,case_b_recall,case_c_any_overlap,case_c_any_overlap,case_d_jaccard,case_d_jaccard,case_d_jaccard
+,mean,std,mean,std,mean,std,mean,std,count
+model,,,,,,,,,
+anthropic_claude-sonnet-4.5,0.3269,0.4714,0.3846,0.4889,0.9327,0.2518,0.5109,0.2578,104
+deepseek_deepseek-v3.2,0.1346,0.343,0.2692,0.4457,0.7019,0.4596,0.3039,0.2622,104
+google_gemini-2.5-flash,0.2885,0.4552,0.1058,0.309,0.7308,0.4457,0.3247,0.257,104
+openai_gpt-5.2,0.3173,0.4677,0.4519,0.5001,0.9615,0.1932,0.5556,0.2573,104
+openai_gpt-oss-120b,0.3558,0.4811,0.2885,0.4552,0.9038,0.2962,0.4753,0.2712,104
+qwen_qwen3-coder,0.0769,0.2678,0.2404,0.4294,0.7596,0.4294,0.291,0.229,104

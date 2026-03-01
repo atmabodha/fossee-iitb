@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-02-02T14:17:02.287228",
+  "total_questions": 100,
+  "models": [
+    "chat_gpt",
+    "deepseek",
+    "gemini",
+    "gpt_oss",
+    "qwen",
+    "sonnet"
+  ],
+  "iterations": [
+    "iter1_single",
+    "iter1_single_tan",
+    "iter1_single_yuv",
+    "iter2_multi",
+    "iter2_multi_tan",
+    "iter2_multi_yuv"
+  ],
+  "source_file": "yaksh_data/combined_yaksh_3_iteration_results_test.xlsx",
+  "note": "Analysis reflects taxonomy-conditioned prompting only. No human ground truth."
+}

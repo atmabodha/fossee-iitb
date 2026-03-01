@@ -1,0 +1,17 @@
+{
+  "base": {
+    "single_majority": 73,
+    "multi_majority": 99,
+    "majority_lost": 1
+  },
+  "tan": {
+    "single_majority": 63,
+    "multi_majority": 91,
+    "majority_lost": 7
+  },
+  "yuv": {
+    "single_majority": 65,
+    "multi_majority": 98,
+    "majority_lost": 0
+  }
+}

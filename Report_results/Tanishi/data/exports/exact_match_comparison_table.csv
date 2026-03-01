@@ -1,0 +1,6 @@
+metric,average_score,average_score_pct,vs_exact_match_pp,vs_exact_match_display
+Exact Match,0.07211538461538461,7.21,0.0,Baseline
+Case A (Precision),0.25,25.0,17.79,+17.8 pp
+Case B (Recall),0.2900641025641026,29.01,21.79,+21.8 pp
+Case C (Any Overlap),0.8317307692307693,83.17,75.96,+76.0 pp
+Case D (Jaccard),0.4102258852258852,41.02,33.81,+33.8 pp

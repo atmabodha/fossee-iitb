@@ -1,0 +1,7 @@
+Model,Correct,Total,Accuracy_%
+openai_gpt-5.2,40.5,100.0,40.5
+openai_gpt-oss-120b,40.0,100.0,40.0
+anthropic_claude-sonnet-4.5,35.0,100.0,35.0
+google_gemini-2.5-flash,33.25,100.0,33.25
+qwen_qwen3-coder,23.5,100.0,23.5
+deepseek_deepseek-v3.2,16.75,100.0,16.75

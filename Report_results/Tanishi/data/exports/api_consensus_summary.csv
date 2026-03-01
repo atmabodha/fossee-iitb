@@ -1,0 +1,3 @@
+Mode,Total_Questions,Unanimous_Correct,Majority_Correct,No_Consensus,Unanimous_Wrong,Ensemble_Accuracy_%,Avg_Individual_Accuracy_%,Ensemble_Improvement_%
+single,100,11,29,58,2,57.0,53.33,3.67
+multi,100,0,1,87,12,11.0,8.67,2.33

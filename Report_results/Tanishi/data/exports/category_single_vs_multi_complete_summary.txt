@@ -1,0 +1,54 @@
+
+COMPREHENSIVE SINGLE vs MULTI-LABEL CATEGORY PERFORMANCE ANALYSIS
+==================================================================
+
+SINGLE-LABEL PERFORMANCE (Excluding NONE):
+                                 Recall  Precision   F1_Score  Total_Samples
+Category Category_Name                                                      
+NONE     No Error             69.166667  66.035024  67.185301            120
+B        Condition Branch     64.814815  45.518184  48.669591             54
+C        Statement Integrity  37.333333  69.694289  48.115942            300
+F        Data Type            20.000000  40.833333  26.726190             60
+D        I/O Format           13.945578  77.356902  22.053396            294
+G        Computation          14.516129  66.629073  21.787494            186
+E        Variable Init        23.333333  21.363636  21.363636             30
+A        Loop Condition       30.000000  15.106326  19.141414             30
+
+MULTI-LABEL PERFORMANCE (Excluding NONE):
+                                 Recall  Precision   F1_Score  Total_Samples
+Category Category_Name                                                      
+C        Statement Integrity  56.333333  69.518936  61.374889            300
+G        Computation          60.215054  53.018039  55.787288            186
+D        I/O Format           46.258503  81.922492  55.612423            294
+F        Data Type            61.666667  43.845136  48.282571             60
+B        Condition Branch     90.740741  31.978729  46.166947             54
+A        Loop Condition       76.666667  15.643065  25.634896             30
+E        Variable Init        73.333333   7.132173  12.852678             30
+
+COMPARISON:
+                                 Single      Multi  Difference
+Category Category_Name                                        
+E        Variable Init        21.363636  12.852678    8.510958
+B        Condition Branch     48.669591  46.166947    2.502643
+A        Loop Condition       19.141414  25.634896   -6.493482
+C        Statement Integrity  48.115942  61.374889  -13.258947
+F        Data Type            26.726190  48.282571  -21.556381
+D        I/O Format           22.053396  55.612423  -33.559027
+G        Computation          21.787494  55.787288  -33.999794
+
+ANSWER: Yes, models perform significantly better on certain categories.
+
+Best Single-Label:  NONE - No Error (67.2%)
+Worst Single-Label: A - Loop Condition (19.1%)
+
+Best Multi-Label:   C - Statement Integrity (61.4%)
+Worst Multi-Label:  E - Variable Init (12.9%)
+
+Multi-label is -9.3% harder on average.
+
+REASONS:
+1. Syntax-based errors have clear patterns → Higher scores
+2. Semantic errors require deep understanding → Lower scores
+3. Multi-label requires broader context → Performance drops
+4. Training data distribution affects learning
+5. Error ambiguity impacts detection accuracy

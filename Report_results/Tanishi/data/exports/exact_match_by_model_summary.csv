@@ -1,0 +1,7 @@
+model,case_a_precision_mean,case_b_recall_mean,case_c_any_overlap_mean,case_d_jaccard_mean,exact_match_mean,exact_match_sum,exact_match_count
+anthropic_claude-sonnet-4.5,0.3269,0.3846,0.9327,0.5109,0.1154,12,104
+deepseek_deepseek-v3.2,0.1346,0.2692,0.7019,0.3039,0.0192,2,104
+google_gemini-2.5-flash,0.2885,0.1058,0.7308,0.3247,0.0288,3,104
+openai_gpt-5.2,0.3173,0.4519,0.9615,0.5556,0.1538,16,104
+openai_gpt-oss-120b,0.3558,0.2885,0.9038,0.4753,0.1058,11,104
+qwen_qwen3-coder,0.0769,0.2404,0.7596,0.291,0.0096,1,104

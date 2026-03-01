@@ -1,0 +1,26 @@
+{
+  "chat_gpt": {
+    "exact_match": 26,
+    "partial_overlap": 66
+  },
+  "deepseek": {
+    "exact_match": 26,
+    "partial_overlap": 62
+  },
+  "gemini": {
+    "exact_match": 33,
+    "partial_overlap": 56
+  },
+  "gpt_oss": {
+    "exact_match": 31,
+    "partial_overlap": 61
+  },
+  "qwen": {
+    "exact_match": 22,
+    "partial_overlap": 71
+  },
+  "sonnet": {
+    "exact_match": 25,
+    "partial_overlap": 67
+  }
+}

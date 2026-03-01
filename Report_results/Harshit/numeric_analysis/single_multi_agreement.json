@@ -1,0 +1,32 @@
+{
+  "chat_gpt": {
+    "exact_match": 26,
+    "partial_overlap": 66,
+    "agreement_percent": 92.0
+  },
+  "deepseek": {
+    "exact_match": 26,
+    "partial_overlap": 62,
+    "agreement_percent": 88.0
+  },
+  "gemini": {
+    "exact_match": 33,
+    "partial_overlap": 56,
+    "agreement_percent": 89.0
+  },
+  "gpt_oss": {
+    "exact_match": 31,
+    "partial_overlap": 61,
+    "agreement_percent": 92.0
+  },
+  "qwen": {
+    "exact_match": 22,
+    "partial_overlap": 71,
+    "agreement_percent": 93.0
+  },
+  "sonnet": {
+    "exact_match": 25,
+    "partial_overlap": 67,
+    "agreement_percent": 92.0
+  }
+}

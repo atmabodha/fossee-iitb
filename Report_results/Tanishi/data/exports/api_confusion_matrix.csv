@@ -1,0 +1,9 @@
+Manual_Label,Predicted_A,Predicted_B,Predicted_C,Predicted_D,Predicted_E,Predicted_F,Predicted_G,Predicted_NONE,Predicted_Other
+A,4,2,4,0,2,0,0,0,8
+B,0,6,4,0,0,0,2,0,12
+C,6,4,53,20,11,4,4,1,69
+D,0,2,12,27,3,4,2,4,26
+E,0,0,0,0,0,0,0,0,0
+F,0,0,0,0,0,0,0,0,0
+G,3,5,5,0,0,0,2,0,9
+NONE,3,0,3,5,31,4,1,29,4

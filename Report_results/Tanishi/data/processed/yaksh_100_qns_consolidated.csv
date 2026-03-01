@@ -1,0 +1,3748 @@
+Sr. no.,question__description,answer,manual_categories,results_run1_single_anthropic_claude-sonnet-4.5,results_run1_single_deepseek_deepseek-v3.2,results_run1_single_google_gemini-2.5-flash,results_run1_single_openai_gpt-5.2,results_run1_single_openai_gpt-oss-120b,results_run1_single_qwen_qwen3-coder,results_run1_multi_anthropic_claude-sonnet-4.5,results_run1_multi_deepseek_deepseek-v3.2,results_run1_multi_google_gemini-2.5-flash,results_run1_multi_openai_gpt-5.2,results_run1_multi_openai_gpt-oss-120b,results_run1_multi_qwen_qwen3-coder,results_run2_single_anthropic_claude-sonnet-4.5,results_run2_single_deepseek_deepseek-v3.2,results_run2_single_google_gemini-2.5-flash,results_run2_single_openai_gpt-5.2,results_run2_single_openai_gpt-oss-120b,results_run2_single_qwen_qwen3-coder,results_run2_multi_anthropic_claude-sonnet-4.5,results_run2_multi_deepseek_deepseek-v3.2,results_run2_multi_google_gemini-2.5-flash,results_run2_multi_openai_gpt-5.2,results_run2_multi_openai_gpt-oss-120b,results_run2_multi_qwen_qwen3-coder
+1,"Write a Function <b>num_square</b> to find the square of a number.
+</br>
+For Example
+<pre>
+>>> num_square(2)
+>>> 4
+</pre>
+In the above example parameter given to function 
+<b>num_square</b> is <b> 2 </b> and return value obtained is <b> 4. </b> 
+</br>
+<b>Note:</b>
+<ul>
+<li>
+Your Function should <b>Return</b> the final value.
+</li>
+<li>
+Your Function should <b>NOT Print </b> any value.
+</li>
+<li>
+Your Function name should be <b>num_square.</b>
+</li>
+</ul>","
+  
+# Simple solution to 
+# calculate square without 
+# using * and pow() 
+  
+def square(n): 
+  
+    # handle negative input 
+    if (n < 0): 
+        n = -n 
+      
+    # Initialize result 
+    res = n 
+      
+    # Add n to res n-1 times 
+    for i in range(1, n): 
+        res += n 
+      
+    return res 
+  
+  
+# Driver Code 
+for n in range(1, 6): 
+    print(""n ="", n , end="", "") 
+    print(""n^2 ="", square(n)) 
+  
+# This code is contributed by 
+# Smitha Dinesh Semwal 
+",D,NONE,C,G,C,C,A,D,G,G,"C,D","C,D",E,D,C,G,C,C,A,D,E,"A,G","C,D",C,"A,C,E"
+2,"You are given date strings of the form “29 Jul, 2009”, or
+“4 Jan 2008”. 
+<br>
+In other words a number, a string
+and another number, with a comma sometimes
+separating the items.
+<br>
+Write a Python Script that takes such a string as input and
+prints a tuple (yyyy, mm, dd) where all three elements
+are ints.
+<br>
+<br>
+Example
+<pre>
+Input
+29 Jan, 2008
+
+Output
+(2008, 1, 29)
+</pre>","
+import datetime
+def convert_date_string_to_tuple(date_string):
+  """"""
+  Converts a date string to a tuple of integers (yyyy, mm, dd).
+  Args:
+    date_string: A string representing a date, e.g., ""29 Jul, 2009"" or ""4 Jan 2008"".
+  Returns:
+    A tuple of integers in the format (year, month, day).
+  """"""
+  # The try-except block handles the two possible date formats.
+  # It first tries to parse the date string assuming it contains a comma.
+  try:
+    # Format for dates like ""29 Jul, 2009""
+    date_obj = datetime.datetime.strptime(date_string, ""%d %b, %Y"")
+  except ValueError:
+    # If the first format fails (e.g., no comma), it tries the second format.
+    # Format for dates like ""4 Jan 2008""
+    date_obj = datetime.datetime.strptime(date_string, ""%d %b %Y"")
+  
+  # Create a tuple with the year, month, and day from the datetime object.
+  date_tuple = (date_obj.year, date_obj.month, date_obj.day)
+  
+  return date_tuple
+# --- Main execution ---
+# Get the date string from user input.
+input_date_str = input()
+# Call the function to perform the conversion.
+result_tuple = convert_date_string_to_tuple(input_date_str)
+# Print the final result.
+print(result_tuple)
+    ",NONE,NONE,B,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,C,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+3,"Define a function called <code>largest</code> which takes a
+single argument.
+<br/>
+The argument passed will be an opened file object.
+<br/>
+Read the data in the file.
+Assume that the data is separated by spaces and
+are all numbers
+<br/>
+Return the maximum value in the file.
+<br/>
+Do not use loadtxt!","
+import requests
+
+def download_file(url, filename):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(filename, 'wb') as f:
+            f.write(response.content)
+    else:
+        print(f""Failed to download {filename}. Status code: {response.status_code}"")
+
+def largest(file):
+    # Read the contents of the file
+    data = file.read()
+    
+    # Split the data into a list of strings and convert them to floats
+    numbers = [float(num) for num in data.split()]
+    
+    # Return the maximum value from the list of numbers
+    return max(numbers)
+
+# Example usage:
+if __name__ == ""__main__"":
+    # URLs of the files to download
+    urls = [
+        'http://127.0.0.1:8000/data/question_1290/demo.txt',
+        'http://127.0.0.1:8000/data/question_1290/demo1.txt',
+        'http://127.0.0.1:8000/data/question_1290/demo2.txt'
+    ]
+    
+    # Download the files
+    for url in urls:
+        filename = url.split('/')[-1]  # Get the filename from the URL
+        download_file(url, filename)
+
+    # Now read the downloaded files and find the largest number
+    for filename in ['demo.txt', 'demo1.txt', 'demo2.txt']:
+        try:
+            with open(filename, 'r') as f:
+                max_value = largest(f)
+                print(f""The largest number in {filename} is: {max_value}"")
+        except FileNotFoundError:
+            print(f""File {filename} not found."")",D,NONE,B,NONE,NONE,NONE,NONE,E,E,E,E,E,E,F,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+4,"Write a Python script which accept sequence of numbers <b>(separated by spaces)</b> as user input <b>(Please do not add any prompt while taking input)</b>
+<br/>
+Print the sum of odd numbers in the sequence and print the product of even numbers in the sequence.
+<br>
+For Example:-
+<pre>
+Input
+1 2 3 4 5
+
+Output
+9 8
+</pre>
+
+<b>Note :- First value to be printed is sum of odd numbers and second value to be printed is product of even numbers.</b>","
+   def process_sequence():
+  """"""
+  Accepts a sequence of numbers (separated by spaces), 
+  calculates the sum of odd numbers and the product of even numbers, 
+  and prints the results.
+  """"""
+  try:
+    sequence = input()
+    numbers = [int(x) for x in sequence.split()]
+  except ValueError:
+    print(""Invalid input. Please enter numbers separated by spaces."")
+    return
+
+  sum_odd = 0
+  product_even = 1
+  has_even = False
+
+  for number in numbers:
+    if number % 2 == 0:
+      product_even *= number
+      has_even = True
+    else:
+      sum_odd += number
+
+  if not has_even:
+    product_even = 0
+
+  print(sum_odd, product_even)
+
+process_sequence()",NONE,E,B,E,D,NONE,C,E,E,"C,G","D,G",E,"E,G",B,B,B,G,NONE,C,E,"E,G",G,"D,G",E,"A,C,E,G"
+5,"
+Write a function called <code>is_armstrong(x)</code> which is given an
+n-digit integer (n>1) and returns <code>True</code> or <code>False</code> if
+it is an Armstrong number. For a two digit number, it is an armstrong if the
+number equals the sum of the squares of its digits. For a three digit number
+it is armstrong if it is the cube of its digits.  For example:
+<br/><br/>
+<pre>
+>>> is_armstrong(123)
+False
+>>> is_armstrong(153)
+True
+</pre>
+","
+# Python program to determine whether the number is 
+# Armstrong number or not 
+  
+# Function to calculate x raised to the power y 
+def power(x, y): 
+    if y==0: 
+        return 1
+    if y%2==0: 
+        return power(x, y/2)*power(x, y/2) 
+    return x*power(x, y/2)*power(x, y/2) 
+  
+# Function to calculate order of the number 
+def order(x): 
+  
+    # variable to store of the number 
+    n = 0
+    while (x!=0): 
+        n = n+1
+        x = x/10
+    return n 
+  
+# Function to check whether the given number is 
+# Armstrong number or not 
+def is_armstrong (x): 
+    n = order(x) 
+    temp = x 
+    sum1 = 0
+    while (temp!=0): 
+        r = temp%10
+        sum1 = sum1 + pow(r, n) 
+        temp = temp/10
+  
+    # If condition satisfies 
+    return (sum1 == x) 
+while True:
+    try:
+        a = input()
+        print(is_armstrong(a)) 
+    except EOFError:
+        print (""EOFError"")
+        break
+","D,G",F,NONE,F,F,F,F,"D,E,F",E,"B,E,F,G","A,D,F,G","A,F,G","A,E,F,G",D,E,F,F,F,F,"A,D,F,G",E,"C,E,G","A,D,F,G","A,F,G","A,C,E,F,G"
+6,"Write a function <code>caesar_cipher</code> which takes arguments <code>text</code> and  <code>shift</code>. <code>text</code> is an all <b>lowercase</b> string that has to be encrypted. <code>shift</code> is an integer which  indicates the number of position each letter of the <b>text</b> that has to be moved down to. The function <code>caesar_cipher</code> should return the encrypted text.
+<br>
+<b>For example -</b>
+<pre>
+For:
+<code><b>>>> caesar_cipher(""abcd"", 1)</b></code>
+Output should be:
+<b>>>> bcde</b>
+
+For:
+<code><b>>>> caesar_cipher(""wxyz"", 2)</b></code>
+Output should be:
+<b>>>> yzab</b>
+
+For:
+<code><b>>>> caesar_cipher(""mnop"", 14)</b></code>
+Output should be:
+<b>>>> abcd</b>
+
+
+For:
+<code><b>>>> caesar_cipher(""bbbb"", 26)</b></code>
+Output should be:
+<b>>>> bbbb</b>
+</pre>
+
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","
+#A python program to illustrate Caesar Cipher Technique 
+def encrypt(text,s): 
+    result = """" 
+  
+    # traverse text 
+    for i in range(len(text)): 
+        char = text[i] 
+  
+        # Encrypt uppercase characters 
+        if (char.isupper()): 
+            result += chr((ord(char) + s-65) % 26 + 65) 
+  
+        # Encrypt lowercase characters 
+        else: 
+            result += chr((ord(char) + s - 97) % 26 + 97) 
+  
+    return result 
+  
+#check the above function 
+text = ""ATTACKATONCE""
+s = 4
+print ""Text  : "" + text 
+print ""Shift : "" + str(s) 
+print ""Cipher: "" + encrypt(text,s) 
+",D,D,B,B,D,D,B,"D,C,E",A,"B,C","C,D",D,"A,B,C,E,F,G",B,B,G,C,D,B,"D,C","A,D","D,F,G","C,D",D,"A,B,E,F,G"
+7,"We are given a list called <b>student_data</b>, consisting of dictionaries,  with each dictionary having two keys, “name” which is a string and “rollno” which is an integer.
+<br>
+Write a function <code><b>sort_dict(student_data)</b></code>, which returns a new list sorted by roll number.
+<br>
+<b>For e.g. - </b>
+For <code> student_data = [{""name"": ""a"", ""rollno"": 3}, {""name"": ""b"", ""rollno"": 2}, 
+{""name"": ""c"", ""rollno"": 1}]</code> should return as
+<br> <code>[{'name': 'c', 'rollno': 1}, {'name': 'b', 'rollno': 2}, {'name': 'a', 'rollno': 3}]</code>.
+</p>","
+class Student:
+
+
+        def __init__(self, name, rollno, m1, m2):
+                self.name = name
+                self.rollno = rollno
+                self.m1 = m1
+                self.m2 = m2
+
+        # Function to create and append new student
+        def accept(self, Name, Rollno, marks1, marks2):
+
+
+                ob = Student(Name, Rollno, marks1, marks2)
+                ls.append(ob)
+
+        
+        def display(self, ob):
+                print(""Name : "", ob.name)
+                print(""RollNo : "", ob.rollno)
+                print(""Marks1 : "", ob.m1)
+                print(""Marks2 : "", ob.m2)
+                print(""\n"")
+
+        
+        def search(self, rn):
+                for i in range(ls.__len__()):
+                        if(ls[i].rollno == rn):
+                                return i
+
+        
+        def delete(self, rn):
+                i = obj.search(rn)
+                del ls[i]
+
+        
+        def update(self, rn, No):
+                i = obj.search(rn)
+                roll = No
+                ls[i].rollno = roll
+
+
+
+ls = []
+
+obj = Student('', 0, 0, 0)
+
+print(""\nOperations used, "")
+print(""\n1.Accept Student details\n2.Display Student Details\n3.Search Details of a Student\n4.Delete Details of Student\n5.Update Student Details\n6.Exit"")
+
+
+
+obj.accept(""A"", 1, 100, 100)
+obj.accept(""B"", 2, 90, 90)
+obj.accept(""C"", 3, 80, 80)
+
+
+print(""\n"")
+print(""\nList of Students\n"")
+for i in range(ls.__len__()):
+        obj.display(ls[i])
+
+
+print(""\n Student Found, "")
+s = obj.search(2)
+obj.display(ls[s])
+
+
+obj.delete(2)
+print(ls.__len__())
+print(""List after deletion"")
+for i in range(ls.__len__()):
+        obj.display(ls[i])
+
+
+obj.update(3, 2)
+print(ls.__len__())
+print(""List after updation"")
+for i in range(ls.__len__()):
+        obj.display(ls[i])
+
+
+print(""Thank You !"")
+",D,C,NONE,C,C,NONE,C,"C,D,F","B,C,E",E,"C,F",C,E,C,C,C,C,E,C,"C,D",E,"C,F","C,D","C,E","A,B,C,E,F,G"
+8,"Write a function called <code>my_sum</code>.
+The function is passed a single string with terms
+separated by spaces.</br>
+The string contains both names and integer values
+in arbitrary order.</br>
+Find the sum of all the numbers in the string.
+<br/>
+For example:
+<pre>
+>>> my_sum('1 fox, 2 dogs and 3 jackals')
+6
+>>> my_sum('3 blind mice and 1 man')
+4
+</pre><br>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/U-7j9X2n8rU"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","
+def my_sum(s):
+    # Split the string into words
+    words = s.split()
+    
+    # Initialize a variable to hold the sum of numbers
+    total = 0
+    
+    # Loop through the words and check if they are digits
+    for word in words:
+        # Remove any non-numeric characters and check if the remaining is a digit
+        cleaned_word = ''.join(c for c in word if c.isdigit())
+        
+        if cleaned_word:  # If the cleaned word is not empty, it's a number
+            total += int(cleaned_word)
+    
+    return total
+
+# Test cases
+print(my_sum('1 fox, 2 dogs and 3 jackals'))  # Output: 6
+print(my_sum('3 blind mice and 1 man'))  # Output: 4
+
+
+
+",NONE,NONE,C,G,NONE,B,B,E,E,E,E,E,"A,C,G",NONE,B,G,NONE,NONE,B,E,E,E,E,E,G
+9,"Write a python script that accepts an integer <b>n</b> as input (where n >= 1)
+<br>The script should print the first <b>n</b> numbers of the <b>fibonacci sequence<b>
+<br><br>
+For example:
+<pre>
+Input:
+4
+Output:
+0
+1
+1
+2
+</pre>","
+def recur_fibo(n):
+   """"""Recursive function to
+   print Fibonacci sequence""""""
+   if n <= 1:
+       return n
+    #else:
+       return(recur_fibo(n-1) + recur_fibo(n-2))
+
+# Change this value for a different result
+nterms = 4
+
+# uncomment to take input from the user
+#nterms = int(input(""How many terms? ""))
+
+# check if the number of terms is valid
+if nterms <= 0:
+   print(""Plese enter a positive integer"")
+else:
+   print("" "")
+   for i in range(nterms):
+       print(recur_fibo(i))","C,D",C,NONE,G,D,C,C,C,"G,A",A,"C,D,E",C,"B,C",C,NONE,G,C,C,C,C,D,"E,G","C,D",C,"A,C"
+10,Find the first number in the Fibonacci sequence that is <b>divisible by 4</b> but <b>more than 8</b> and <b>less than 500.</b>,"
+def recur_fibo(n):
+   """"""Recursive function to
+   print Fibonacci sequence""""""
+   if n <= 500:
+       return n
+   else:
+       return(recur_fibo(n-1) + recur_fibo(n-2))
+
+# Change this value for a different result
+nterms = 0
+
+# uncomment to take input from the user
+#nterms = int(input(""How many terms? ""))
+
+# check if the number of terms is valid
+if nterms <= 0:
+   print(""Plese enter a positive integer"")
+else:
+   print(""Fibonacci sequence:"")
+   for i in range(nterms):
+       print(recur_fibo(i))",G,E,C,G,B,B,B,"A,B,C,E,G","A,B,C,E","A,B,G","A,B,C,E,G","B,G","A,B,C,E,G",B,C,G,B,B,A,"A,B,C,E,G","C,E","A,B,G","A,B,E,G","B,E,G","A,B,E,F,G"
+11,"Write a function called <code>safe_run(f, x)</code>
+<br/> f is a function and x is a value
+<br/> f can raise either ValueError or TypeError
+<br/> Your function should return <b>OK</b> if no exception is raised.
+<br/> Return <b>ValueError</b> if ValueError is raised.
+<br/> Return <b>TypeError</b> if TypeError is raised.
+<br/>
+For example:
+<pre>
+>>> safe_run(float, 'A')
+'ValueError'
+>>> def f(x): return x + 2
+>>> safe_run(f, '2')
+'TypeError'
+>>> safe_run(float, '2')
+'OK'","
+def safe_run(f,x):
+    try:
+        f(x)
+    except ValueError:
+      return 'ValueError'
+    except TypeError:
+      return 'TypeError'
+    else:
+      return 'OK'
+
+
+a=input()
+count=0
+for i in a:
+  if (i=='a' or i=='e' or i=='i' or i=='o' or i=='u' or i=='A' or i=='E' or i=='I' or i=='O' or i=='U'):
+    count=count+1
+print(count)
+
+
+
+def func(x):
+    if type(x) != int:
+        raise TypeError('Expected int')
+    elif x < 0:
+        raise ValueError('Got negative int')
+
+",D,C,B,NONE,D,D,B,E,E,E,D,E,E,NONE,NONE,NONE,D,NONE,NONE,E,"C,E",E,D,E,E
+12,"Define a function <b>step_fib </b>which takes a number <b> k </b> as parameter and returns a function that takes an integer <b>n</b> as parameter to return first <b>n </b>Fibonacci numbers stepped by <b>k</b> and separated by comma.<br><br>
+
+Example:<br>
+<code>
+>>> d = step_fib(1)<br>
+>>> d(13)<br>
+0,1,1,2,3,5,8,13,21,34,55,89,144<br>
+>>> d = step_fib(2)<br>
+>>> d(13)<br>
+0,1,3,8,21,55,144<br>
+>>> d = step_fib(3)<br>
+>>> d(13)<br>
+0,2,8,34,144
+</code>","
+def step_fib(k):
+    def d(n):
+        
+        if (k==1):
+            f1 = 0 
+            f2 = 1
+            print(""\n"")
+            print(f1, end = "" "")
+            print(f1+f2,end="" "")
+            for i in range(1, n + 1): 
+                f3 = f2 + f1
+                print(f3, end = "" "")
+
+                f1 = f2
+                f2 = f3
+        elif k==2:
+            f1 = 0 
+            f2 = 1 
+            print(""\n"")
+            print(f1, end = "" "")
+            
+            for i in range(2, n + 1): 
+                f3 = f2 + f1 
+
+                if (i % 2 == 0): 
+                    print(f3, end = "" "")
+
+                f1 = f2 
+                f2 = f3 
+
+        else:
+            f1 = 0 
+            f2 = 1 
+            print(""\n"")
+            print(f1, end = "" "")
+            for i in range(2, n + 1): 
+                f3 = f2 + f1 
+
+                if (i % 3 == 0): 
+                    print(f3, end = "" "")
+
+                f1 = f2 
+                f2 = f3 
+                return d(13)
+","A,C,D",D,C,C,C,C,C,"A,B,C,D,G","A,B,G","A,C,G","A,B,C,D","A,C,D,G","A,B,C,D,E,G",A,B,C,C,C,C,"A,B,C,D,E,G","C,E,G","B,D,G","A,B,C,D","A,B,C,D","A,B,C,D,E,G"
+13,"Write a Python function <b>bracketed(s)</b> that takes a string 's' containing parentheses or brackets and returns boolean True if s is well bracketed and bolean False otherwise.
+
+A string with parentheses is well bracketed if all parentheses are matched i.e. every opening bracket has a matching closing bracket and vice versa.
+<br><br>
+Note that only Round bracket <b>(</b> and <b>)</b> are used in the strings. 
+<br><br>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","
+open_list = [""["",""{"",""(""] 
+close_list = [""]"",""}"","")""] 
+  
+# Function to check parentheses 
+def bracketed(s): 
+    stack = [] 
+    for i in s: 
+        if i in open_list: 
+            stack.append(i) 
+        elif i in close_list: 
+            pos = close_list.index(i) 
+            if ((len(stack) > 0) and
+                (open_list[pos] == stack[len(stack)-1])): 
+                stack.pop() 
+            else: 
+                return False
+    if len(stack) == 0: 
+        return True","C,D",C,NONE,B,C,C,C,"F,C","B,C",E,C,C,"B,C",C,B,B,C,C,C,C,"A,B",B,C,C,"B,C"
+14,"Write a function <code>cat_dog_count(arg)</code> which accepts one string argument. The argument will be a string containing multiple words that are separated by spaces. <b> (all words will be in lower cases)</b><br>
+The function should return a boolean value <code>True</code> if the words ""cat"" and ""dog"" appear the same number of times in the string otherwise it should return <code>False</code>
+<br><br>
+<b>For Example:</b><br>
+<pre>
+>>> cat_dog_count( ""ca dog cat do d trip flip cat"" )
+>>> False
+
+>>> cat_dog_count( ""dog dog cat cat drip flip come go"")
+>>> True
+</pre>","def cat_dog_count(arg):
+  """"""
+  Accepts a string argument and returns True if the words ""cat"" and ""dog"" 
+  appear the same number of times in the string, otherwise returns False.
+  All words in the input string are assumed to be in lower case and 
+  separated by spaces.
+  """"""
+  words = arg.split(' ') # Split the string into a list of words
+  
+  cat_count = 0
+  dog_count = 0
+  
+  for word in words:
+    if word == ""cat"":
+      cat_count += 1
+    elif word == ""dog"":
+      dog_count += 1
+      
+  return cat_count == dog_count
+
+# Example Usage (from the problem description):
+# print(cat_dog_count(""ca dog cat do d trip flip cat""))  # Expected: False
+# print(cat_dog_count(""dog dog cat cat drip flip come go"")) # Expected: True",NONE,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,B,E,E,E,E
+15,"<script type=""text/javascript"" async
+  src=""https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"">
+</script>
+
+Write a function <code>compute_derivative(f, h)</code> where <code>f</code> is a function that takes one float argument and <code>h</code> is a floating point number. Return a function (which takes a single floating point argument) that computes the
+forward derivative of <code>f</code> at the given point with step size <code>h</code>,   that is,
+<br>
+<code>compute_derivative(f, h)</code> with
+$$\frac{f(x + h) - f(x)} {h}$$","  class Diff(object):
+    def compute_derivative(f, h=1E-5, self):
+      self.f = f
+        self.h = float(h)
+
+class Forward1(Diff):
+    def compute_derivative(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
+
+class Backward1(Diff):
+    def compute_derivative(self, x):
+        f, h = self.f, self.h
+        return (f(x) - f(x-h))/h
+
+class Central2(Diff):
+    def compute_derivative(self, x):
+         f, h = self.f, self.h
+        return (f(x+h) - f(x-h))/(2*h)",C,C,E,C,C,C,C,C,"B,C,E","E,G","C,E","C,E","A,C,E",E,C,E,C,C,C,C,"C,E","C,E,G","C,E",C,"A,C,E,F"
+16,"Write a decorator called <b>counter</b> that keeps track of the number of times a decorated function is called. Write another function called <b>show_counts()</b> which lists all the called functions.
+<br/>
+<b>For example:</b>
+<pre>
+<b>Input:</b>
+>> @counter
+...def sq(x): return x*x
+>> @counter
+...def g(x): return x+2
+>> for i in range(10): g(sq(i))
+>> show_counts()
+<b>Output</b>
+sq: 10
+g: 10
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/ugYz4NjVbU8"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","_cd={}
+def counter(func):
+  @wraps(func)
+  def nf(*ar,**kw):
+    if func in _cd:
+      _cd[func]+=1
+    else:
+      _cd[func]=1
+      return func(*ar,**kw)
+    return nf
+def show_counts():
+   for f,c in _cd.items():
+      printf(f.__nam__,':',c)
+# do not change the code below
+@wrapes
+def show_counts():
+   for f,c in _cd.items():
+      printf(f.__nam__,':',c)
+def counter():
+    pass
+def show_counts():
+    pass
+","C,D",C,C,C,C,C,C,C,"B,C,E,G","A,C,E","C,D,E","C,D","A,B,C,E,F,G",C,C,C,C,C,B,C,"C,D","A,C,E,G","C,D,E","B,C,D","A,B,C,D,E,F,G"
+17,"write a function <b>""sort_list""</b> which will take a list of tuples where each tuple will have two elements first element is a string and second element is the number of occurrences of that string.
+<br>
+<br>
+Sort the list from highest occurrences to lowest occurrences and return list of tuples.
+<br>
+<br>
+If the characters has same no of occurrences then sort the list by alphabetical order of the string.
+<br>
+<br>
+For Example:
+<pre>
+>>> sort_list([(""b"", 2), (""a"", 2)])
+>>> [(""a"", 2), (""b"", 2)]
+>>> sort_list([(""c"", 2), (""d"", 3)])
+>>> [(""d"", 3), (""c"", 2)]
+</pre>","''def sort_list(data_list):
+    n=len(data_list)
+    for i in range(n):
+     
+             
+        for j in range(0, n-i-1):
+     
+            if data_list[j][0] < data_list[j+1][0] :
+                data_list[j], data_list[j+1] = data_list[j+1], data_list[j]
+    return (data_list)
+  '''
+def sort_list(tup):  
+      
+    # getting length of list of tuples 
+    lst = len(tup)  
+    for i in range(0, lst):  
+          
+        for j in range(0, lst-i-1):  
+            if (tup[j][1] > tup[j + 1][1]):  
+                temp = tup[j]  
+                tup[j]= tup[j + 1]  
+                tup[j + 1]= temp  
+    return tup ","B,G",B,A,G,B,B,B,"C,G","A,B",G,"B,C","B,G","A,B,G",B,C,G,B,B,B,"G,C",E,E,"B,C","B,G","A,B,E,F,G"
+18,"Define a function called <b>prompt</b>
+<br/>
+The function should ask the user to enter their
+name (no prompt)
+</br>
+The function should not take any arguments.
+<br/>
+The function should not return anything.
+<br/>
+The function should print Hello <name>
+<br/>
+For example:-
+<br/>
+<pre>if the user enters Sam, print: Hello Sam</pre>
+<br/>","# Call function prompt() on the last line of the codecodecodecode
+def largest(f):
+  data = []
+  for line in f:
+    for field in line.split():
+      data.append(float(field))
+  return max(data)
+2.
+def largest(f):
+  res = -1e20
+  for line in f:
+    for field in line.split():
+      res = max(res, float(field))
+  return res
+
+3.
+def my_sum(s):
+    total = 0
+    for word in s.split():
+        try:
+            total += int(word)
+        except ValueError:
+           pass
+    return total  
+4.
+def safe_run(f, x):
+    try:
+       f(x)
+    except ValueError:
+        return 'ValueError'
+    except TypeError:
+       return 'TypeError'
+    else:
+        return 'OK'","C,D",C,NONE,C,C,C,NONE,"C,D",E,E,"C,D","C,D",E,C,NONE,C,C,C,C,"C,D,E",E,C,"C,D","C,D",E
+19,"Write a python script which will -
+<li>Take a <code><b>string</b></code> from the user as <b>input</b></li>
+ <li><b>Print</b>  the <b>number of vowels</b> in the input string.
+<br/>
+<br/>
+<b>For example :-</b>
+<br/>
+<pre>
+<ol>
+<li>For given input string -
+<b>aeiou</b>
+</li>
+The output should be - 
+<b> 5 </b><br/>
+<li>For given input string -
+<b>AaEeIiOoUu</b>
+</li>
+The output should be - 
+<b> 10 </b>
+</pre>
+<b>Note :-</b>
+<pre>
+<i>
+<li>While using the input function, please use an <b>empty prompt.</b></li>
+<li>The script should be <b>case-insensitive</b></li>
+</i>
+</pre>","# Count vowels in a different way 
+# Using dictionary 
+def Check_Vow(string, vowels): 
+      
+    # casefold has been used to ignore cases 
+    string = string.casefold() 
+      
+    # Forms a dictionary with key as a vowel 
+    # and the value as 0 
+    count = {}.fromkeys(vowels, 0) 
+      
+    # To count the vowels 
+    for character in string: 
+        if character in count: 
+            count[character] += 1    
+    return count 
+      
+# Driver Code 
+vowels = 'aeiou'
+string = ""Geeks for Geeks""
+print (Check_Vow(string, vowels)) 
+",D,C,B,B,D,D,B,D,E,G,"D,G","D,C","D,E",D,B,D,D,D,B,D,E,D,"D,G","D,G","B,E"
+20,"Write a decorator called <b>debug(f, message=' ')</b> that prints the name of the function before it is called along with an optional message.
+<br/>
+<b>For example:</b>
+<pre>
+@debug(message='DEBUG: ')
+def my_func(x):
+&nbsp;&nbsp;&nbsp;&nbsp;print(x)
+<br/>
+my_func(1)
+<b>Output</b>
+DEBUG: my_func
+1
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/vNKCnG1amEQ"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","# deco with arguments
+from functools import wraps
+
+def debug(funct=None,message=""""):
+    def wrapper(funct):
+        @wraps(funct)    
+        def new_funct(*args,**kw):
+            if message:
+              print(message,funct.__name__)
+            else:
+              print(funct.__name__)
+            return funct(*args,**kw)
+        return new_funct
+    if funct:
+        return wrapper(funct)
+    else : 
+        return wrapper 
+# do not change the code below
+
+@debug(message='DEBUG: ')
+def my_func(x):
+    print(x)
+f = input()
+my_func(f)","C,D",E,B,E,D,NONE,A,B,E,C,D,E,E,G,B,G,D,NONE,B,D,E,"C,E",D,E,"B,C,E"
+21,"Define a python function <code>my_gcd(a, b)</code> which takes two numbers as arguments and returns the GCD of the two numbers. Assume that numbers will always be positive integers.
+
+<br>
+Sample Input: <code>(12, 20)</code> Expected Output: <code>4</code>
+
+<br><br>
+Note: You do not have to print anything, neither you have to make the function call. Just define the function to perform the required operation & click on check answer. Also, note that the function name should exactly be as mentioned above.","# define a function
+def computemy_gcd(x, y):
+
+# choose the smaller number
+    if x > y:
+        smaller = y
+    else:
+        smaller = x
+    for i in range(1, smaller+1):
+        if((x % i == 0) and (y % i == 0)):
+            gcd = i
+            
+    return gcd
+
+num1 = 54 
+num2 = 24
+
+# take input from the user
+# num1 = int(input(""Enter first number: ""))
+# num2 = int(input(""Enter second number: ""))
+
+print(""The my_gcd of"", num1,""and"", num2,""is"", computemy_gcd(num1, num2))",D,C,C,E,C,C,C,C,"B,E","E,G","C,D",C,"B,C,E",C,C,E,C,E,E,D,E,"C,E","C,D",C,"A,C,E"
+22,"Shreya has participated in a puzzle round in her college. </br>
+She, along with other participants have been asked to pick up a random string s, consisting of only English lowercase alphabets.</br>  After she selected a string, the organizer announced that each participant can select atmost 2 alphabets and remove all of its occurrence from the selected string. After reduction, if the string's length is <b>less than half</b>  of its original length, the person who selected that string, wins. Given the String Shreya selected, find out if she won.</br></br>
+
+Write a function called <code>puzzle(s)</code> that accepts a string and returns boolean True if Shreya has won or boolean False if Shreya has lost.
+<br><br>
+
+<p> INPUT</p>
+# The only line of Input consists of a string, s that Shreya selected. </br></br>
+puzzle(ppkkskh)
+<br><br>
+<p> OUTPUT</p>
+True</br>
+</br></br>
+<p>CONSTRAINTS</p>
+1<=len(s)<=100
+<br>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","# Python 3program to check if a 
+# string is of the form a^nb^n. 
+
+# Returns true str is of the 
+# form a^nb^n. 
+
+
+def isAnBn(str): 
+
+        n = len(str) 
+
+        # After this loop 'i' has 
+        # count of a's 
+        for i in range(n): 
+                if (str[i] != 'a'): 
+                        break
+
+        # Since counts of a's and b's should 
+        # be equal, a should apear exactly 
+        # n/2 times 
+        if (i * 2 != n): 
+                return False
+
+        # Rest of the characters must 
+        # be all 'b' 
+        for j in range(i, n): 
+                if (str[j] != 'b'): 
+                        return False
+
+        return True
+
+
+# Driver code 
+if __name__ == ""__main__"": 
+        str = ""abab""
+        print(""Yes"") if isAnBn(str) else print(""No"") 
+
+# This code is contributed 
+# by ChitraNayal 
+",NONE,C,E,E,C,D,B,"A,B,C,G",E,E,"C,D","C,D",E,G,NONE,C,C,B,B,"A,B,C,E,G","B,C,E,G",D,"B,C,D,G","B,C,D,G",E
+23,"<script type=""text/javascript"" async
+  src=""https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"">
+</script>
+
+Write a function <b>compute_integral(f,a,b, n)</b>  to compute the integral of a given
+function. The arguments to your function are - <br/>
+
+- A function `f` that takes on argument that needs to be integrated
+- `a` and `b`, the limits of integration (both float, `a < b`)
+- `n` is a positive integer denoting the number of elements into which
+  the interval [a, b] should be subdivided into.
+<br/>
+
+The integral can be approximated by summing the function value on the left
+part of each subinterval and scaling it appropriately. The
+approximation is provided in the formula.
+
+<img src =""https://cdn.rawgit.com/maheshgudi/image/master/drawing.svg"">","def compute_integral(f,a,b,n):
+  summa = 0
+  for i in (1,n):
+    k = float(a) + float(float(b-a)/float(i))
+    summa = summa + f(k)
+  integ = (float(summa)*float(b-a))/float(n)
+  return integ
+ 
+    ",G,A,B,A,A,A,A,"A,C,G","A,G","A,E,G","A,G","A,G","A,B,E,G",A,B,A,A,A,A,"A,C,G","A,G","A,G","A,G","A,G","A,C,E,G"
+24,"Create an <code>Animal</code>
+class with <code>name</code> (str) and <code>weight</code> (float)
+attribute. Allow a user to perform rich comparisons of animals based on their weight (it should support all comparisons)<br><br>
+<b>For exmaple: </b><pre>
+<b>Input: </b><br>
+cat = Animal('cat', 5)
+dog = Animal('dog', 10)
+dog > cat<br>
+<b>Output: </b><br>
+True
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/w2JDnRC2SZI"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","class Animal:
+    def __init__(self, name, weight = 0.0):
+        self.name = name
+        self.weight = weight
+    def __lt__(self, other):
+        return self.weight < other.weight
+    def __gt__(self, other):
+        return self.weight > other.weight
+    def __le__(self, other):
+        return self.weight <= other.weight
+    def __ge__(self, other):
+        return self.weight >= other.weight
+    def __eq__(self, other):
+        return self.weight == other.weight
+    def __ne__(self, other):
+        return self.weight != other.weight",NONE,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+25,"Create a <code>Zoo</code> class which can contain animals. The Zoo should behave like a container.<br><br>
+<b>For example: </b>
+<pre>
+<b>Input: </b><br>
+a = Animal('cat', 5)
+b = Animal('dog', 10)
+zoo = Zoo(a, b)
+len(zoo)
+a in zoo<br>
+<b>Output: </b><br>
+2
+True
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/lJyY8cTPCag"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","class Animal:
+    def __init__(self, name, weight=0.0):
+        self.name = name
+        self.weight = weight
+        class Zoo:
+          def _init_(self, *animals):
+            self.animals = list(animals)
+          def _len_(self):
+            return len(self.animals)
+          def _contains_(self,item):
+            return item in self.animals
+          def _getitem_(self,key):
+            return self.animals[key]
+          def _iter_(self):
+            return self.animals",C,C,C,C,C,C,C,"C,E","B,C,E",E,"C,E",C,"A,C,E",C,C,C,C,C,C,"C,F","A,B,C,E",C,"C,E",C,"A,C,E"
+26,"Create an <code>ArithmeticProgression</code> class which takes two
+components a and d,  where a is the first term of the progression and d is the common difference:
+<br><br>
+The following operations should be supported:
+<br>
+ - Instantiate ArithmeticProgression with components as positional arguments <code>ArithmeticProgression(a, d)</code>
+<br><br>
+ - Instantiate a ArithmeticProgression with default a=1 and d=1, i.e. one should be able
+   to instantiate the ArithmeticProgression as <code>ap = ArithmeticProgression()</code> or <code>ap =
+   ArithmeticProgression(a=3)</code>.
+<br><br>
+ - class should have methods <br>
+<code>
+get(n)
+</code>
+this method will give the nth term in Progression
+<br>
+Example:
+<code>
+For a=1, d=2
+object.get(3) should return 5
+</code>
+<br>
+<code>
+sum(n)
+</code>
+this method will give the sum of n terms in Progression
+<br>
+Example:
+<code>
+For a=1, d=2
+object.sum(3) should return 9
+</code>","class ap:
+    def calculate1(a,d,n): 
+          curr_term=a
+          list1=[]
+          for i in range(1,n+1):
+              list1.append(curr_term)
+              curr_term =curr_term + d  
+          return list1
+        
+    def get(n):
+        return list1[n]
+    def sum(n):
+        for i in range(1,n):
+            sum = sum + list1[i]
+        return sum    
+              
+obj = ap()
+a = 2    
+d = 1     
+n = 5    
+print(obj.calculate1(a,d,n))
+print(obj.get(n))
+print(obj.sum(n))
+    
+    
+",C,C,B,E,E,C,E,"B,C,E,G","A,B,C,E,G","C,E,G","A,C,E,G","C,E","A,B,C,E,F,G",E,C,E,C,C,C,"B,C,E,G","E,A,B,C,D,G","E,G","A,C,E,G","A,C,E,G","A,B,C,E,F,G"
+27,"Write a Python script to implement a simple contact book.
+<br>
+The contact book should allow users to add contacts, search for contacts by name, and list all contacts.
+<br>
+Use a class to manage contacts and maintain the contact list.
+
+For example;
+<pre>
+<b>Input:</b>
+Add contact ""Alice"", ""123-456-7890""
+Search contact ""Alice""
+<b>Output</b>
+Alice: 123-456-7890
+</pre>","class ContactBook: 
+  def __init__(self): 
+    self.contacts = {} 
+  def add_contact(self, name, phone): 
+    self.contacts[name] = phone 
+  def search_contact(self, name): 
+    return self.contacts.get(name, ""Contact not found"") 
+  def list_contacts(self): 
+    for name, phone in self.contacts.items(): 
+      print(f""{name}: {phone}"") 
+      contact_book = ContactBook() 
+      while True: 
+        action = input() 
+        if action.startswith(""Add contact""): 
+          details = action.split('""') 
+          name = details[1] 
+          phone = details[3] 
+          contact_book.add_contact(name, phone) 
+        elif action.startswith(""Search contact""): 
+          name = action.split('""')[1] 
+          print(contact_book.search_contact(name)) 
+        elif action == ""List contacts"": 
+          contact_book.list_contacts() 
+        else: print(""Invalid action"")
+",C,C,C,C,C,C,C,"C,A","A,B,C,D,E",C,"A,C,D",C,"A,C,E",C,B,C,C,C,C,"A,C","B,D",C,"A,C,E","C,E","A,C,E"
+28,"1. Create a <code>LinearEquation</code> class in two variables which takes three
+components and supports the following operations:
+<br><br>
+ - Instantiate a linear equation with components as positional arguments <code>LinearEquation(1,
+   1, 0)</code> or keyword args <code>LinearEquation(a=1, b=1, c=0)</code>.
+<br><br>
+ - Instantiate a linear equation with default components = 0, i.e. one should be able
+   to instantiate the linear equation as <code> eqn = LinearEquation()</code>
+<br><br>
+ - The constants of the Linear Equation should be accessible as <code>eqn.a, eqn.b, eqn.c</code> and must be stored as floating point numbers.
+<br><br>
+ - The class should support the addition of two linear equations with the + symbol to
+   produce a new linear equation as the sum.
+<br><br>
+ - Printing the linear equation, <code>eqn = LinearEquation(2, -3, 5)</code> <br> should produce
+   exactly the text <code>""2.0x - 3.0y = 5.0""</code>, i.e.
+   <code>str(a)</code> and <code>repr(a)</code> should produce this.
+   Note spaces in the text are required.
+<br><br>
+ - The following methods:
+<br><br>
+    - <code>eq1.isparallel(eq2)</code> should return True if lines are parallel else False.
+<br><br>
+    - <code>eq1.intersects(eq2)</code> should return True if lines intersect else False.
+<br><br>
+    - <code>eq1.overlaps(eq2)</code> should return True if lines overlaps else False.
+<br><br>
+Note:
+<br>
+Linear equation in two variables x and y, general form is ax + by = c
+where a, b c are real numbers.
+Keep a = 1, b = 1 and c = 0 as the default values.
+<br>
+A linear equation represents a line.
+<br>
+If a<sub>1</sub>x + b<sub>1</sub>y = c<sub>1</sub> and a<sub>2</sub>x + b<sub>2</sub>y = c<sub>2</sub>, then
+<br>
+Are parallel if a<sub>1</sub>/a<sub>2</sub> = b<sub>1</sub>/b<sub>2</sub>  &ne; c<sub>1</sub>/c<sub>2</sub>
+<br>
+They intersect if a<sub>1</sub>/a<sub>2</sub>  &ne; b<sub>1</sub>/b<sub>2</sub>
+<br>
+they overlap if a<sub>1</sub>/a<sub>2</sub> = b<sub>1</sub>/b<sub>2</sub> = c<sub>1</sub>/c<sub>2</sub>","class LinearEquation:
+
+    def __init__(self, a=1, b=1, c=0):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    def __repr__(self):
+        print("""" if self.a >0 else ""-"" + ""%.1fx""%self.a + ""+"" if self.b >0 else ""-"" + ""%.1fy = %.1fz""%(self.b, self.c))
+        return(""{}x + {}y + {}z"".format(self.a, self.b, self.c))
+
+
+    def __str__(self):
+        print(""%.1fx + %.1fy + %.1fz""%(self.a, self.b, self.c))
+        return(""{}x + {}y + {}z"".format(self.a, self.b, self.c))
+
+    def __add__(self, eq2):
+        eqn = LinearEquation()
+        eqn.a = self.a + eq2.a
+        eqn.b = self.b + eq2.b
+        eqn.c = self.c + eq2.c
+        return eqn
+    
+    def isparallel(self, e2):
+        a = (self.a / e2.a) == (self.b / e2.b)
+        b = (self.b / e2.b) != (self.c / e2.c)
+        if  a and b:
+            return True 
+        else:
+            return False 
+    
+    def intersects(self, e2):
+        a = (self.a / e2.a) == (self.b / e2.b)
+        if a:
+            return False 
+        else:
+            return True
+
+    def overlap(self, e2):
+        a = (self.a / e2.a) == (self.b / e2.b)
+        b = (self.b / e2.b) == (self.c / e2.c)
+        if a and b:
+            return True
+        else:
+            return False ","D,F,G",B,B,C,D,D,C,"B,C,D,E","A,B,C,D,E,F,G","C,D,G","C,D,E,F","C,D,F,G","A,B,C,D,E,F,G",E,D,G,D,C,C,"B,C,D,E,G","E,G","C,D,G","C,D,E,F,G","C,D,E,G","A,B,C,D,E,F,G"
+29,"Write a <b>Triangle</b> class which takes 3 points as parameters . Define class methods <b>perimeter</b>  and <b>area</b> which returns perimeter and area of the triangle . <b>Triangle</b> class should inherit <b>Point</b> class which has instance attributes <b>x</b> and <b>y</b> and has <b>distance</b> method which gives distance between two points.
+<br>
+<br>
+Hint:<br>
+Perimeter of triangle : <br>
+$$a+b+c \ ( a,b,c \ are\ sides\ of\ triangle)$$<br>
+Area of a triangle(Heron's Formula):<br> 
+$$s = (a+b+c)/2$$
+$$Area = \sqrt{s*(s-a)*(s-b)*(s-c))}$$
+Example:<br>
+p1 = Point(0,0)<br>
+p2 = Point(3,3)<br>
+p3 = Point(3,0)<br>
+t = Triangle(p1, p2, p3)<br>
+t.perimeter()<br>
+Answer: 10.24 <br>
+t.area()<br>
+Answer: 4.5","class Point:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def distance(self,other):
+        return sqrt((self.x-other.x)**2+(self.y-other.y)**2)
+class Triangle(Point):
+          def __init__(self,p1,p2,p3):
+              
+        self.p1 = Point.__init__(p1.x,p1.y)
+        self.p2 = Point.__init__(p2.x,p2.y)
+        self.p3 = Point.__init__(p3.x,p3.y)
+          def perimeter(self):
+        a = distance(self.p1,self.p2)
+        b =        distance(self.p2,self.p3)
+        c =        distance(self.p3,self.p1)
+        s= a+b+c
+        print(s)
+    def area(self):
+        a = distance(self.p1,self.p2)
+        b =        distance(self.p2,self.p3)
+        c =        distance(self.p3,self.p1)
+        s= (a+b+c)/2
+        are= (s*(s-a)*(s-b)*(s-c))**0.5
+        return are  
+      
+              
+p1 = Point(0,0)
+p2 = Point(3,3)
+p3 = Point(3,0)
+t = Triangle(p1, p2, p3)
+t.perimeter()
+t.area()      ","C,D,E",E,C,E,E,C,E,"C,E,G","A,B,C,E,G","C,E,G","C,D,E","D,E,G","A,B,C,E,F,G",E,B,C,E,E,E,"C,E,G","C,E","G,C","C,D,E","C,E","A,C,E,F,G"
+30,"Write a Python script to create a simple todo list application.
+<br>
+The application should allow users to add tasks, mark tasks as complete, and list all tasks.
+<br>
+Use a class to manage tasks and maintain the task list.
+
+For example;
+<pre>
+<b>Input:</b>
+Add task ""Buy groceries""
+Mark task 1 as complete
+List tasks
+<b>Output</b>
+1. Buy groceries - Complete
+</pre>","class Task:
+    def __init__(self, description):
+        self.description = description
+        self.completed = False
+
+    def mark_complete(self):
+        self.completed = True
+
+    def __str__(self):
+        status = ""Complete"" if self.completed else ""Incomplete""
+        return f""{self.description} - {status}""
+
+class TodoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+
+    def list_tasks(self):
+        for idx, task in enumerate(self.tasks, 1):
+            print(f""{idx}. {task}"")
+
+    def mark_task_complete(self, index):
+        if 0 < index <= len(self.tasks):
+            self.tasks[index - 1].mark_complete()
+        else:
+            print(""Task does not exist"")
+
+todo_list = TodoList()
+
+while True:
+    action = input()
+    if action.startswith(""Add task""):
+        description = action.split('""')[1]
+        todo_list.add_task(Task(description))
+    elif action.startswith(""Mark task""):
+        index = int(action.split()[2])
+        todo_list.mark_task_complete(index)
+    elif action == ""List tasks"":
+        todo_list.list_tasks()
+    else:
+        print(""Invalid action"")
+",NONE,A,B,E,A,NONE,B,"A,C","B,D",E,A,E,"B,D",A,B,NONE,A,NONE,C,A,E,E,E,E,"B,C,E,F,G"
+31,"Write a function called <code>calculate_speed(d, t)</code> that accepts two numeric values as the arguments.
+<br />
+The first argument is the distance and the second is the time taken.
+<br><br>
+The function should return the speed.
+Note, return value should be rounded up to only two places after the decimal point.
+<br><br>
+Example
+<b></b>
+<pre>
+Input to the function
+<code>calculate_speed(45.5, 1.1)</code>
+Return value by the function
+41.36
+</pre>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","def cal_speed(dist , time):
+  print("" Distance(km) :"", dist);
+  print(""Time(hr):"", time);
+  return dist / time;
+def cal_dis(speed,time):
+  print(""Time(hr):"",time);
+  print(""Speed(km/hr):"",speed);
+  return speed *  time;
+def cal_speed(dist , speed):
+  print("" Distance(km) :"", dist);
+  print(""Speed(km/hr):"", speed);
+  return speed * dist;
+print(""The calculated Speed(km/hr) is:"",cal_speed(45.5, 1.1));
+
+","D,G",D,B,G,G,G,B,"D,G",D,"G,D","D,G","D,G","A,C,D,E,G",G,B,C,G,G,C,"B,D,G","C,D,G","C,D,G","D,G","D,G",E
+32,"<p>Write a Python script that validates email addresses. <br />The script should check if the email address contains an ""@"" symbol and a ""."" symbol, and ensure there is text before and after these symbols. For example;</p>
+<pre><strong>Input:</strong>
+test@example.com
+<strong>Output:</strong>
+Valid email address<br /><br /><br /><strong>Input:</strong>
+test-example.com
+<strong>Output:</strong>
+Invalid email address
+</pre>","def check(email):
+  i = 0
+  while i < len(email):
+    if email[i] == '@':
+      if i > 0 and i < len(email)-3:
+        j = i+2
+        while j < len(email):
+          if email[j] == '.':
+            if j < len(email) -2:
+              return True
+            j = j  +1
+    i = i + 1
+  return False
+                      
+                  
+  
+email = input()
+if not check(email):
+    print(""Invalid email address"")
+else:
+    print(""Valid email address"")
+",G,C,B,A,C,A,A,"A,B,G","A,B,C,G","A,B,G","B,C",A,"A,B,C,E,G",A,C,A,C,A,A,"B,G","A,B","A,B,C",C,"A,C","A,B,C,E,G"
+33,"Write a function <code>primeorsquare</code> which takes a positive integer as an argument.
+<br>
+If the integer is a perfect square then it returns the squareroot of the integer.
+<br>
+If the integer is a prime number then it returns the number itself.
+<br>
+If neither then it returns None
+<br>
+Example:
+<br>
+<code>
+primeorsquare(144) returns 12
+</code>
+<br>
+<code>
+primeorsquare(14) returns None
+</code>
+<br>
+<code>
+primeorsquare(31) returns 31 
+</code>
+<br><br>
+Note: 
+You <b>have to </b>return the values.
+<br>
+You <b>DO NOT</b> have to print the values.
+<br>","def checkprime(n):
+  i=2
+  flag=0
+  for i in range(2,n):
+    if (n%i) == 0:
+      flag=1
+      break
+  if flag==1:
+    return 0
+  else:
+    return 1
+
+def checkperfectsquare(n):
+  i=1
+  while((i*i)<=n):
+    if((n%i==0) and (n/i==i)):
+      return i
+    i=i+1
+  return 0
+
+def primeorsquare(n):
+  if(checkprime(n)==1):
+    return n
+  elif (checkperfectsquare(n)!=0):
+    return sqrt(n)
+  else:
+    return None 
+",G,A,B,C,C,C,G,"C,F","A,B,E,G","B,G","B,C,F","C,F","A,B,E,F,G",B,B,B,C,E,B,"A,C","B,C,G","B,G","B,C,F","E,G","A,B,E,F,G"
+34,"write a function ""word_freq"" which will take a string and then perform following operation on string :-
+<li> Remove all the non alphabetic characters after lowercasing the string.
+<li> Count the no of occurrences of a word.
+<li> Sort the count of occurrences from highest to lowest.
+<li> If the word has same no of occurrences then sort the  list by alphabetical order of the word.
+<br><br>
+Function should return list of tuples where first element of tuple is the word and second element is no of occurrences of the word. 
+<br>
+<br>
+For Example:
+<pre>
+>>> word_freq(""cat, bird, CAT!"")
+>>>  [(""cat"", 2), (""bird"", 1)]
+</pre>
+You can use the functions from previous questions, just put them at the top of the code and call them as you would in any Python module.","def compar(x,y):
+  if x[1] > y[1]:
+    return 1
+  if x[1] < y[1]:
+    return -1
+  if x[1] == y[1] and x[0] > y[0]:
+    return 1
+  if x[1] == y[1] and x[0] < y[0]:
+    return -1
+  if x[1] == y[1] and x[0] == y[0]:
+    return 0
+  
+def sort_list(data_list):
+  data_list.sort(cmp=compar)
+  
+  
+def word_freq(s):
+  word_dict = {};
+  for word in s:
+    if word in word_dict:
+      word_dict[word] = word_dict[word] + 1
+    else:
+      word_dict[word] = 1
+  list1 = []
+  for key in word_dict:
+    list1.append((key, word_dict[key]))
+  sort_list(list1)
+  return list1","C,D",A,B,G,A,A,A,"A,C,G","A,B,E","A,D,E,G","A,G","A,C,G","A,B,E,F",A,B,C,A,C,A,"A,C,G","B,C,G",G,"A,G","A,G",E
+35,"Write a Python Script that takes a string from the user (with empty prompt).
+<br>
+Convert this string into a list of characters.
+<br>
+Sort this list in ascending order.
+<br>
+Now eliminate any repeated values in this list.
+<br>
+Print the list.
+<br>
+<br>
+Example
+<pre>
+Input
+hello
+
+Output
+['e', 'h', 'l', 'o']","def Convert(string): 
+    li = list(string.split("" "")) 
+    return li 
+  
+# Driver code     
+str1 = ""Geeks for Geeks""
+print(Convert(str1)) 
+li.sort( )
+def Remove(duplicate): 
+    final_list = [] 
+    for num in duplicate: 
+        if num not in final_list: 
+            final_list.append(num) 
+    return final_list 
+      
+# Driver Code 
+duplicate = [2, 4, 10, 20, 5, 2, 20, 4] 
+print(Remove(duplicate)) ","C,D,E",G,NONE,E,E,E,A,"D,G,C,E","A,B,C,E,G","C,E","D,E,G","E,F",E,G,B,C,E,E,A,"D,G,C",C,"C,E,G","D,E,F","C,D,E,F","A,B,E,F"
+36,"Write a function called <code>count_unique(text)</code> to find the
+number of unique words in a given string. Ignore case and assume no
+punctuation is in the words.  For example:
+<br/>
+<br/>
+<pre>
+>>> count_unique('a banana He hE he')
+3
+>>> count_unique('ha ha ha')
+1
+</pre>","def count_unique(str, word):
+     
+    # split the string by spaces in a
+    a = str.split("" "")
+ 
+    # search for pattern in a
+    count = 0
+    for i in range(0, len(a)):
+         
+        # if match found increase count 
+        if (word == a[i]):
+           count = count + 1
+            
+    return count       
+ 
+# Driver code
+str =""GeeksforGeeks A computer science portal for geeks  ""
+word =""portal""
+print(countOccurences(str, word))","C,D",C,B,C,C,C,B,"C,E,G","A,B,C,D,E,G",E,"B,C,E","B,C,E,G",E,C,B,C,C,C,C,"C,E,G","B,C,E","B,D,G","B,C,D","B,C,G","A,B,C,D,E,G"
+37,"Write a python script that will;
+<li> Accept an integer <b>n<b>
+<li> Create a list containing integers from <b>1 to n</b>
+
+Output must print each value of the list in a separate line
+
+For example;
+<pre>
+<b>Input:</b>
+4
+<b>Output:</b>
+1
+2
+3
+4
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/WtrsKCQHmKk"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","def create_and_print_list(n):
+    """"""
+    Creates a list of integers from 1 to n and prints each value on a new line.
+
+    Args:
+        n (int): The upper limit for the integers in the list.
+    """"""
+    if n < 1:
+        print(""Input must be a positive integer."")
+        return
+
+    # Create a list containing integers from 1 to n
+    my_list = list(range(1, n + 1))
+
+    # Print each value of the list in a separate line
+    for number in my_list:
+        print(number)
+
+# Accept an integer n from the user
+try:
+    user_input = int(input(""Enter an integer (n): ""))
+    create_and_print_list(user_input)
+except ValueError:
+    print(""Invalid input. Please enter an integer."")",NONE,NONE,NONE,NONE,D,D,NONE,D,E,E,D,E,E,NONE,NONE,NONE,D,NONE,NONE,E,E,E,D,D,E
+38,"Write a function <code>fibodiv(n)</code> that accepts an integer <b>n</b> as argument.
+<br><br>
+The function should return boolean <code>True</code> if the <b>n<sup>th</sup></b> value of the fibonacci sequence is divisible by 4 otherwise return boolean value <code>False</code>.
+<br><br>
+<i>A fibonacci sequence, (always starting from 1) is 1, 1, 2, 3, 5, 8 ...
+<br><br>
+<b>For Example</b><br>
+</i>
+<pre>
+fibodiv(6) should return True {since the 6th term of the fibonacci sequence is 8}
+</pre>","def fib(n): 
+
+    F = [[1, 1], 
+
+         [1, 0]] 
+
+    if (n == 0): 
+
+        return 0
+
+    power(F, n - 1) 
+
+      
+
+    return F[0][0] 
+
+  
+
+def multiply(F, M): 
+
+  
+
+    x = (F[0][0] * M[0][0] + 
+
+         F[0][1] * M[1][0]) 
+
+    y = (F[0][0] * M[0][1] +
+
+         F[0][1] * M[1][1]) 
+
+    z = (F[1][0] * M[0][0] + 
+
+         F[1][1] * M[1][0]) 
+
+    w = (F[1][0] * M[0][1] + 
+
+         F[1][1] * M[1][1]) 
+
+      
+
+    F[0][0] = x 
+
+    F[0][1] = y 
+
+    F[1][0] = z 
+
+    F[1][1] = w 
+
+  
+
+def power(F, n): 
+
+  
+
+    M = [[1, 1], 
+
+         [1, 0]] 
+
+  
+
+    # n - 1 times multiply the 
+
+    # matrix to {{1,0},{0,1}} 
+
+    for i in range(2, n + 1): 
+
+        multiply(F, M) 
+
+  
+# Driver Code 
+
+if __name__ == ""__main__"": 
+
+    n = 9
+
+    print(fib(n)) 
+
+  
+# This code is contributed  
+# by ChitraNayal ","C,D",C,B,C,C,C,A,"C,D,G",E,E,"C,D","C,D,G","A,C,E,G",C,B,NONE,C,C,A,"C,D","A,B,G",E,"C,D,G","A,C","A,C,E,G"
+39,"Define a function called <code>fib</code> taking one argument
+n
+<br/>Where, n>0 is an integer but defaults to 8
+<br/> Return the first n terms of the Fibonacci sequence
+<br/>
+For example:
+<pre>
+In []: fib(4)
+Out[]: [0, 1, 1, 2]
+In []: fib()
+Out[]: [0, 1, 1, 2, 3, 5, 8, 13]
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/Y6pIlfhquIs"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","def fib(n=8):
+    """"""
+    Returns the first n terms of the Fibonacci sequence.
+
+    Args:
+        n: An integer (n > 0), defaults to 8.
+
+    Returns:
+        A list of the first n Fibonacci numbers.
+    """"""
+    if not isinstance(n, int) or n <= 0:
+        return ""Input must be a positive integer.""
+
+    fib_list = []
+    a, b = 0, 1
+
+    for _ in range(n):
+        fib_list.append(a)
+        a, b = b, a + b
+
+    return fib_list",NONE,NONE,F,NONE,NONE,NONE,NONE,E,"B,E,G",E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+40,"Write a python function called <code>find_functions(path)</code> that takes a
+single directory path as an argument and lists all the functions defined in
+all <code>*.py</code> files in this and its subdirectories. 
+<br/>
+Output should be a
+list of tuples with each tuple in the format: 
+<br/>
+<code>(directory/file.py, line-number, function-declaration-string)</code> 
+<br/>
+sorted as per the line number for each file (line numbers start at 1). 
+<br/>
+<br/>
+The functions may be nested functions (i.e. a function defined within another function) or a method. 
+You may ignore lambda functions.
+<br/>
+<br/>
+
+For example if you have a single directory called <code>""test""</code> with a
+file called <code>hello.py</code> and which defines a function
+<code>hello</code> the output should be:
+
+<pre>
+>>> find_functions('test')
+[('test/hello.py', 1, 'def hello():')]
+</pre>
+
+Leading and trailing spaces for the last item of the tuple should be removed.
+<b>Hint:</b> there is a string method that does exactly this.
+<br/>
+<br/>
+The function should return an empty list for an empty directory.","def find_functions(path):
+	import os
+	final = []
+	for filename in os.listdir(path):
+		a = filename.split('.')
+		if len(a) == 2: 
+			if a[1] == 'py':
+				lineNumber = 0
+				functionName = ''
+				g = open(""{}/{}"".format(path,filename))
+				f = g.readlines()
+				count = 0
+				for i in f:
+					if 'def' in i:
+						if 'class' not in i:
+							lineNumber = count
+							k = i.split(':')
+							functionName = k[0].split('def')
+							functionName = functionName[1].split('(')
+							supposedAns = 'def ' + functionName[0] + '():'
+							functionInfo = ('{}/{}'.format(path,filename), lineNumber, supposedAns)
+							final.append(functionInfo)
+					count = count + 1
+	final = sorted(final, key = lambda line:line[1])
+	return(final)","C,E",A,B,G,C,A,A,"A,B,E,G","A,B,C,E,G",G,"B,C,G","A,B,G","A,B,C,E,F,G",E,B,G,C,A,B,"A,B,C,G","A,C,E,G","A,G","B,C,G","A,B,G","A,B,C,E,F,G"
+41,"Write a function called <code>firstuppercase(s)</code> that accepts a string as an argument.
+<br><br>
+The function should return a string with all characters in lower case except the first letter. The first letter of the string should be in upper case.
+<br><br>
+Example
+<b></b>
+<pre>
+Input to the function
+<code>firstuppercase('aLL Good')</code>
+Return value by the function
+'All good'
+</pre>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","def firstuppercase(s):
+    result = """"
+    # Split the string and get all words in a list
+    list_of_words = s.split()
+    # Iterate over all elements in list
+    for elem in list_of_words:
+        # capitalize first letter of each word and add to a string
+        if len(result) > 0:
+            result = result + "" "" + elem.strip().capitalize()
+        else:
+            result = elem.capitalize()
+    # If result is still empty then return original string else returned capitalized.
+    if not result:
+        return s
+    else:
+        return result
+sample_text =(input()
+result = firstuppercase(sample_text)
+print(result)
+","C,D",G,G,G,C,G,C,"C,D,G","A,B,C,D,E","C,G","C,D,G","D,G","C,D,E,F,G,B,A",G,B,G,D,C,C,"C,G,A",D,"G,D","C,D,G","D,G","C,D"
+42,"<p>Write a function <tt>get_lines</tt> that accepts the following arguments:</p>
+<ul>
+<li><tt>data</tt>: A string containing multiple lines</li>
+<li><tt>a</tt>: an integer</li>
+<li><tt>d</tt>: an integer</li>
+</ul>
+
+<p>This function should return a string that contains only line numbers of the form \( a + k d \), where \( k = 0, 1, 2, \ldots \). Notice that the first line is counted as \( 0 \), the second as \( 1 \) and so on.</p>
+
+<p>Example:<tt>data</tt> has the following:</p>
+<p>
+<pre>
+a                                                                                                                                                                                                                        
+bb                                                                                                                                                                                                                                 
+ccc                                                                                                                                                                                                                                
+1                                                                                                                                                                                                                                  
+2                                                                                                                                                                                                                                  
+34                                                                                                                                                                                                                                 
+567                                                                                                                                                                                                                                
+8910                                                                                                                                                                                                                               
+acde</pre>
+</p>
+
+<p>Then <tt>get_lines(data, 2, 2)</tt> returns:</p>
+<p>
+<pre>
+ccc
+2
+567
+acde</pre>
+</p>","def get_lines(data, a, d):
+    
+    y=""""
+    z ="",""
+    #print (data)
+    m = []
+    l = data.count('\n')
+    x = data.split('\n')
+    
+    #print ('\""""""')
+    for i in range(l+1) :
+        for j in range(l+1):
+            if (a+j*d) == i:
+                #y = print(x[i])
+                m.append(x[i])
+                
+                #z = str(y)
+    #print (m)
+    y = z.join(m)
+    #print (y)
+    y = y.strip(',')
+    y = y.replace(',', '\n')
+    y ='     \""""""'+y+'\"""""")' 
+    x = print (y)  
+    return x",D,C,C,D,D,D,C,"A,C,D,E,G","A,B,C,D,E,F,G","A,G","D,F","C,D","A,B,C,D,E,G",C,B,D,D,D,A,"A,C,D,E,G","A,B,C,D,E,G","A,C,D,E,G",D,"C,D,F","A,B,C,D,E,F,G"
+43,"Define a function called <code>greet</code>
+<br/>The function should take one positional argument,
+<b>name</b>.
+<br/>The function should take one optional argument,
+<b>message.</b>
+<br/>
+If message is not given, it should default to
+'Hello'.
+<br/>
+It should return the string with the greeting
+<br/>
+For example:
+<pre>
+In []: greet('Sam')
+Out[]: 'Hello Sam'
+In []: greet('Sam', 'Hi')
+Out[]: 'Hi Sam'
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/ZrCS1_D9_1A"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","def greet(name, message='Hello'):
+  """"""
+  Greets a person with an optional message.
+
+  Args:
+    name: The name of the person to greet.
+    message: An optional greeting message (defaults to 'Hello').
+
+  Returns:
+    A string containing the greeting.
+  """"""
+  return f""{message} {name}""
+
+# Example usage (not required by the problem, but for demonstration):
+print(greet('Sam'))  # Output: Hello Sam
+print(greet('Sam', 'Hi'))  # Output: Hi Sam",D,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,D,E,E
+44,"<p>Write a function <code>headsandlegs(h, l)</code> that accepts two positive integers as parameters.</p>
+
+<p>The first integer is the number of heads and the second integer is the number of legs of all the creatures in a farm which consists of only chickens and dogs.</p>
+
+<p>Your program should calculate and provide the number of chickens and number of dogs in the farm.</p>
+
+<p>The function must return a tuple whose first element is the number of chickens and seconds element is the number of dogs,</p>
+
+<p>If it is impossible to determine the correct number of chickens and dogs with the given information then your program should return None.<p>
+
+<p>
+<b>Example:</b>
+<pre>
+Input:
+
+headsandlegs(5, 12)
+
+Output:
+
+(4, 1)
+</pre>
+</p>
+<p>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>
+</p>","def headsandlegs(number_legs, number_heads):
+
+    for number_chickens in range(0, number_heads + 1):
+        number_dogs = number_heads - number_chickens 
+        total_legs = 4 * number_dogs + 2* number_chickens 
+        if total_legs == number_legs: 
+           return [number_dogs, number_chickens] 
+    return[None, None] 
+
+def animals():
+    heads = int(input('Enter number of heads:')) 
+    legs = int(input('Enter number of legs:'))
+    dogs, chickens = solve(legs, heads)
+    if dogs == None:
+       print('there is no solution')
+    else:
+        print(f'number of dogs: {dogs}')
+        print(f'number of chickes: {chickens}')
+animals()
+","C,D",D,B,G,C,C,B,"D,G","A,B,C,D,E","E,G","C,D,F","C,D,F","A,B,C,E,F,G",E,B,G,C,C,A,"D,F","A,B,C,D,E","E,G","C,D,F","D,F,G","A,B,C,E,F,G"
+45,"Write Python function called <code>highlow(lst)</code> that accepts a list containing only integers as an argument. The function must return boolean True if each element in its input list is alternatively (and strictly) more than and (strictly) less than the previous integer element otherwise it should return boolean False.
+<br><br>
+The list that is provided as argument will always contain only integers. The list will always have atleast 2 elements.
+<br><br>
+<b>Example 1</b>
+<br><br>
+<pre>
+Input:
+
+[1, 2, 3, 4, 5, 5, 5]
+
+Output:
+
+False
+  
+</pre>  
+<b>Example 2</b>
+<br><br>
+<pre>
+Input:
+
+[1, 5, 3, 7, 1, 4, 2]
+
+Output:
+
+True
+
+# Since 5 > 1, 3 < 5, 7 >3, 1 < 7, 4 > 1, 2 < 4 
+</pre>
+<br>
+<b>Example 3</b>
+<br><br>
+<pre>
+Input:
+
+[8, 7, 9, 1, 4, 3, 5]
+
+Output:
+
+True
+
+# Since 7 < 8, 9 > 7, 1 < 9, 4 > 1, 3 < 4,  5 > 3
+</pre>
+<br>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","def highlow(arr): 
+  
+    result = True
+    n=len(arr)
+   
+      
+    if (arr[1] > arr[0] and arr[1] > arr[2]): 
+        for i in range(1, n - 1, 2): 
+  
+            if (arr[i] > arr[i - 1] and 
+                arr[i] > arr[i + 1]): 
+                result = True
+          
+            else : 
+                result = False
+                break
+  
+         
+        if (result == True and n % 2 == 0): 
+            if (arr[n - 1] <= arr[n - 2]) : 
+                result = False
+              
+    elif (arr[1] < arr[0] and
+          arr[1] < arr[2]) : 
+        for i in range(1, n - 1, 2) : 
+  
+            if (arr[i] < arr[i - 1] and 
+                arr[i] < arr[i + 1]): 
+                result = True
+              
+            else : 
+                result = False
+                break
+  
+        
+        if (result == True and n % 2 == 0) : 
+            if (arr[n - 1] >= arr[n - 2]) : 
+                result = False
+    return result","B,C",B,B,B,C,B,B,"A,B,C","B,C,G","B,A,C","A,B,C","A,B,C","A,B,C,E,G",B,B,B,C,B,B,"A,B,C","A,B,C","A,B,C","A,C","A,B,G","A,B,C,E,G"
+46,"Write a function <code>identitymatrix(k)</code> that accepts a positive integer k as an argument
+<br><br>
+The Function must return a list of lists representing the rows of a square identity matrix of the size <b><i>k * k</i></b>
+<br><br>
+<b>Example</b>
+<br><br>
+<pre>
+Input
+
+identitymatrix(3)
+
+Output
+
+[ [1, 0, 0], [0, 1, 0], [0, 0, 1] ]
+</pre>
+<br>
+Note that the integer k will always be 2< k < 100
+<br><br>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","def identitymatrix(size): 
+    r='['
+    for row in range(0, size):
+        r+=' ['
+        for col in range(0, size):
+            if(col != size-1):
+                if (row == col): 
+                    #print(""1 "", end="" "")
+                    r+='1, '
+                else: 
+                    #print(""0, "", end="" "")
+                    r+='0, '
+            else:
+                if (row == col): 
+                    #print(""1 "", end="" "")
+                    r+='1'
+                else: 
+                    #print(""0, "", end="" "")
+                    r+='0'
+        if(row != size-1):
+            r+='], '
+        else:
+            r+='] '
+    r+=']'
+    return r","D,F",F,B,D,D,F,C,"D,F",E,D,"D,F","D,F",E,F,B,F,D,F,C,F,E,D,"D,F","D,F","C,D,G"
+47,"Write a function <code>is_palindrome(arg)</code> which will take one string argument.
+<br>
+Return True if the argument is palindrome & False otherwise.
+ <br>
+The function should be case sensitive.
+<br><br>
+For Example:<br><code>is_palindrome(""Hello"")</code> should return <code>False</code><br>","def is_palindrome(s):
+    if len(s) < 1:
+        return True
+    else:
+        if s[0] == s[-1]:
+            return is_palindrome(s[1:-1])
+        else:
+            return False
+a=str(input(""Enter stringstringstringstringstringstringstringstring:""))
+if(is_palindrome(a)==True):
+    print(""String is a palindrome!"")
+else:
+    print(""String isn't a palindrome!"")defdefdefdefdefdefdefdefdefdefdefdefdefdefdefdef",D,NONE,C,A,C,C,C,"B,D","E,C,D","C,B",C,C,E,NONE,NONE,C,C,C,C,"B,D",D,E,"C,D",C,"A,C"
+48,"It was vacation time and Alice and Bob were getting bored. <br>
+Alice and Bob decide to play a game. Alice says any random Number X and bob have to say what will be its twin prime. If twin prime is not possible for the given number than bob must say NO. Twin primes are the numbers having a difference of 2. So help bob to win the game. <br>
+Example <br>
+Input 1:
+<br>
+3
+<br>
+Output 1:
+<br>
+5
+<br>
+Input 2
+<br>
+1232
+<br>
+Output
+<br>
+NO
+<br>","def is_prime(num):
+    if num > 1:
+        for i in range(2,num):
+            if (num % i) == 0:
+                return False
+            else:
+                return True 
+       
+    else: return False 
+    
+myAliceNo =int(input())
+
+BobNoLow = myAliceNo - 2
+BobNoHigh = myAliceNo + 2
+
+#if is_prime(myAliceNo):
+if True :
+    if is_prime( BobNoHigh):
+        print (BobNoHigh)
+    elif is_prime(BobNoLow):
+        print (BobNoLow)
+    else: 
+        print ('NO')
+else :
+    print ('NO')",C,C,B,C,C,C,B,"B,C","B,C,E","A,B","B,C","B,G","B,E,G",B,B,C,C,A,B,"A,B,C","B,C,G","A,B","B,C","B,G","B,C,E,G"
+49,"Define a function called <code>vowel_counter(s)</code> which takes one string argument. Your function should count the number of vowels in the string that is passed as argument and return the total number of vowels in the string as an integer value. Note that it should consider both upper and lower case characters the same. It may or may not include blank spaces.
+<br>
+<br>
+For Example <code>vowel_counter(""aeiou"")</code> should return <code>5</code>
+For Example <code>vowel_counter(""UmbelloO"")</code> should return <code>4</code>
+For Example <code>vowel_counter(""aaeeiioouu"")</code> should return <code>10</code>
+For Example <code>vowel_counter(""abcdefghi"")</code> should return <code>3</code>
+<br><br>
+Note: You do not have to print anything, neither do you have to make the function call. Just define the function to perform the required operation & click on check answer. Also, note that the function name should exactly be as mentioned above.","def isVowel(ch): 
+    if ch in ['a', 'e', 'i', 'o', 'u']: 
+        return True
+    else:  
+        return False
+  
+# Function to return the count of adjacent 
+# vowel pairs in the given string 
+def vowel_counter(s, n): 
+  
+    cnt = 0
+    for i in range(n - 1): 
+  
+        # If current character and the 
+        # character after it are both vowels 
+        if (isVowel(s[i]) and
+            isVowel(s[i + 1])): 
+            cnt += 1
+  
+    return cnt 
+s = str(input())
+n = len(s) 
+print(vowel_counter(s, n))","B,C,D",A,E,C,G,G,B,"A,B,C,D,G","A,B,D,E",G,"A,B,D,G","A,B,C,D,G","A,B,C,E,G",A,B,G,G,G,B,"A,B,C,G","B,C,D,E","B,G","A,B,C,D,G","B,C,D,G","A,B,E,G"
+50,"Write a function <code>leap_year(year)</code> which accepts a year as user input (Please do not add any prompt while taking input) and returns <code>year</code> if it is a leap year or else return  <code>next leap year</code><br><br>.
+<i><b> Hint:</b>A year will be a leap year if it is divisible by 4 but not by 100. If a year is divisible by 4 and by 100, it is not a leap year unless it is also divisible by 400.</i>
+<pre>leap_year(1996) returns 1996 </pre>
+<pre>leap_year(2017) returns 2020 </pre>
+<br>
+<u>Important</u>:<b> You do not have to print anything, neither you have to make the function call. Just define the function to perform the required operation & click on check answer. Also, note that the function name should exactly be as mentioned above.</b>","def leap():
+    x = input(""Enter a year"")
+    if x % 4 == 0 and x % 400 == 0:
+      return x 
+    else:
+      y = x + 1
+      if y % 4 == 0 and y % 400 == 0 :
+        return y
+      elif:
+        y =x+1
+        if y % 4 == 0 and y % 400 == 0 :
+          return y
+      elif:
+        y =x+1
+        if y % 4 == 0 and y % 400 == 0 :
+          return y
+      else:
+        y =x+1
+        if y % 4 == 0 and y % 400 == 0 :
+          return y
+leap()        
+        
+        
+        
+        
+        
+        ","B,C,D,F",B,B,F,C,C,B,"B,C,D,E,F,G","B,C,E,G","A,B,C,D,F,G","B,C,D,F,G","B,C,D,F,G","A,B,C,E,F,G",G,B,F,C,F,B,"A,B,C,D,F,G","B,C,E,G","A,B,C,D,F,G","B,C,D,F","B,C,D,E,F,G","A,B,C,D,E,F,G"
+51,"Write a function <code>module_filename(module)</code> that takes a module as argument, and returns the name of the file in which the module is implemented. 
+If the module is a builtin module, then it should return the string <code>""builtin""</code>.
+If the passed object is not a module, it should raise <code>TypeError</code>.","def module_filename(module):
+        import sys
+        s = str(module).split(""'"")[1]
+        if s in sys.builtin_module_names:
+                return ""builtin""
+        else:
+                import os
+                from fnmatch import fnmatch
+                path1 = '/home'
+                pattern = ""*.py""
+                python_files = []
+                for path2, subdirs, files in os.walk(path1):
+                        for name in files:
+                                if fnmatch(name, pattern):
+                                        python_files.append(os.path.join(path2, name))
+                for fil in python_files:
+                        f = open(fil, 'r')
+                        for line in f:
+                                if module in line:
+                                        return fil
+                return TypeError","C,D,F,G",C,B,G,C,C,C,"C,B,G,A","A,E,G","C,D,G","B,C,F","B,C,F","B,C,E,F,G",C,C,C,C,C,B,"B,C,F","B,C,E,G","C,G","B,C,F","B,C,F","B,C,E,G"
+52,"Write a Python Script that will take 3 character month code(Lower or Upper Case) from the user (with empty prompt).
+<br>
+Create a mapping from 3 character month name to
+month number.
+For Example {’jan’: 1, ’dec’: 12}
+<br>
+<br>
+Print the month number corresponding to the
+month the user entered.
+<br><br>
+Example
+<pre>
+Input
+Jul
+
+Output
+7
+</pre>","def month_string_to_number(string):
+    m = {
+        'jan': 1,
+        'feb': 2,
+        'mar': 3,
+        'apr':4,
+         'may':5,
+         'jun':6,
+         'jul':7,
+         'aug':8,
+         'sep':9,
+         'oct':10,
+         'nov':11,
+         'dec':12
+        }
+    s = string.strip()[:3].lower()
+
+    try:
+        out = m[s]
+        return out
+    except:
+        raise ValueError('Not a month')
+print()",D,C,C,D,D,D,D,"D,C",E,"E,D",D,D,E,C,NONE,D,C,C,B,"C,D",E,D,"C,D","C,D",E
+53,"Write a python script which will -
+<li>Take an <code><b>integer</b></code> from the user as <b>input</b></li>
+<li><b>Print</b> the <b>multiplication table</b> of that integer till 10</lI>
+
+<br/>
+<br/>
+<b>For example :-</b>
+<br/>
+<pre>
+<ol>
+<li>For given input integer -
+<b>3</b>
+The output should be - 
+<b>3 x 1 = 3</b>
+<b>3 x 2 = 6</b>
+<b>3 x 3 = 9</b>
+<b>3 x 4 = 12</b>
+<b>3 x 5 = 15</b>
+<b>3 x 6 = 18</b>
+<b>3 x 7 = 21</b>
+<b>3 x 8 = 24</b>
+<b>3 x 9 = 27</b>
+<b>3 x 10 = 30</b>
+</li>
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/LNoYm2gPB3k"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","def multiplication_table():
+    # Take input from the user
+    try:
+        number = int(input(""Enter an integer: ""))
+    except ValueError:
+        print(""Invalid input! Please enter an integer."")
+        return
+
+    # Generate and print the multiplication table
+    print(f""Multiplication table for {number}:"")
+    for i in range(1, 11):
+        print(f""{number} x {i} = {number * i}"")
+
+if __name__ == ""__main__"":
+    multiplication_table()","C,D",NONE,NONE,NONE,D,NONE,NONE,E,E,E,D,E,E,D,NONE,NONE,NONE,NONE,NONE,E,E,E,D,E,E
+54,"Write a python script which will take an <b>integer n</b> from the user as input, where <b> n >= 2</b><br/>
+Use a <b>while</b> loop to print <b>n numbers uniformly </b>spaced between 0 and 1. Include 0 and 1 while printing.
+<br/>
+<br/>
+<b>For example:</b>
+<pre>
+<ol>
+<li>For given input integer -
+<b>3</b>
+The output should be - 
+<b> 0.0 </b>
+<b> 0.5 </b>
+<b> 1.0 </b>
+</li><br/>
+<li>For given input integer-
+<b>5</b>
+The output should be - 
+<b>0.0</b>
+<b>0.25</b>
+<b>0.5</b>
+<b>0.75</b>
+<b>1.0</b>
+</li>
+</ol>
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/hD3vQSoNnEA"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","def print_uniform_numbers():
+    """"""Prints n uniformly spaced numbers between 0 and 1.""""""
+    try:
+        n = int(input())
+        if n < 2:
+            print(""n must be greater than or equal to 2."")
+            return
+
+        i = 0
+        while i < n:
+            print(round(i / (n - 1), 2), end="" "")
+            i += 1
+        print()
+
+    except ValueError:
+        print(""Invalid input. Please enter an integer."")
+
+print_uniform_numbers()","C,D",D,B,D,D,NONE,D,D,A,D,"D,G",E,E,D,B,D,D,D,D,D,"A,B,D","D,G",D,D,"A,D,E,F,G"
+55,"Write a function called <code>secondlargest(lst)</code> that accepts a list of integers 
+<br><br>
+The function should return the second largest integer in the list lst.
+<br><br>
+Example
+<b></b>
+<pre>
+Input
+[7, 3, 4, 6, 2, 8]
+
+Output
+
+7
+</pre>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","def print2largest(arr, arr_size):
+          if (arr_size < 2):   
+                print("" Invalid Input "")
+                return
+arr.sort
+for i in range(arr_size-2,-1, -1):
+
+                                          if (arr[i] != arr[arr_size - 1]) :
+                                               
+                                                  print(""The second largest element is"",arr[i])
+                                                  return
+                                                
+                                                  print(""There is no second largest element"")
+                                                   
+                                                    # Driver code
+                                                    arr = [1,2,5,6,8,9]
+                                                    n = len(arr)
+                                                    print2largest(arr, n)",C,C,C,C,C,C,A,"A,C,D,E","A,B,C,D,E","A,C,D,E,G","C,D","C,D","A,C,D,E,G",C,B,C,C,C,A,"C,D,E,G","A,B,C,D,E,G","A,C,D,E","C,D","C,D","A,C,D,E,G"
+56,"Write a function called <b>second_max</b> that can be called with any number of arguments, minimum of two.  <b>second_max</b> should return second maximum of all the given numbers.","def print2largest(arr,arr_size): 
+  if (arr_size < 2): 
+	print("" Invalid Input "") 
+	return
+	
+   first = second = -2147483648
+   for i in range(arr_size): 
+      if (arr[i] > first): 
+        second = first 
+        first = arr[i] 
+	  elif (arr[i] > second and arr[i] != first): 
+        second = arr[i] 
+    if (second == -2147483648): 
+		print(""There is no second largest element"") 
+	else: 
+		print(""The second largest element is"", second) 
+arr = [12, 35, 1, 10, 34, 1] 
+n =len(arr) 
+print2largest(arr, n) 
+
+","C,D,G",D,B,G,D,C,B,"A,C,D,E","A,B,E","G,E","C,D,E",D,"A,B,C,E,F,G",B,B,E,D,C,A,"B,C,D,E","A,B,E,G","A,E,G","D,E",C,"A,B,C,E,G"
+57,"Write a Python script which will accept a string <b>(the string can be Upper case or Lower case)</b> as a user input <b>(Please do not add any prompt while taking input)</b>
+<br/>
+Print the reverse of the string in lower case.
+<br/>
+For Example:-
+<pre>
+Input
+Hello
+
+Output
+olleh
+</pre>","def process_string(input_string):
+    """"""
+    Converts a string to a sorted list of unique characters.
+
+    Args:
+        input_string: The string to process.
+
+    Returns:
+        A sorted list of unique characters.
+    """"""
+    char_list = list(input_string)
+    char_list.sort()
+
+    unique_list = []
+    for char in char_list:
+        if char not in unique_list:
+            unique_list.append(char)
+
+    return unique_list
+
+# Get input from the user
+user_input = input()
+
+# Process the string and print the result
+result = process_string(user_input)
+print(result)","C,D,G",G,C,G,G,G,C,"G,D,C","C,D",E,"D,F,G","D,F,G","A,B,D,G",G,C,G,G,G,C,"G,C,D","B,C,D,G","B,D,G","D,F,G","D,F,G",E
+58,"Write a function <code>read_file</code> which will not take any argument.
+<br/>
+Read the <b>pendulum.txt</b> file.
+<br/>
+Copy the second column alone to another file
+called <b>col2.txt</b>
+<br/>
+Remember to add a newline.<br>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/hdXfZOn9Tsw"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","def prompt(name):
+    print(f""Hello {name}"")
+
+def add(a, b):
+    return a + b
+
+def is_even(num):
+    return num % 2 == 0
+
+def even_square(num):
+    return (num % 2 == 0, num ** 2)
+
+def greet(name, message=""Hello""):
+    return f""{message} {name}""
+
+def to_lower(strings):
+    return [s.lower() for s in strings]
+
+def fib(n=8):
+    fib_sequence = [0, 1]
+    for _ in range(n - 2):
+        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])
+    return fib_sequence[:n]
+
+def power2():
+    return lambda x: 2 ** x
+
+def apply(f, data):
+    return [f(x) for x in data]
+
+def largest(file):
+    return max(map(float, file.read().split()))
+
+def read_file():
+    with open(""pendulum.txt"", ""r"") as infile, open(""col2.txt"", ""w"") as outfile:
+        for line in infile:
+            columns = line.split()
+            if len(columns) > 1:
+                outfile.write(columns[1] + ""\n"")
+",NONE,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,"B,E",E,E,E,E
+59,"Define a function called <code>power2()</code> which takes
+no argument.
+<br/>
+It should return a function which takes a single
+argument x but returns {2^x}.
+<br/>
+For example:
+<pre>
+In []: f = power2()
+In []: f(2)
+Out[]: 4
+In []: power2()(4)
+Out[]: 16
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/4lJqVlLwrfU"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","
+def power2():
+    return lambda x: 2 ** x
+  ",NONE,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+60,"Write a function <code>remove_vowels(arg)</code> which will take one string argument.
+<br>
+Return a string with all vowels removed from the argument string
+<br>
+The function should be case sensitive.
+<br><br>
+For Example:<br><code>remove_vowels(""Hello"")</code> should return <code>""Hll""</code><br>
+
+Note: You do not have to print the value. You have to return the value.","def remove_vowels(string str):
+   
+{ 
+    vector<char> vowels = {'a', 'e', 'i', 'o', 'u', 
+                           'A', 'E', 'I', 'O', 'U'}; 
+      
+    for (int i = 0; i < str.length(); i++)  
+    { 
+        if (find(vowels.begin(), vowels.end(), 
+                      str[i]) != vowels.end())  
+        { 
+            str = str.replace(i, 1, """"); 
+            i -= 2; 
+        } 
+    } 
+    return str; 
+} 
+  
+// Driver Code 
+int main()  
+{ 
+    string str = ""GeeeksforGeeks - A Computer""
+                 "" Science Portal for Geeks""; 
+    cout << remVowel(str) << endl; 
+  
+    return 0; 
+} ","C,D,F",F,C,F,C,C,F,"A,C,D,F,G","A,B,C,D,E,F,G",E,"A,C,D,F","A,C,E,F",E,C,NONE,E,C,E,F,"A,C,G","A,B,C,D,E,F,G",C,"C,D,E,F,G","A,B,C,D,E,F,G",E
+61,"Write a function <code>is_palindrome(arg)</code> which will take one argument. Argument passed can be a number or a string. You have to check if the passed argument is a palindrome or not. Return true if the argument is palindrome & false otherwise.
+<br><br>
+For Example:
+<br>
+<code>is_palindrome(""Hello"")</code> should return <code>False</code>
+<br>
+<code>is_palindrome(333)</code> should return <code>True</code>
+<br><br>
+Note: Please note that you do not have to print anything in the function. You just have to return the expected output. Also, do not make function calls. The function name that you define should be exactly as specified.","def rev_str(s): 
+    return s[::-1]
+
+def rev_num(num):
+  temp=num
+  rev=0
+  while num>0:
+    digit=num%10
+    rev=rev*10+digit
+    num=num//10
+  if temp==rev:
+    return True
+  else:
+    return False
+  
+def is_palindrome(s): 
+    if type(s)==int or type(s)==float:
+      if rev_num(s):
+        return True
+      else:
+        return False
+        
+    else:
+      str=rev_str(s)
+      if str==s:
+        return True
+      else:
+        return False
+
+
+",NONE,A,B,B,F,F,B,A,"B,C,E","C,F",F,F,"B,E,F,G",NONE,B,G,F,NONE,B,A,"B,C,E,G",G,F,F,"B,E,F,G"
+62,"Write a python script that accepts a <b>list of integers</b> separated by spaces.<br>
+Convert this into a list of integers but square each element.<br>
+Print this list.
+<br><br>
+Example:
+<pre>
+Input:
+1 2 3 4
+
+Output:
+[1, 4, 9, 16]
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/zvstVE9M2j4"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","def square_elements_in_list():
+    """"""
+    Accepts a space-separated string of integers, converts them to a list,
+    squares each element, and prints the resulting list.
+    """"""
+    input_string = input(""Enter a list of integers separated by spaces: "")
+
+    # Split the input string by spaces and convert each part to an integer
+    # Using a list comprehension for conciseness
+    try:
+        integer_list = [int(x) for x in input_string.split()]
+    except ValueError:
+        print(""Invalid input. Please enter only integers separated by spaces."")
+        return
+
+    # Square each element in the list using a list comprehension
+    squared_list = [x ** 2 for x in integer_list]
+
+    # Print the squared list
+    print(squared_list)
+
+if __name__ == ""__main__"":
+    square_elements_in_list()
+    ",D,NONE,NONE,NONE,D,NONE,NONE,E,E,E,D,D,E,NONE,NONE,NONE,D,NONE,NONE,E,E,E,D,E,E
+63,"Write a function called <code>strip_string</code> that takes a string
+and strips out all characters except:
+a-z, A-Z, 0-9, underscore and the forward slash.
+All other characters are to get removed and replaced by underscore.
+<br><br>
+In the replaced version, no consecutive multiple underscores should exist.
+<br><br>
+Note: You do not have to print the values but return the values.
+<br>
+<b>
+ For example,</b>
+<br>
+<pre>>>> strip_string(""Ab 4/5        (t) "")
+ ""Ab_4/5_t_""
+</pre>
+<br>
+<pre>>>> strip_string(""AB___cd@#   E"")
+""AB_cd_E""</pre>
+</b>","def strip_string(arg):
+  allowed_characters = set(""abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_/"")
+  cleaned_string = """"
+  previous_char = None
+  for char in arg:
+      if char in allowed_characters:
+            cleaned_string += char
+            previous_char = char
+      elif previous_char != ""_"":
+            cleaned_string += ""_""
+            previous_char = ""_""
+  return cleaned_string
+print(strip_string(""Ab 4/5        (t) ""))  
+print(strip_string(""AB___cd
+","C,D",NONE,B,B,B,C,C,E,"B,C",C,"B,C,D","B,C,G","A,C,E",NONE,B,B,C,C,C,B,"B,C","B,C","B,C,D","B,C","A,C,E"
+64,"Modify decorator <b>greet</b> to print ""goodbye"" after executing the function.
+<br/>
+<b>For example:</b>
+<pre>
+<b>Input:</b>
+f(1)
+<b>Output</b>
+Hello
+1
+goodbye
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/ci4XwTwlyWc"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","from functools import wraps
+
+def greet(func):
+    @wraps (func)
+    def new_func( *args,  **kwargs):
+        print (""Hello"")
+        x=  func (*args,  **kwargs)
+        print(""goodbye"")
+        return x
+    return new_func
+from functools import wraps
+
+def greet(func):
+    @wraps (func)
+    def new_func( *args,  **kwargs):
+        print (""Hello"")
+        xresult=  func (*args,  **kwargs)
+        print('goodbye')
+        return xresult
+    return new_func
+@greet
+def f(x):
+  print (x)",NONE,NONE,NONE,NONE,C,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+65,"Write a decorator called <strong> deco</strong>
+<br>
+
+Decorate a function called <strong>test </strong>
+<br>
+The decorated function should take an argument and add 1 to it.
+<br>
+Hint: Python version 3. Use all the function names given as it is, the argument will be int.","from functools import wraps
+def deco(func=None,message='Hello'):
+    def wrapper(func):
+        @wraps(func)
+        def nf(*arg,**kw):
+            print(message+func.__name__)
+            return func(*arg,**kw)
+        return nf
+    if func is None:
+        return wrapper
+    else:
+        return wrapper(func)
+
+# do not change the code below
+
+@deco(message=1)
+def test(x):
+    print(x)
+f = int(input())
+test(f)
+","C,G",G,B,F,F,F,F,"C,D,G","B,C,D,E,F,G",F,"F,G","F,G","B,C,E,F,G",G,B,F,F,F,F,"G,D,F,C","B,D",F,"F,G","C,F,G","B,F,G"
+66,"Write a <code>Point</code> class with two instance attributes <code>x, y</code>. Make it possible to add and subtract two points. Also allow <code>abs()</code> to be callabe on a point.<br><br>
+<b>For example: </b><br>
+<pre>
+<b>Input: </b><br>
+p1 = Point(1, 2)
+p2 = Point(1, 0)
+p = p1 + p2
+p.x, p.y
+abs(p)<br>
+<b>Output: </b><br>
+(2, 2)
+2.8284271247461903
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/mwEtKNVCu-Q"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","from math import sqrt
+
+class point:
+    def __init__(self,x=0,y=0):
+        self.x=x
+        self.y=y
+    def __add__(self,other):
+        return point(self.x+ other.x, self.y+ other.y)
+    def __sub__(self,other):
+        return point(self.x - other.x, self.y- other.y)
+    def __abs__(self):
+        return sqrt(self.x*self.x+self.y*self.y)
+      
+p1= point(1,2)
+p2= point(1,0)
+p= p1 +p2
+p.x , p.y
+
+abs(p)
+
+    ",C,NONE,B,NONE,C,E,NONE,D,D,E,E,D,E,D,NONE,NONE,E,E,NONE,D,"A,C,E",E,"D,E",E,E
+67,"Create a three dimensional <code>Vector</code> class which takes three
+components and supports the following operations:
+<br><br>
+ - Instantiate a vector with components as positional arguments <code>Vector(1,
+   0, 0)</code> or keyword args <code>Vector(x=1, y=0, z=1)</code>.
+<br><br>
+ - Instantiate a vector with default components = 0, i.e. one should be able
+   to instantiate the vector as <code>a = Vector()</code> or <code>a =
+   Vector(x=0)</code>.
+<br><br>
+ - The components of the vector should be accessible as <code>v.x, v.y,
+   v.z</code> and must be stored as floating point numbers.
+<br><br>
+ - The class should support the addition of two vectors with the + symbol to
+   produce a new vector with the sum of the components.
+<br><br>
+ - Multiplication by a scalar to scale all three components, i.e., the code
+   <code> a = Vector(1,1,1); b = 0.1*a</code> should work.
+<br><br>
+ - Printing the vector, <code>a = Vector(1, 1, 1)</code> should produce
+   exactly the text <code>""Vector(1.0, 1.0, 1.0)""</code>, i.e.
+   <code>str(a)</code> and <code>repr(a)</code> should produce this.
+<br><br>
+ - The following methods:
+<br><br>
+    - <code>v.norm()</code> to return the norm of the vector, i.e. the
+      Euclidean length of the vector.
+<br><br>
+    - <code>a.dot(b)</code> to return the dot product, <code>a &#183; b</code>.
+<br><br>
+    - <code>a.cross(b)</code> to return the cross product, a &#215; b as a
+      vector.","import math
+
+class Vector:
+    def __init__(self,x=0,y=0,z=0):
+        self.x=float(x)
+        self.y=float(y)
+        self.z=float(z)
+    
+    def __add__(self,other):
+        X=self.x+other.x
+        Y=self.y+ other.y
+        Z=self.z+ other.z
+        obj=Vector(X,Y,Z)
+        return obj
+    def __mul__(self,other):
+        X=self.x * other
+        Y=self.y * other
+        Z=self.z * other
+        obj=Vector(X,Y,Z)
+        return obj
+    
+    def norm(self):
+        # agar answer galat aaye to sqrt X return karo
+        X=self.x**2 + self.y**2 + self.z**2
+        return X
+    
+    def dot(self,other):
+        X=self.x * other.x
+        Y=self.y * other.y
+        Z=self.z * other.z
+        return X+Y+Z
+    
+    def cross(self,other):
+        X=self.y* other.z - other.y * self.z
+        Y=self.z* other.x - other.z * self.x
+        Z=self.x* other.y - other.x * self.y
+        obj=Vector(X,Y,Z)
+        return obj
+    
+    def __str__(self):
+        return f""Vector({self.x}, {self.y}, {self.z})""
+    
+    def __repr__(self):
+        return f""Vector({self.x}, {self.y}, {self.z})""
+","C,G",G,NONE,G,C,G,G,G,"A,B,C,G",G,"C,G",G,G,G,C,G,C,G,G,G,"B,G",G,"C,G",G,G
+68,"Write a Python script that accepts an integer <b>n</b> as input. Use numpy’s linspace to create n points from 1 to 2
+<br>
+The script must print each value from the array in a separate line.
+<br><br>
+For Example;
+<pre>
+<b>Input</b>
+3
+<b>Output:</b>
+1.0
+1.5
+2.0
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/woAbApWFYoo"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","import numpy as np
+
+def generate_and_print_linspace_points():
+    """"""
+    Accepts an integer n, generates n points from 1 to 2 using numpy.linspace,
+    and prints each value on a separate line.
+    """"""
+    try:
+        n_str = input(""Enter an integer (n): "")
+        n = int(n_str)
+
+        if n <= 0:
+            print(""Please enter a positive integer for n."")
+            return
+
+        # Create n evenly spaced points from 1 to 2
+        points = np.linspace(1, 2, n)
+
+        # Print each value from the array in a separate line
+        for point in points:
+            print(point)
+
+    except ValueError:
+        print(""Invalid input. Please enter an integer."")
+
+if __name__ == ""__main__"":
+    generate_and_print_linspace_points()",D,NONE,NONE,NONE,D,D,NONE,D,E,E,D,D,E,D,NONE,NONE,D,D,NONE,E,E,E,D,D,E
+69,"<p>Write a function <code>chop(l,a,b)</code>. <code>l</code>&nbsp; can be a list or a numpy array. <code>a</code> and <code>b</code> are numbers. The function should return a numpy array between a and b without including a and b.&nbsp;&nbsp;</p>
+<p>Note that <code>a</code> need not be larger than <code>b</code>, the result should be the same if <code>a&gt;b</code> or <code>b&gt;a</code>.</p>
+<p>For example, if <code>l = np.arange(7)</code>, then <code>chop(l,1,5)</code> should return the numpy array&nbsp;<code>[2,3,4]</code>.</p>","import numpy as np
+def chop(l,a,b):
+    le=len(l)
+    X=[]
+    for j in range (0,le-1):
+        for i in range (0,le-1):
+         if l[i]>l[i+1]:
+            b=l[i]
+            l[i]=l[i+1]
+            l[i+1]=b
+
+    if a<b:
+        for i in range(0,le):
+            if l[i]<b and l[i]>a:
+                X.append(l[i])
+    else:
+        for i in range (0,le):
+            if l[i]>b and l[i]<a:
+                X.append(l[i]) 
+    return np.array(X)                   
+    ","C,G",E,B,A,E,E,A,"A,C,E","A,B,G","A,G",E,"A,E,G","A,B,E,F,G",E,B,C,E,E,A,"A,B,E","A,B,C,E,G","A,G",E,E,"A,B,E,G"
+70,"Write a python script that accepts an integer <b>n</b>as user input (with empty prompt)
+<br>
+The script must print an <b>n x n</b> matrix where each entry is the sum of the <b>row number and column number</b>
+For example;
+<pre>
+<b>Input:</b>
+3
+<b>Output:</b>
+0 1 2
+1 2 3
+2 3 4
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/phiDj62QGu4"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","import sys
+
+
+def generate_matrix(n):
+    """"""
+    Generate an n x n matrix where each entry is the sum of its row and column numbers.
+    
+    Args:
+        n (int): The size of the matrix.
+    
+    Returns:
+        list[list[int]]: The generated matrix.
+    """"""
+    return [[i + j for j in range(n)] for i in range(n)]
+
+
+def print_matrix(matrix):
+    """"""
+    Print a matrix in a readable format.
+    
+    Args:
+        matrix (list[list[int]]): The matrix to print.
+    """"""
+    for row in matrix:
+        print(' '.join(str(x) for x in row))
+
+
+def main():
+    # Get user input
+    n = int(sys.stdin.readline().strip())
+    
+    # Generate and print the matrix
+    matrix = generate_matrix(n)
+    print_matrix(matrix)
+
+
+if __name__ == ""__main__"":
+    main()",NONE,NONE,NONE,NONE,NONE,NONE,B,E,B,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+71,"Write a Python Script which accepts an integer start value and an integer end values (separated by a space, for example: 4 8 represents 4, 5, 6, 7, 8) as user input <b>(Please do not add any prompt while taking input).</b>
+<br><br>
+For Example
+<pre>
+Input
+2 15 {Range of values is 2,3,4,5,6,7,8,9,10,11,12,13,14,15}
+</pre>
+<br/>
+Find all such numbers which are divisible by 7 but are not a multiple of 5 between start and end values.
+<br/>
+Print the list of numbers (separated by spaces) including the start and end values.
+<br/>
+<pre>
+Output
+7 14
+</pre>","import sys
+
+def find_numbers(start, end):
+    result = []
+    for num in range(start, end + 1):
+        if num % 7 == 0 and num % 5 != 0:
+            result.append(num)
+    return result
+
+if __name__ == ""__main__"":
+    # Read two integers from stdin (space separated), without any extra prompt
+    line = sys.stdin.read().strip()
+    if not line:
+        # No input
+        sys.exit(0)
+    parts = line.split()
+    if len(parts) != 2:
+        # Unexpected input format
+        sys.exit(0)
+    start = int(parts[0])
+    end = int(parts[1])
+    out = find_numbers(start, end)
+    # Print them space-separated
+    if out:
+        print("" "".join(str(x) for x in out))
+",NONE,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+72,"Write a script that: 
+<li>Accepts a single integer as input (Use an empty prompt)
+<li>Squares this integer
+<br><br>
+The output should be the <b>number of digits</b> the squared integer has.
+<br><br>
+For Example:<br>
+<pre>
+<b>Input:</b>
+8
+<b>Output:</b>
+2
+</pre>
+<pre>
+<b>Input:</b>
+14
+<b>Output:</b>
+3
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/up7eKPQCMp4"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","import sys
+
+def get_square(number):
+    return str(number * number)
+
+def get_num_digits(number):
+    return len(str(number)))
+
+if __name__ == ""__main__"":
+    if len(sys.argv) < 2:
+        print(""Usage: python square.py <number>"")
+        sys.exit(1)
+
+    try:
+        number = int(sys.argv[1])
+        squared = get_square(number)
+        print(get_num_digits(squared)))
+    except ValueError:
+        print(""Invalid input! Please enter a single integer."")
+        sys.exit(1)","C,G",F,C,G,D,C,C,"D,F",C,C,"C,D,F","C,D,F","E,G",F,C,G,C,C,C,"C,G",E,C,"C,D","C,D",E
+73,"Write a python script which will -
+<li>Take an <code><b>integer</b></code> from the user as <b>input</b></li>
+<li>If the number is positive, <b>print ""Positive""</b></li>
+<li>If the number is negative, say <b> -10 print ""Negative of 10""</b></li>
+<li>If the number is zero,<b> print ""Zero""</b></li>
+<li>Finally, <b>print ""Done""</b>
+<br/>
+<br/>
+<b>For example :-</b>
+<br/>
+<pre>
+<ol>
+<li>For given input integer -
+<b>5</b>
+The output should be - 
+<b> Positive </b>
+<b> Done </b>
+</li>
+
+<li>For given input integer -
+<b>-25</b>
+
+The output should be - 
+<b> Negative of 25 </b>
+<b> Done </b>
+</li>
+<li>For given input integer -
+<b>0</b>
+The output should be - 
+<b> Zero </b>
+<b> Done </b>
+</li>
+</pre>
+<b>Note :-</b>
+<pre>
+<i>
+<li>While using the input function, please use an <b>empty prompt.</b></li>
+</i>
+</pre>","import time
+
+# square root function
+from math import sqrt
+
+# time at the start of program execution
+start = time.time()
+
+# function to calculate the continued fraction
+def cf(n):
+    mn = 0.0
+    dn = 1.0
+    a0 = int(sqrt(n))
+    an = int(sqrt(n))
+    convergents = [a0]
+    period = 0
+    if a0 != sqrt(n):
+        while an != 2*a0:
+            mn = dn*an - mn
+            dn = (n - mn**2)/dn
+            an = int((a0 + mn)/dn)
+            convergents.append(an)
+    return convergents[:-1]
+
+def cf_inv(cf):
+    """"""
+    function to calculate the
+    simple fraction from the continued
+    fraction.
+    """"""
+    numerator = 1
+    denominator = cf.pop()
+    while cf:
+        denominator, numerator = denominator*cf.pop() + numerator, denominator
+    return denominator, numerator
+
+# variable to store the largest value 
+# and the place it occurs
+largest = 0, 0
+
+# for loop less than 1000
+for i in xrange(1, 1001):
+    if i%sqrt(i) != 0:
+        continued_fraction = cf(i)
+        if len(continued_fraction) % 2 != 0:
+            u, v = cf_inv(continued_fraction)
+            u, v = 2*u**2+1, 2*u*v
+        else:
+            u, v = cf_inv(continued_fraction)
+        if u > largest[1]:
+            largest = i, u
+
+# print the largest value
+print largest[1]
+
+# time at the end of program execution
+end = time.time()
+
+# total time taken to run the program
+print end - start","C,D",C,F,C,D,C,B,"D,B,C,G","E,F,G",E,"C,D,G","A,B,F,G",E,C,NONE,D,C,C,NONE,"D,C,B",E,"C,G","C,D","A,B,D,F,G","B,C,E,F,G"
+74,"<p>Write a function called <code>rotatematrix(lst)</code> to rotate a matrix by 90 degress in left to right (clockwise) direction.
+<p>The function will accept one argument which will be a list. The list will contain sub-lists that represent each row of the Matrix 
+<p>
+<p>The function must return a list of lists representing the rotated matrix as output.</p>
+<b>Example:</b>
+A list [[1,2,3], [3,4,5], [5,6,7]] represents a 3 * 3 matrix that looks like this:
+<br><br>
+1  2  3
+<br>
+3  4  5
+<br>
+4  5  6
+</p>
+<p>
+The output of the Function will be another list of lists that represents the rotated matrix.
+<br><br>
+In the above example, the resulting rotated matrix will be [[4,3,1], [5,4,2], [6,5,3]] represents a 3 * 3 resulting matrix:
+<br><br>
+4  3  1
+<br>
+5  4  2
+<br>
+6  5  3
+</p>","mat= [[1,2,3], [3,4,5], [5,6,7]];
+def rotateMatrix(mat): 
+  
+    if not len(mat): 
+        return
+      
+   
+    top = 0
+    bottom = len(mat)-1
+  
+    left = 0
+    right = len(mat[0])-1
+  
+    while left < right and top < bottom: 
+  
+              prev = mat[top+1][left] 
+  
+        # Move elements of top row one step right 
+        for i in range(left, right+1): 
+            curr = mat[top][i] 
+            mat[top][i] = prev 
+            prev = curr 
+  
+        top += 1
+  
+        # Move elements of rightmost column one step downwards 
+        for i in range(top, bottom+1): 
+            curr = mat[i][right] 
+            mat[i][right] = prev 
+            prev = curr 
+  
+        right -= 1
+  
+        # Move elements of bottom row one step left 
+        for i in range(right, left-1, -1): 
+            curr = mat[bottom][i] 
+            mat[bottom][i] = prev 
+            prev = curr 
+  
+        bottom -= 1
+  
+        # Move elements of leftmost column one step upwards 
+        for i in range(bottom, top-1, -1): 
+            curr = mat[i][left] 
+            mat[i][left] = prev 
+            prev = curr 
+  
+        left += 1
+  
+    return mat 
+",G,G,G,G,G,C,A,"A,C,G","A,B,C,E",G,"C,G","C,G","A,B,C,E,F,G",A,C,G,G,C,A,"C,G","A,B,C,G","A,G","D,G",G,"A,B,C,E,G"
+75,"Write a function <code>check_prime(n)</code> which will take an integer <code>n</code>  for <code> 2<= n <= 1000</code> and return <b> True</b> if the number <b>n</b> is prime else,<b> False </b>otherwise.</br>
+<pre>
+For example:
+
+>>> check_prime(9)
+False
+>>> check_prime(19)
+True
+</pre>","prime_numbers = 0
+
+def is_prime_number(x):
+    if x >= 2:
+        for y in range(2,x):
+            if not ( x % y ):
+                return False
+    else:
+	return False
+    return True
+	        
+
+for i in range(int(raw_input(""How many numbers you wish to check: ""))):
+    if is_prime_number(i):
+        prime_numbers += 1
+        print i
+
+print ""We found "" + str(prime_numbers) + "" prime numbers.""","C,D",A,B,E,D,A,A,"A,C,D,E","A,B,D,E,G","A,B,C,E","C,D","A,D","A,B,E,F",A,B,G,D,D,A,"A,C,E","A,B,E","A,C","A,C,D","A,D","A,B,E,F"
+76,"Write a function <code>odd_even_sum(start, stop)</code> that accepts two integer arguments. <br><br>
+The function must return a list containing two values. The first value of the list will be the sum of all the odd values between (and including) <b>start</b> and <b>stop</b>. The second value  of the list will be the sum of all the even values between (and including) <b>start</b> and <b>stop</b>.
+<br><br>
+<b>For Example:</b>
+(Note: The values between 2 and 7 will be 2,3,4,5,6,7)
+<pre>
+>>> odd_even_sum(2, 7)
+>>> (15, 12)
+</pre>","raise
+def func(x):
+  if type(x) != int:
+    raise TypeError(""Expected int"")
+  elif x < 0:
+    raise ValueError(""Got negative int"")
+6 Catching Exceptions
+
+def safe_run(f, x):
+    try:
+        f(x)
+    except ValueError:
+        return ""ValueError""
+    except TypeError:
+        return ""TypeError""
+    else:
+        return ""OK""
+
+
+7 Digits of an Integer 1
+
+
+8 Reading From a File 
+
+def largest(f):
+    res = -1e20
+    for line in f:
+        for field in line.split():
+            res = max(res, float(field))
+    return res
+
+
+","C,G",C,B,C,C,C,C,C,E,E,C,C,E,C,NONE,NONE,C,C,NONE,C,E,E,C,C,"B,E,F,G"
+77,"Write a function <code>reverse_append(arg)</code> which will take one argument(can also be a list).
+<br>
+Return the original + reverse of the argument.
+<br>
+<br><br>
+For Example:<br><code>reverse_append([1, 2, 3])</code> should return <code>[1, 2, 3, 3, 2, 1]</code><br>
+
+Note: You do not have to print the value. You have to return the value.","reverse = 0
+def integer_reverse(number):
+    global reverse
+    
+    if(number > 0):
+        Reminder = number % 10
+        reverse = (reverse * 10) + Reminder
+        integer_reverse(number // 10)
+    return reverse
+
+
+number = int(input(""Please Enter any Number: ""))
+
+rev = integer_reverse(number)
+print(""Reverse of a Given number is = %d"" %rev)
+
+if(number == rev):
+    print(""%d is a Palindrome Number"" %number)
+else:
+    print(""%d is not a Palindrome Number"" %number)","C,D,F,G",E,C,E,C,E,E,"D,E,F,G,C","B,C,D,E,F,G","E,G","C,D,E,F","D,E","A,B,E,F,G",D,B,C,C,C,A,"D,E,F,G,C","A,B,C,E,G",E,"C,D,E,F","C,D,E",E
+78,"<p>Write a function called <code>remove_spaces(s)</code> that accepts a string as an argument. <br /><br />The function should remove all the UNWANTED SPACES! So the spaces at the start and end are completely removed. If there is a space between words then it should be kept as it is. If there are multiple spaces between words then it should be replaced by one space only. <br />The function should return the modified new string. <br /><br />Example</p>
+<pre>Input to the function
+<code>remove_spaces('  Hello    Hi!')</code> <br />Return value by the function <br />'Hello Hi!'</pre>
+<p><strong>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</strong></p>","str='Hello Hi!'
+def removespace(string):
+ 
+    # To keep track of non-space character count
+    count = 0
+ 
+    list = []
+ 
+    # Traverse the given string. If current character
+    # is not space, then place it at index 'count++'
+    for i in xrange(len(string)):
+        if string[i] != ' ':
+            list.append(string[i])
+ 
+    return toString(list)
+ 
+# Utility Function
+def toString(List):
+    return ''.join(List)
+ 
+# Driver program
+string = ""   hello   hi! ""
+print removespace(string):
+
+
+
+
+
+","D,G",B,B,C,B,C,A,"C,D","B,C,E,G","A,C,G","B,C,D,G","B,C,D,G",E,B,B,G,B,C,A,"B,C,D,G","A,B,C,G","A,C","B,D","C,D,G","A,C,E,G"
+79,"Write a function called <code>oddsum(s)</code> that accepts a non-empty integer list as an argument.
+<br><br>
+The function should return the sum of all the odd numbers in the list.
+<br><br>
+Example
+<b></b>
+<pre>
+Input to the function
+<code>oddsum([1, 2, 3, 1, 4])</code>
+Return value by the function
+5
+</pre>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","try :
+  
+
+  s=[]
+  Number=int(input(""Enter the total number of list elements:""))
+  for i in range(1,Number+1):
+    value=int(input(""Please Enter the valid value of %d element:""%i))
+    s.append(value)
+  def oddsum(s):
+    Odd_sum=0
+    for j in range(Number):
+      if(s[j] % 2 != 0):
+        Odd_sum=Odd_sum+s[j]
+    return Odd_sum
+  Odd_sum=oddsum(s)
+  print(""The sum of odd numbers in this list:"",Odd_sum)
+
+except EOFError as e:
+  print (""Eof error"")
+
+","C,D,E",C,A,A,D,A,A,"D,C,A","D,E","A,B,C,E,G","A,D","A,D","A,C,D,E",A,NONE,A,D,D,A,"C,D,E",D,"A,E","A,D","A,D,E","A,C,D,E"
+80,"Write a python script which will -
+<li>Take a <code><b>name</b></code> from the user as <b>input</b></li>
+ <li><b>Capitalize</b> the input name and print it. 
+<br/>
+<br/>
+<b>For example :-</b>
+<br/>
+<pre>
+For given input name -
+<code> Gabbar </code>
+
+The output should be - 
+<code> GABBAR </code>
+</pre>
+
+<b>Note :-</b>
+<pre>
+<i>
+While using the input function, please use an <code>empty prompt</code>.
+</i>
+</pre>
+<iframe width=""560"" height=""315"" src=""https://www.youtube.com/embed/R7iUjSECqOg"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>","try:
+    a=int(input(""Enter a:""))
+    b=int(input(""Enter b:""))
+    c=a/b
+    Print (""a/b = % d""%c)
+   # Using Exception with except statement.If we print(Exception)it will return exception class
+   Except Exception:
+    Print (""can't divide by zero"")
+    Print(Exception)
+   else:
+    Print("" Hii I am else block"")
+   Output:
+    Enter a:10
+    Enter b:0
+    Can't divide by zero
+    divide by zero
+    ","C,G",G,NONE,G,C,C,B,"B,C,D,F,G",E,"D,G","C,D,F,G","C,D",E,E,B,D,C,C,B,"D,E,G,C",D,"D,F","C,D,E,F,G","C,D","B,D,E,F,G"
+81,"Write a function called <code>countb(s)</code> that accepts a string as an argument.
+<br><br>
+The function should count the number of occurrence of letter 'b' and return the count.
+<br />
+Note, the count should be case sensitive, means only lower case 'b' is counted.
+<br><br>
+Example
+<b></b>
+<pre>
+Input to the function
+<code>countb('Bye bye')</code>
+Return value by the function
+1
+</pre>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","vowels = ""aeiou""
+
+#getting number of vocals for each element in string
+def countvocals(s):
+    count = 0
+    for i in s:
+        if i in vowels:
+            count += 1
+    return count
+
+#sorting list
+def sortlist(x,y):
+    zipped = zip(x,y)
+    zipped=[x for x in zipped]
+    zipped.sort(key = lambda x:x[1])
+    return [a for (a,b) in zipped]
+
+a = [ 'Bye-bye']
+b=[]
+for i in a:
+    b.append(countvocals(i))
+
+print(sortlist(a,b))","C,D,G",B,B,C,C,C,B,"B,C,D,E","A,B,C,D,E,G","F,G","B,C,D,G","B,C,D,G",E,B,C,C,C,C,B,"C,D,E,G",E,E,"B,C,D","C,D,G","B,E,F,G"
+82,"<p>Write a function called <code>getlist(s)</code> that accepts a string as an argument. <br /><br />The string should be split at semi-colons. The function should return the list of the strings. <br /><br />Example</p>
+<pre>Input to the function
+<code>getlist('Hello;World')</code> <br />Return value by the function <br />['Hello', 'World'] <br />Input to the function <code><br />getlist('a b c;d')</code> <br />Return value by the function ['a b c', 'd']</pre>
+<p><strong>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</strong></p>","def getlist(str):
+  s=""""
+  lst=[]
+  for i in str:
+    if i!=';':
+      s=s+i
+    else:
+      lst.append(s)
+      s=""""
+    lst.append(s)
+  return(lst)","C,G",C,A,B,C,C,C,C,"A,B,E,G",G,C,C,"A,C",C,C,G,C,C,C,C,"A,B,C",C,C,C,"A,C"
+83,"Write a function called <code>sub_word1(a, b)</code> that accepts two words as an argument.
+<br><br>
+The function should check whether the second word contains all the letters of the first word or not.
+<br />
+The function should return a boolean True if the second word contains all the letters of the first word else False
+<br><br>
+Example
+<b></b>
+<pre>
+Input to the function
+<code>sub_word1('goods','good')</code>
+Return value by the function
+False
+Input to the function
+<code>sub_word1('mad','dam')</code>
+Return value by the function
+True
+Input to the function
+<code>sub_word1('dog','good')</code>
+Return value by the function
+True
+Input to the function
+<code>sub_word1('dog','goods')</code>
+Return value by the function
+True
+</pre>
+<b>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</b>","def sub_word1(a,b):
+  status=True
+  for c in b:
+    if c not in a:
+      status=False
+      break
+  for c1 in a:
+    if c1 not in b:
+      status=False
+      break
+  if status==True:
+    return True
+  else:
+    return False",G,A,C,B,B,A,B,B,B,"A,B",B,"A,B","B,G",A,B,D,A,B,B,"A,B",B,B,B,"A,B",E
+84,"<p>Write a function called <code>remove_underscores(s)</code> that accepts a string as an argument. <br /><br />The function should remove all the UNWANTED underscores! So the underscores at the start and end are completely removed. If there is an underscore between words then it should be kept as it is. If there are multiple consecutive underscores between words then it should be replaced by one underscore only.</p>
+<p><br />If an underscore after a space or followed by a space, then the underscore should be removed. <br />The function should return the modified new string. <br /><br />Example</p>
+<pre>Input to the function
+<code>remove_underscores('__Hello__Hi!__')<br /></code>Return value by the function<br />'Hello_Hi!'<br />Input to the function <br /><code>remove_underscores('__Hello_ Hi!__')</code> <br />Return value by the function <br />'Hello Hi!'</pre>
+<p><strong>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</strong></p>","def remove_underscores(s):
+    s=s.strip(""_"")
+    s2=""""
+    for i in range(len(s)):
+        c=s[i]
+        if c =="""" and s[i+1]=="""":
+            continue
+        s2=s2+c
+    s3=''
+    for i in range(len(s2)-1):
+        if s2[i]=='' and (s2[i+1] == '' or s2[i+1] == ' ' or s2[i-1] == ' ') :
+            i = i+1
+        else:
+            s3 += s2[i]
+    #if s2[len(s2)-1] != '_':
+    s3 += s2[-1]
+    return(s3)
+p=remove_underscores('__Hello__Hi!__')","B,C,G",B,B,B,B,B,B,"B,C,G","A,B,C,E,G","A,B,G","A,B","A,B","A,B,C,E,F,G",B,B,B,B,B,B,"B,A,C","A,B,C,E,G","A,B,G","A,B","A,B,G","A,B,C,F,G"
+85,"<p>Write a function that takes a space separated string as an argument and returns the (string) word that occurs the maximum number of times. If more than one word occurs the same (maximum) number of times, return a set containing these words.
+</p>
+<p>Example:
+<tt>find_max_words(""the test the"")</tt> returns <tt>""the""</tt>
+</p>
+
+<p>Example:
+<tt>find_max_words(""the test the test"")</tt> returns <tt>{""the"", ""test""}</tt>
+</p>","def find_max_words(s):
+    import collections
+    x=collections.Counter(s.split("" ""))
+    m=max(x.values())
+    y=x.most_common(m)
+    res = ([str(a) for (a, b) in y if b == m])
+    return(set(res))",D,G,B,C,D,G,B,"G,D","B,G","C,G","C,D","F,G",G,G,B,G,C,F,B,"G,D,C","B,G",G,"C,F",D,"B,E,G"
+86,"<p>Write a function <tt>my_matrix_multiply</tt> that takes two matrix arguments \( A \) and \( B \) and returns the matrix product. Your function should</p>
+<ul>
+<li>interpret lists of numbers as row matrices</li>
+<li>Return the product matrix if the matrices can be multipled</li>
+<li>Return <tt>False</tt> if the matrices cannot be multiplied</li>
+</ul>
+
+<p>Example:
+<tt>my_matrix_multiply([1, 2], [3, 4, 5, 6])</tt> returns <tt>False</tt>.
+</p>
+
+<p>Examples:
+<ul><li><tt>my_matrix_multiply([1, 2], [3, 4, 5, 6])</tt> returns <tt>False</tt>.</li>
+<li><tt>my_matrix_multiply([[1, 2], [2, 1]], [[1, 2, 3], [4, -4, 6]])</tt> returns <tt>[[ 9 -6 15], [ 6  0 12]]</tt>.
+</ul></p>","import numpy as np
+def my_matrix_multiply(a, b):
+    M1= np.array(a)
+    M2=np.array(b)
+
+    if M1.shape[0] != M2.shape[0]:
+        return False
+    else:
+        return M1@M2","C,F,G",B,B,B,B,B,B,B,"B,G",B,B,B,"A,B,F",B,B,B,B,B,B,B,"B,G",B,"B,D",B,"B,G"
+87,"<p>Write a function that takes in a string argument of the following type:</p>
+<pre> 1.920000e-03  1.845156e+02  1.845129e+02  2.700181e+01
+ 1.940000e-03  1.861950e+02  1.861922e+02  2.753235e+01
+ 1.960000e-03  1.878671e+02  1.878643e+02  2.806721e+01
+ 1.980000e-03  1.895317e+02  1.895289e+02  2.860637e+01
+ 2.000000e-03  1.911889e+02  1.911860e+02  2.914979e+01
+...
+</pre>
+<p>This function should return the (floating point) sum of the second, third and fourth columns.</p>","import numpy as np
+def sum_last_three_cols(data):
+    splitedList=data.split()
+    listWithFloatValue=[float(splitedList[i]) for i in range(len(splitedList))]
+    npArray=np.array(listWithFloatValue).reshape(int(len(listWithFloatValue)/4), 4)
+    sumOfFloats=npArray.sum(axis=0)
+    return sum(sumOfFloats[1:])",NONE,NONE,B,G,NONE,NONE,A,E,E,G,E,E,"A,C,E,F,G",NONE,B,G,NONE,NONE,A,E,"C,G",G,E,E,G
+88,"Write a Python function called <tt>add_list_numbers</tt> that takes a single argument, which is a list of numbers (floats and/or ints) and returns the sum of all numbers.","def add_list_numbers(l):
+    x = 0
+    for i in l :
+       x =  x + i
+    return x",NONE,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+89,"<p>Students' scores in Mathematics and Physics are stored within two-size tuples that are within a dictionary, whose key is the roll number. The first element of the tuple is the Mathematics score, and the second element is the Physics score. Write a function that accepts such a dictionary and returns the students' roll numbers as a list sorted in descending order of their Physics scores. You may assume that all scores are distinct.</p>
+
+<p>Examples:</p>
+<pre>
+>>> student_data = {
+    'rollno1' : (14.94, 31.44),
+    'rollno2' : (17.01, 23.98),
+    'rollno3' : (53.35, 10.94),
+    'rollno4' : (21.62, 72.72),
+}
+>>> sort_students_by_physics_score(student_data)
+['rollno4', 'rollno1', 'rollno2', 'rollno3']
+
+>>> student_data = {
+    'rollno1' : (78.58, 70.00),
+    'rollno2' : (76.46, 23.38),
+    'rollno3' : (15.17, 87.27),
+    'rollno4' : (12.72, 18.75),
+}
+>>> sort_students_by_physics_score(student_data)
+['rollno3', 'rollno1', 'rollno2', 'rollno4']
+</pre>","import pandas as pd
+def sort_students_by_physics_score(student_data):
+    
+    df= pd.DataFrame.from_dict(student_data,orient='index',
+                           columns=['Maths', 'Physics'])
+    df.sort_values(by =['Physics'],inplace=True, ascending=False)
+    x=list(df.index)
+    return (x)",NONE,NONE,C,NONE,NONE,NONE,NONE,E,D,E,E,E,E,NONE,B,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+90,"<p>A <em>perfect number</em> is one for which the sum of its positive divisors (excluding itself) is equal to the number itself. For example \( 6 \) has the divisors \( 1, 2 \) and \( 3 \), and \( 6 = 1 + 2 + 3 \), and thus, is a perfect number. Similarly, \( 28 \) has factors \( 1, 2, 4, 7, 14 \), and \( 1 + 2 + 4 + 7 + 14 = 28 \), making it a perfect number.</p>
+<p>Write a function <tt>is_perfect_number</tt> that takes a single integer argument and returns <tt>True</tt> if the number is a perfect number, and <tt>False</tt> otherwise</p>
+<p>.</p>
+<pre>&gt;&gt;&gt; is_perfect_number(3)
+False
+&gt;&gt;&gt; is_perfect_number(6)
+True
+&gt;&gt;&gt; is_perfect_number(25)
+False
+&gt;&gt;&gt; is_perfect_number(28)
+True
+</pre>","def is_perfect_number(N):
+     # Your code here
+    lst=[]
+    for i in range(1,int(N/2)+1):
+        print(i)
+        if N % i == 0 :
+            lst.append(i)
+    if sum(lst) == N:
+        print(f'is_perfect_number:','True')
+        answer='True'
+    else:
+        print(f'is_perfect_number:','False')
+        answer='False'
+    return(answer)
+  ","C,D,F",F,B,D,F,F,C,"D,F",D,D,"D,F","D,F","D,E,F,G",F,NONE,D,F,F,C,"D,F","B,F",D,"D,F","D,F","D,C"
+91,"<p>Write a function called <tt>unique_numbers_sorted</tt></p> that takes a list of integers as argument and returns a list containing the unique integers sorted in ascending order.</p>
+
+<p>Example:</p>
+<pre>
+>>> unique_numbers_sorted([3, 1, 4, 5, 0, 8, 2, 5, 1, 9, 4, 9, 1, 1, 2, 5, 9, 5])
+[0, 1, 2, 3, 4, 5, 8, 9]
+
+>>> unique_numbers_sorted([20, 90, 80, 80, 60, 30, 90, 50, 0, 40, 10, 80, 60, 10, 40, 50, 30, 0])
+[0, 10, 20, 30, 40, 50, 60, 80, 90]
+
+>>> unique_numbers_sorted([-1, 2, -3, -4, -5, -4, 3, 2, -1])
+[-5, -4, -3, -1, 2, 3]
+</pre>","import pandas as pd
+def unique_numbers_sorted(l):
+    uni = pd.unique(pd.Series(l).sort_values())
+    return uni","D,F",D,B,F,D,F,F,"D,F,G",E,F,"D,F",F,E,G,C,NONE,F,F,F,F,E,"C,F",F,F,E
+92,"<p>The function <tt>string_lengths</tt> takes a single argument <tt>sl</tt>that is a list of strings. It returns a list of the same length that contains the length of each string in <tt>sl</tt>.</p>
+
+<p>Examples:</p>
+
+<pre>
+In: string_lengths(['hello', 'world', 'thanks'])
+Out: [5, 5, 6]
+
+In: string_lengths(['abcd'])
+Out: [4]
+
+In: string_lengths(['a', 'bb', 'ccc'])
+Out: [1, 2, 3]
+</pre>","def string_lengths(sl):
+    l = []
+    for i in sl:
+        l.append(len(i))
+    return l",NONE,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,E,E,E,E,E
+93,"<p>Write a function <code>word_frequency(s,n)</code> to find the most frequently occurring words in a string, where <code>s</code> is a string and <code>n</code> is a positive integer. The function must return a dictionary of the top <code>n</code> most frequent words and the number of occurrences.<br />If two words have the same frequency of occurrence, both of them must be printed in alphabetical order. In this case,<strong> BOTH</strong> the words are considered to be the same rank. <br />For example if: <br /><code>s = ""the the the quick quick brown brown brown brown fox jumps jumps over"" </code> <br />Then this should be the output: <br /><code>word_frequency(s, 1)</code> should return <code>[(""brown"", 4)]</code> <br /><code>word_frequency(input, 2)</code> should return <code>[(""brown"", 4), (""the"",3)]</code><br /><code>word_frequency(example, 4)</code> should return <br /><code>[(""brown"", 4), (""the"", 3), (""jumps"", 2), (""quick"", 2), (""fox"", 1), (""over"", 1)]</code><br /><br /><em>Note: Case is significant for the question, so treat ""Brown"" as different from ""brown"". The string will not contain any punctuation characters.</em></p>","def word_frequency(s,n):
+  s = s.lower().replace(',' , '').replace('.' , '').replace('!' , '').replace('?' , '').replace('-' , '')
+  words = s.split()
+  word_count = {}
+  for word in words:
+    if word in word_count:
+      word_count[word] += 1
+    else:
+      word_count[word] = 1
+  sorted_words = sorted(word_count.items(), key = lambda x: (-x[1], x[0]))
+  top_n = {}
+  for i in range(n):
+    if i < len(sorted_words):
+      top_n[sorted_words[i][0]] = sorted_words[i][1]
+  return top_n
+    
+    
+    
+    ","C,D,F,G",G,B,D,G,G,C,"D,F,G","A,B,C","D,E,F","A,F,G","D,F","A,C,E,F,G",G,B,D,G,F,C,"D,F,G,C","B,C,E",D,"A,F,G","C,G","B,C,E,G"
+94,"<p>Write a function called <code>hasprime(s)</code> that accepts a non-empty integer list as an argument. <br /><br />The function should return a boolean True if the list has a number that is a prime number else False. <br /><br />Example</p>
+<pre>Input to the function
+<code>hasprime([3, 5, 4])</code> Return value by the function True</pre>
+<p><strong>Note: Please write a function and return the desired result. DO NOT USE PRINT or STANDARD OUTPUT</strong></p>","def hasprime(s):
+  for n in s:
+    if n%2 != 0 and n%3 !=0:
+      return True
+    else:
+      return False
+  ","A,B,G",B,B,B,C,C,B,"B,C",E,B,"B,C","B,C,G","B,G",B,B,B,C,B,B,"B,C,G","B,C,G",B,"B,C","B,G","B,G"
+95,"<p>Write a function <code>sum_odd(data)</code>. <code>data</code> is a list of non-negative integers. The function should return the sum of odd values on the list. Note that the odd values are summed, not the values at odd indices.&nbsp;</p>","def sum_odd(data):
+  n=len(data)
+  sum=0
+  if {n<0}
+  	if data[n]%2=1
+  		sum=sum+data[n]
+  	else break
+    n=n-1
+  else break
+  return sum
+  	","A,B,E,G",A,B,C,B,A,A,"B,C,E,G","A,B,C,E,G","A,C,G","A,B,C,E,G","A,B,C,G","A,B,C,E,G",A,C,C,B,B,B,"A,B,C,G","A,B,C,E,G","A,B,C,E,G","A,B,C,G","B,C,G","A,B,C,E,G"
+96,"<p>You are given a matrix (a numpy array) of shape (m, n). Write a function called <code>sqr(x)</code> which returns the sum of the squares of all the elements of the matrix.</p>","def sqr(x):
+    m = len(x)
+    n= len(x[0])
+    summation = 0
+    for i in range(m):
+        for j in range(n):
+            summation += x[i][j] **2   
+    return summation ",NONE,NONE,B,NONE,NONE,NONE,NONE,E,E,E,E,E,E,NONE,NONE,NONE,NONE,NONE,NONE,E,"E,F",E,E,E,E
+97,"<p>There is a tree. Fallen leaves from the tree lie on the ground. You are trying to estimate the distribution of the leaves as a function of the distance from the tree</p>
+<p>Using a drone with augmented reality technology, you have computed the leaves' coordinates on the ground. Now, you have two arrays <code>x</code> and <code>y</code> such that&nbsp;<code>(x[i], y[i])</code> represents the coordinates of the i'th leaf. The tree is at the origin.&nbsp;</p>
+<p>Given <code>x</code> and <code>y</code>, write a function <code>leaves_within(x,y,r)</code> that returns the number of leaves within (strictly less than) a distance of r from the tree.</p>
+<p>&nbsp;</p>","def leaves_within(x, y, r):
+  r_sqr = r*r
+  num = 0
+  for i in x:
+    for j in y:
+      circle = (x[i]*x[i]) + (y[j]*y[j])
+      if circle < r_sqr:
+        num = num +1
+        
+  return num","A,C,G",A,C,A,A,A,A,"A,C,G","A,B,E,G","A,G",A,A,"A,B,E",A,B,A,A,A,A,"A,C","A,B,C,G","A,C,G",A,A,"A,B,E,G"
+98,"<p>Write a function <code>bin(a,n)</code> which bins the numbers from the given array or list of integers <code>a</code> into <code>n</code> bins. The function should return a list of bins, as given in the examples below. Each bin is, in turn, a list of numbers. In other words, the function <code>bin(a,n)</code> returns a list of lists.</p>
+<p>Example1</p>
+<p><code>bin(numpy.arange(5), 3)</code> should return <code>[[0, 1], [2], [3, 4]]</code>.</p>
+<p>Note the arrangements of the bins, i.e. the bin at index 0 contains the elements of the first bin.&nbsp;</p>
+<p>Example2</p>
+<p>In case <code>bin(numpy.arange(7), 3)</code> the bins would be&nbsp;</p>
+<p><code>[[0, 1], [2, 3], [4, 5, 6]]</code></p>
+<p>where elements in the range [0, 2) go to bin 0, [2, 4) go to bin 1, and [4, 6] go to bin 2.&nbsp;&nbsp;</p>","def bin(a,n):
+  k = len(a)
+  l = []
+  m = []
+  int_size = a[k-1]/n
+  for j in range(n-1):
+    for i in range(k):
+      if a[i] < int_size:
+        l.append(a)
+    m[j] = l
+    int_size = int_size*(j+1)
+  return m
+      ","A,C,G",C,B,E,E,E,A,"G,C,B,E,A","A,B,C,E,G","A,B,C,E,G","A,B,C,E,G","A,B,C,E,G","A,B,C,E,F,G",B,B,E,E,E,A,"A,B,C,E,G","A,B,C,E,G","A,C,E,G","A,B,C,E,G","A,B,C,E,G","A,B,C,E,F,G"
+99,"<p>Given a 2D numpy array and two column indices <code>i</code> and <code>j</code>,&nbsp; write a function <code>swap_col(arr,i,j)</code> that returns the numpy array with swapped columns <code>i</code> and <code>j</code>.</p>
+<p>For example,</p>
+<p>Original array:</p>
+<p><code>
+[[7 3 1 4]
+<br />&nbsp;[3 6 5 1]
+<br />&nbsp;[1 8 7 5]]</code></p>
+<p>Array after swapping columns <code>i=0</code> and <code>j=2</code>:</p>
+<p><code>
+[[1 3 7 4]<br />&nbsp;[5 6 3 1]<br />&nbsp;[7 8 1 5]]</code><code></code></p>","import numpy as np
+def swap_col(arr, i, j):
+  arr = np.asarray(arr)
+  for m in range(arr.shape(0)):
+      a = arr[m][i]
+      arr[m][i]=arr[m][j]
+      arr[m][j]=a
+  return arr
+                   ",C,G,NONE,G,A,A,A,A,E,A,A,A,"A,E,G",C,C,A,A,A,A,C,G,A,A,A,"A,F"
+100,"<p>Write a function <strong>divide</strong> which takes two integer arguments dividend and divisor.</p>
+<p>If divisor is zero then raise ZeroDivisionError.<br />If the quotient is negative than raise ValueError.<br />If the quotient is not an integer than raise TypeError.<br />Else returns the quotient.</p>","def divide(dividend,divisor):
+  if (divisor == 0):
+    Exception.raiseException(""ZeroDivisionError"")
+  elif (int(dividend/divisor) != 1):
+    Exception.raiseException(""TypeError"")
+  else:
+    return dividend/divisor","B,C,G",B,B,C,B,C,B,"B,C,G","A,B,E","B,G","B,C,F","B,C","B,E,G",B,B,C,B,C,B,"B,C,D","B,C,G","B,C,G","B,C,F,G","B,C,G","B,E,G"

@@ -1,0 +1,14 @@
+{
+  "base": {
+    "single_oracle_avg": 2.0,
+    "multi_oracle_avg": 3.44
+  },
+  "tan": {
+    "single_oracle_avg": 2.28,
+    "multi_oracle_avg": 4.57
+  },
+  "yuv": {
+    "single_oracle_avg": 2.3,
+    "multi_oracle_avg": 5.16
+  }
+}
