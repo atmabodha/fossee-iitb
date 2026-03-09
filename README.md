@@ -43,15 +43,15 @@ Models are accessed through OpenRouter.
 
 The benchmark evaluates models under three independent taxonomies:
 
-### 1. HAR (Boundary / Algorithmic taxonomy)
+### 1. CG (Conceptual-Global taxonomy)
 
 Focuses on logical reasoning and algorithm correctness.
 
-### 2. YUV (Programming construct taxonomy)
+### 2. SL (Structural-Local taxonomy)
 
 Focuses on programming structure errors such as loops, functions, and conditions.
 
-### 3. TAN (Statement-level taxonomy)
+### 3. PG (Pedagogical-Granular taxonomy)
 
 Focuses on syntactic logic structure and computation mistakes.
 
@@ -93,41 +93,6 @@ Input Excel file must contain:
 
 ---
 
-## Installation
-
-### 1. Clone repository
-
-```bash
-git clone 
-```
-
-### 2. Create virtual environment (recommended)
-
-```bash
-python -m venv venv
-```
-
-Activate environment:
-
-**Windows**
-
-```bash
-venv\Scripts\activate
-```
-
-**Linux / Mac**
-
-```bash
-source venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
 
 ## Environment Setup
 
@@ -172,7 +137,7 @@ If execution stops:
 Results are saved to:
 
 ```
-yaksh_data/combined_yaksh_3_iteration_results.xlsx
+yaksh_data/3_iteration_results.xlsx
 ```
 
 Column naming pattern:
@@ -184,9 +149,9 @@ Column naming pattern:
 Examples:
 
 ```
-chat_gpt_iter1_single_harshit
-gemini_iter2_multi_yuv
-sonnet_iter1_single_tan
+chat_gpt_iter1_single_CG
+gemini_iter2_multi_SL
+sonnet_iter1_single_PG
 ```
 
 Outputs contain:

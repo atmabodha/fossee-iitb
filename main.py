@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 # =========================
 # CONFIG
 # =========================
-INPUT_FILE = r"yaksh_data\yaksh_100_que.xlsx"
-OUTPUT_FILE = "yaksh_data/combined_yaksh_3_iteration_results.xlsx"
+INPUT_FILE = r"yaksh_data/yaksh_100_que.xlsx"
+OUTPUT_FILE = "yaksh_data/3_iteration_results.xlsx"
 
 MODELS = {
     "sonnet": "anthropic/claude-4.5-sonnet",
@@ -37,7 +37,7 @@ client = OpenAI(
 # =========================
 # LOGICAL ERROR TAXONOMY
 # =========================
-TAXONOMY_TEXT_har ="""
+TAXONOMY_TEXT_CG ="""
 <taxonomy>
     <category label="A">
         <title>Boundary & Indexing</title>
@@ -70,7 +70,7 @@ TAXONOMY_TEXT_har ="""
 </taxonomy>
 """
 
-TAXONOMY_TEXT_yuv = """
+TAXONOMY_TEXT_SL = """
 <taxonomy>
     <category label="A">
         <title>Input</title>
@@ -118,7 +118,7 @@ TAXONOMY_TEXT_yuv = """
     </category>
 </taxonomy>
 """
-TAXONOMY_TEXT_tan = """
+TAXONOMY_TEXT_PG = """
 <taxonomy>
     <category label="A">
         <title>Loop Condition</title>
@@ -166,13 +166,13 @@ TAXONOMY_TEXT_tan = """
 # =========================
 # PROMPTS
 # =========================
-PROMPT_ITER1_SINGLE_har = f"""
+PROMPT_ITER1_SINGLE_CG = f"""
 You are an expert programming assistant.
 
 Your task:
 Identify the SINGLE dominant logical error in the given Python code.
 
-{TAXONOMY_TEXT_har}
+{TAXONOMY_TEXT_CG}
 
 Rules:
 - Select exactly ONE error type.
@@ -184,13 +184,13 @@ Output Rules (STRICT):
 - Do NOT include explanations or extra text.
 """
 
-PROMPT_ITER_MULTI_har = f"""
+PROMPT_ITER_MULTI_CG = f"""
 You are an expert programming assistant.
 
 Your task:
 Identify ALL applicable logical error types in the given Python code.
 
-{TAXONOMY_TEXT_har}
+{TAXONOMY_TEXT_CG}
 
 Rules:
 - Multiple error types may apply.
@@ -202,13 +202,13 @@ Output Rules (STRICT):
 - Or output NONE
 - Do NOT include explanations or extra text.
 """
-PROMPT_ITER1_SINGLE_yuv = f"""
+PROMPT_ITER1_SINGLE_SL = f"""
 You are an expert programming assistant.
 
 Your task:
 Identify the SINGLE dominant logical error in the given Python code.
 
-{TAXONOMY_TEXT_yuv}
+{TAXONOMY_TEXT_SL}
 
 Rules:
 - Select exactly ONE error type.
@@ -220,13 +220,13 @@ Output Rules (STRICT):
 - Do NOT include explanations or extra text.
 """
 
-PROMPT_ITER_MULTI_yuv = f"""
+PROMPT_ITER_MULTI_SL = f"""
 You are an expert programming assistant.
 
 Your task:
 Identify ALL applicable logical error types in the given Python code.
 
-{TAXONOMY_TEXT_yuv}
+{TAXONOMY_TEXT_SL}
 
 Rules:
 - Multiple error types may apply.
@@ -238,13 +238,13 @@ Output Rules (STRICT):
 - Or output NONE
 - Do NOT include explanations or extra text.
 """
-PROMPT_ITER1_SINGLE_tan = f"""
+PROMPT_ITER1_SINGLE_PG = f"""
 You are an expert programming assistant.
 
 Your task:
 Identify the SINGLE dominant logical error in the given Python code.
 
-{TAXONOMY_TEXT_tan}
+{TAXONOMY_TEXT_PG}
 
 Rules:
 - Select exactly ONE error type.
@@ -256,13 +256,13 @@ Output Rules (STRICT):
 - Do NOT include explanations or extra text.
 """
 
-PROMPT_ITER_MULTI_tan = f"""
+PROMPT_ITER_MULTI_PG = f"""
 You are an expert programming assistant.
 
 Your task:
 Identify ALL applicable logical error types in the given Python code.
 
-{TAXONOMY_TEXT_tan}
+{TAXONOMY_TEXT_PG}
 
 Rules:
 - Multiple error types may apply.
@@ -276,12 +276,12 @@ Output Rules (STRICT):
 """
 
 ITERATIONS = {
-    "iter1_single_harshit": PROMPT_ITER1_SINGLE_har,
-    "iter2_multi_harshit": PROMPT_ITER_MULTI_har,
-    "iter1_single_yuv": PROMPT_ITER1_SINGLE_yuv,
-    "iter2_multi_yuv": PROMPT_ITER_MULTI_yuv,
-    "iter1_single_tan": PROMPT_ITER1_SINGLE_tan,
-    "iter2_multi_tan": PROMPT_ITER_MULTI_tan,
+    "iter1_single_CG": PROMPT_ITER1_SINGLE_CG,
+    "iter2_multi_CG": PROMPT_ITER_MULTI_CG,
+    "iter1_single_SL": PROMPT_ITER1_SINGLE_SL,
+    "iter2_multi_SL": PROMPT_ITER_MULTI_SL,
+    "iter1_single_PG": PROMPT_ITER1_SINGLE_PG,
+    "iter2_multi_PG": PROMPT_ITER_MULTI_PG,
 }
 
 # =========================
@@ -338,7 +338,7 @@ def query_model(model_id, prompt):
             print(f"⚠ Invalid output [{model_id}]: {raw}")
 
             if empty_count >= 3:
-                print(f"❌ Disabling {model_id} (repeated empty output)")
+                print(f" Disabling {model_id} (repeated empty output)")
                 MODEL_STATUS[model_id] = "disabled"
                 return "NONE"
 
@@ -347,7 +347,7 @@ def query_model(model_id, prompt):
             print(f"⚠ API error [{model_id}] attempt {attempt}: {msg[:120]}")
 
             if "401" in msg or "402" in msg or "insufficient credits" in msg.lower():
-                print(f"❌ Disabling {model_id} (no credits / access)")
+                print(f" Disabling {model_id} (no credits / access)")
                 MODEL_STATUS[model_id] = "disabled"
                 return "NONE"
 
@@ -380,10 +380,10 @@ def is_row_complete(df, idx, iter_name):
 # LOAD / RESUME DATA
 # =========================
 if os.path.exists(OUTPUT_FILE):
-    print(f"📂 Resuming from existing file: {OUTPUT_FILE}")
+    print(f" Resuming from existing file: {OUTPUT_FILE}")
     df = pd.read_excel(OUTPUT_FILE)
 else:
-    print("📄 Starting fresh")
+    print(" Starting fresh")
     df = pd.read_excel(INPUT_FILE)
 
 required_cols = {"question__description", "answer"}
@@ -429,7 +429,7 @@ Python Code:
 {prompt_template}
 """
 
-        print(f"▶ Processing row {idx} ({iter_name})")
+        print(f" Processing row {idx} ({iter_name})")
 
         for model_name, model_id in MODELS.items():
             col = f"{model_name}_{iter_name}"
@@ -443,8 +443,8 @@ Python Code:
         df.to_excel(OUTPUT_FILE, index=False)
         print(f"✔ Row {idx} saved")
 
-    print(f"✅ Completed {iter_name}")
+    print(f" Completed {iter_name}")
 
-print("\n🎉 ALL ITERATIONS COMPLETE")
+print("\n ALL ITERATIONS COMPLETE")
 print("Final model status:", MODEL_STATUS)
 print(f"Results saved to {OUTPUT_FILE}")
