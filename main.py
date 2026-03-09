@@ -70,7 +70,7 @@ TAXONOMY_TEXT_CG ="""
 </taxonomy>
 """
 
-TAXONOMY_TEXT_SL = """
+TAXONOMY_TEXT_PG = """
 <taxonomy>
     <category label="A">
         <title>Input</title>
@@ -118,7 +118,7 @@ TAXONOMY_TEXT_SL = """
     </category>
 </taxonomy>
 """
-TAXONOMY_TEXT_PG = """
+TAXONOMY_TEXT_SL = """
 <taxonomy>
     <category label="A">
         <title>Loop Condition</title>
@@ -202,42 +202,6 @@ Output Rules (STRICT):
 - Or output NONE
 - Do NOT include explanations or extra text.
 """
-PROMPT_ITER1_SINGLE_SL = f"""
-You are an expert programming assistant.
-
-Your task:
-Identify the SINGLE dominant logical error in the given Python code.
-
-{TAXONOMY_TEXT_SL}
-
-Rules:
-- Select exactly ONE error type.
-- If multiple errors exist, choose the most dominant one.
-- If no logical error exists, output ONLY: NONE
-
-Output Rules (STRICT):
-- Output exactly ONE label: A B C D E F G H I J or NONE
-- Do NOT include explanations or extra text.
-"""
-
-PROMPT_ITER_MULTI_SL = f"""
-You are an expert programming assistant.
-
-Your task:
-Identify ALL applicable logical error types in the given Python code.
-
-{TAXONOMY_TEXT_SL}
-
-Rules:
-- Multiple error types may apply.
-- Do NOT prioritize or suppress any applicable error.
-- If no logical error exists, output ONLY: NONE
-
-Output Rules (STRICT):
-- Output comma-separated labels (example: D,F or B,C,E)
-- Or output NONE
-- Do NOT include explanations or extra text.
-"""
 PROMPT_ITER1_SINGLE_PG = f"""
 You are an expert programming assistant.
 
@@ -252,7 +216,7 @@ Rules:
 - If no logical error exists, output ONLY: NONE
 
 Output Rules (STRICT):
-- Output exactly ONE label: A B C D E F G or NONE
+- Output exactly ONE label: A B C D E F G H I J or NONE
 - Do NOT include explanations or extra text.
 """
 
@@ -274,14 +238,50 @@ Output Rules (STRICT):
 - Or output NONE
 - Do NOT include explanations or extra text.
 """
+PROMPT_ITER1_SINGLE_SL = f"""
+You are an expert programming assistant.
+
+Your task:
+Identify the SINGLE dominant logical error in the given Python code.
+
+{TAXONOMY_TEXT_SL}
+
+Rules:
+- Select exactly ONE error type.
+- If multiple errors exist, choose the most dominant one.
+- If no logical error exists, output ONLY: NONE
+
+Output Rules (STRICT):
+- Output exactly ONE label: A B C D E F G or NONE
+- Do NOT include explanations or extra text.
+"""
+
+PROMPT_ITER_MULTI_SL = f"""
+You are an expert programming assistant.
+
+Your task:
+Identify ALL applicable logical error types in the given Python code.
+
+{TAXONOMY_TEXT_SL}
+
+Rules:
+- Multiple error types may apply.
+- Do NOT prioritize or suppress any applicable error.
+- If no logical error exists, output ONLY: NONE
+
+Output Rules (STRICT):
+- Output comma-separated labels (example: D,F or B,C,E)
+- Or output NONE
+- Do NOT include explanations or extra text.
+"""
 
 ITERATIONS = {
     "iter1_single_CG": PROMPT_ITER1_SINGLE_CG,
     "iter2_multi_CG": PROMPT_ITER_MULTI_CG,
-    "iter1_single_SL": PROMPT_ITER1_SINGLE_SL,
-    "iter2_multi_SL": PROMPT_ITER_MULTI_SL,
     "iter1_single_PG": PROMPT_ITER1_SINGLE_PG,
     "iter2_multi_PG": PROMPT_ITER_MULTI_PG,
+    "iter1_single_SL": PROMPT_ITER1_SINGLE_SL,
+    "iter2_multi_SL": PROMPT_ITER_MULTI_SL,
 }
 
 # =========================

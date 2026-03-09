@@ -47,11 +47,11 @@ The benchmark evaluates models under three independent taxonomies:
 
 Focuses on logical reasoning and algorithm correctness.
 
-### 2. SL (Structural-Local taxonomy)
+### 2. PG (Pedagogical-Granular taxonomy)
 
 Focuses on programming structure errors such as loops, functions, and conditions.
 
-### 3. PG (Pedagogical-Granular taxonomy)
+### 3. SL (Structural-Local taxonomy)
 
 Focuses on syntactic logic structure and computation mistakes.
 
