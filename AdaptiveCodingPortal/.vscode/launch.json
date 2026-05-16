@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Run API Driver Directly",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/api_architecture/demo_generate_output.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": false,
+      "preLaunchTask": "start-api-server"
+    },
+    {
+      "name": "One-Click Demo: Stateless API with JSON Data",
+      "type": "bash",
+      "request": "launch",
+      "program": "${workspaceFolder}/api_architecture/run_demo_pipeline.sh",
+      "console": "integratedTerminal",
+      "presentation": {
+        "echo": true,
+        "reveal": "always"
+      }
+    }
+  ]
+}
